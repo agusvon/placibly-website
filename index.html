@@ -1129,8 +1129,61 @@
     }
 
     /* ── Responsive ── */
+    /* ── Scroll to Top ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      background: var(--magenta);
+      border-color: var(--magenta);
+    }
+
+    .scroll-top svg {
+      width: 20px;
+      height: 20px;
+      color: var(--purple-deep);
+      transition: color var(--transition);
+    }
+
+    .scroll-top:hover svg {
+      color: var(--white);
+    }
+
     @media (max-width: 1024px) {
-      .hero-visual { display: none; }
+      .hero-layout {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        flex: none;
+        width: 100%;
+      }
+
       .hero-content { max-width: 100%; }
 
       .industries-grid {
@@ -1719,7 +1772,22 @@
     </div>
   </footer>
 
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
   <script>
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     // Navbar scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
