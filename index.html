@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placibly — Top Latin American Talent for US Companies</title>
+  <meta name="description" content="Placibly places vetted, English-fluent Latin American professionals into US companies. Save 40–60% on salaries. Same time zone. Full-service hiring.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --purple-deep: #3B1F6E;
+      --purple: #5C2D91;
+      --purple-light: #7B3FA0;
+      --magenta: #D42F8A;
+      --magenta-hover: #BF2A7C;
+      --pink-light: #F5E6F0;
+      --pink-50: #FBF4F9;
+      --off-white: #FAFAFE;
+      --white: #ffffff;
+      --gray-50: #F5F5FA;
+      --gray-100: #EAEAF0;
+      --gray-200: #D5D5DE;
+      --gray-300: #B8B8C4;
+      --gray-400: #8E8E9D;
+      --gray-600: #52525E;
+      --gray-800: #27272F;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(59, 31, 110, 0.06);
+      --shadow-md: 0 4px 20px rgba(59, 31, 110, 0.08);
+      --shadow-lg: 0 8px 40px rgba(59, 31, 110, 0.12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      background: var(--off-white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 254, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    nav.scrolled {
+      border-bottom-color: var(--gray-100);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav-logo-text {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #3B1F6E 0%, #8B2D8B 45%, #D42F8A 70%, #E8234A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-cta {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: var(--white) !important;
+      background: var(--magenta);
+      padding: 10px 24px;
+      border-radius: 8px;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--magenta-hover) !important;
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--purple-deep);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ── Shared ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--purple-deep);
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--gray-600);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--magenta);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--magenta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 47, 138, 0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--purple-deep);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+      transform: translateY(-1px);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 150px 0 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -300px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212, 47, 138, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(92, 45, 145, 0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-layout {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink-50);
+      border: 1px solid rgba(212, 47, 138, 0.15);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--magenta);
+      margin-bottom: 28px;
+    }
+
+    .hero-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5.5vw, 58px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--purple-deep);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--magenta);
+    }
+
+    .hero-desc {
+      font-size: clamp(17px, 1.8vw, 19px);
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-visual {
+      flex: 0 0 440px;
+      position: relative;
+    }
+
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      position: relative;
+    }
+
+    .hero-stat-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+      transition: transform var(--transition);
+    }
+
+    .hero-stat-card:hover {
+      transform: translateY(calc(var(--float-base, 0px) - 4px)) scale(1.03);
+    }
+
+    .hero-stat-card .stat-number {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #3B1F6E 0%, #8B2D8B 50%, #D42F8A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stat-card .stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-400);
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-stat-main {
+      padding: 32px 24px;
+    }
+
+    .hero-stat-card:nth-child(1) { animation: float-a 5.5s ease-in-out infinite; }
+    .hero-stat-card:nth-child(2) { animation: float-b 6.5s ease-in-out 1s infinite; }
+    .hero-stat-card:nth-child(3) { animation: float-c 6s ease-in-out 2s infinite; }
+    .hero-stat-card:nth-child(4) { animation: float-d 7s ease-in-out 0.5s infinite; }
+
+    @keyframes float-a {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes float-b {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes float-c {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes float-d {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Gradient glow cloud behind the stats grid */
+    .hero-stats-grid::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;
+      height: 120%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(59, 31, 110, 0.25) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 30%, rgba(139, 45, 139, 0.2) 0%, transparent 45%),
+                  radial-gradient(ellipse at 50% 70%, rgba(212, 47, 138, 0.2) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(232, 35, 74, 0.15) 0%, transparent 45%);
+      filter: blur(40px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Social Proof / Trust Bar ── */
+    .trust-bar {
+      padding: 48px 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--pink-50);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--purple);
+    }
+
+    .trust-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--purple-deep);
+      line-height: 1.3;
+    }
+
+    .trust-text small {
+      display: block;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-top: 2px;
+    }
+
+    /* ── Stats Section ── */
+    .stats {
+      padding: 80px 0;
+      background: var(--purple-deep);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-block .stat-num {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .stat-block .stat-desc {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    /* ── Why Placibly ── */
+    .why {
+      background: var(--off-white);
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .why-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .why-card {
+      padding: 40px 32px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-100);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(212, 47, 138, 0.2);
+    }
+
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--pink-50);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .why-card-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--magenta);
+    }
+
+    .why-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ── Industries ── */
+    .industries {
+      background: var(--white);
+    }
+
+    .industries-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .industries-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .industry-card {
+      background: var(--off-white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg);
+      padding: 36px 20px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .industry-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(92, 45, 145, 0.2);
+    }
+
+    .industry-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--white);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      border: 1px solid var(--gray-100);
+    }
+
+    .industry-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--purple);
+    }
+
+    .industry-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .industry-card p {
+      font-size: 13px;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+
+    /* ── Roles ── */
+    .roles {
+      background: var(--off-white);
+    }
+
+    .roles-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .roles-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .role-column {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-100);
+      padding: 36px 32px;
+      transition: box-shadow var(--transition);
+    }
+
+    .role-column:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .role-column-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--gray-100);
+    }
+
+    .role-column-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--pink-50);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .role-column-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--magenta);
+    }
+
+    .role-column h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--purple-deep);
+    }
+
+    .role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .role-list li {
+      font-size: 15px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .role-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .role-list li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--magenta);
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* ── Process ── */
+    .process {
+      background: var(--white);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 2px;
+      background: var(--gray-200);
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--off-white);
+      border: 2px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--purple-deep);
+      margin: 0 auto 22px;
+      position: relative;
+      z-index: 1;
+      transition: all var(--transition);
+    }
+
+    .step:hover .step-number {
+      border-color: var(--magenta);
+      background: var(--magenta);
+      color: var(--white);
+      transform: scale(1.08);
+    }
+
+    .step h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    /* ── Mid CTA ── */
+    .mid-cta {
+      padding: 80px 0;
+      background: var(--pink-50);
+    }
+
+    .mid-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .mid-cta-text h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 800;
+      color: var(--purple-deep);
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .mid-cta-text p {
+      font-size: 16px;
+      color: var(--gray-600);
+      max-width: 460px;
+    }
+
+    /* ── Guarantee ── */
+    .guarantee {
+      background: var(--purple-deep);
+      color: var(--white);
+    }
+
+    .guarantee-inner {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .guarantee-badge {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      background: rgba(212, 47, 138, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .guarantee-badge svg {
+      width: 56px;
+      height: 56px;
+      color: var(--magenta);
+    }
+
+    .guarantee-text h2 {
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-text p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .guarantee-text p + p {
+      margin-top: 12px;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      background: var(--off-white);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .faq-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: var(--gray-200);
+    }
+
+    .faq-item.active {
+      border-color: rgba(92, 45, 145, 0.2);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--purple-deep);
+      text-align: left;
+      transition: color var(--transition);
+    }
+
+    .faq-question:hover {
+      color: var(--purple);
+    }
+
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--gray-400);
+      transition: transform var(--transition), color var(--transition);
+    }
+
+    .faq-item.active .faq-question svg {
+      transform: rotate(45deg);
+      color: var(--magenta);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 28px 22px;
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ── Final CTA ── */
+    .final-cta {
+      background: var(--white);
+      text-align: center;
+      padding: 110px 0;
+    }
+
+    .final-cta-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 800;
+      color: var(--purple-deep);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+    }
+
+    .final-cta h2 .highlight {
+      color: var(--magenta);
+    }
+
+    .final-cta p {
+      font-size: 17px;
+      color: var(--gray-600);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .final-cta .btn-primary {
+      padding: 18px 44px;
+      font-size: 17px;
+    }
+
+    .final-cta small {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--purple-deep);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 56px 0 40px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand .footer-logo {
+      font-size: 22px;
+      font-weight: 800;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #ffffff 0%, #F0A0C8 50%, #E8234A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .footer-columns {
+      display: flex;
+      gap: 64px;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+    }
+
+    .footer-social a svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-visual { display: none; }
+      .hero-content { max-width: 100%; }
+
+      .industries-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 24px;
+      }
+
+      .guarantee-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .guarantee-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 24px 32px;
+        gap: 20px;
+        border-bottom: 1px solid var(--gray-100);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .roles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px 24px;
+      }
+
+      .process-steps::before {
+        display: none;
+      }
+
+      .mid-cta-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-columns {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      section { padding: 72px 0; }
+
+      .hero { padding: 130px 0 64px; }
+
+      .industries-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 16px;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-buttons .btn-primary,
+      .hero-buttons .btn-secondary {
+        justify-content: center;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .guarantee-badge {
+        width: 88px;
+        height: 88px;
+      }
+
+      .guarantee-badge svg {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-text">placibly</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#why">Why Placibly</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#cta" class="nav-cta">Book a Free Call</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Hiring across 7+ LATAM countries
+          </div>
+          <h1>We Place Top Latin American Talent in <span class="highlight">US&nbsp;Companies.</span></h1>
+          <p class="hero-desc">Save 40–60% on salaries with vetted, English-fluent professionals who work in your time zone. We handle everything — you just pick your favorite candidate.</p>
+          <div class="hero-buttons">
+            <a href="#cta" class="btn-primary">
+              Book a Free Call
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#process" class="btn-secondary">See how it works</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-stats-grid">
+            <div class="hero-stat-card hero-stat-main">
+              <div class="stat-number">60%</div>
+              <div class="stat-label">Salary Savings</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-number">Same TZ</div>
+              <div class="stat-label">US Time Zones</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-number">60d</div>
+              <div class="stat-label">Free Replacement</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-number">90d</div>
+              <div class="stat-label">Ongoing Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="trust-text">7+ LATAM Countries<small>AR, CO, MX, BR, VE, EC, PE & more</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="trust-text">60-Day Guarantee<small>Free replacement included</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="trust-text">Trilingual Team<small>English, Spanish, Portuguese</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="trust-text">90-Day Support<small>Onboarding help included</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block">
+          <div class="stat-num"><span class="count-up" data-target="7" data-suffix="+">0+</span></div>
+          <div class="stat-desc">LATAM countries covered</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3</div>
+          <div class="stat-desc">Languages spoken</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">60%</div>
+          <div class="stat-desc">Average salary savings</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">60d</div>
+          <div class="stat-desc">Free replacement guarantee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Placibly -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-header">
+        <p class="section-label">Why Placibly</p>
+        <h2 class="section-title">Hiring in the US is slow, expensive, and&nbsp;overwhelming.</h2>
+        <p class="section-subtitle">You don't need a cheaper hire. You need a smarter way to build your team — with exceptional talent, at a fraction of the cost, without any of the headache.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Save 40–60% on Salaries</h3>
+          <p>Equivalent skill, equivalent output — at a fraction of the cost. Redirect the savings into growth, not overhead.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Same Time Zone, Real-Time Work</h3>
+          <p>Your LATAM team works when you work. Real-time collaboration, no 12-hour email delays, no missed standups.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Vetted &amp; Culture-Fit Talent</h3>
+          <p>We don't send resumes and disappear. Every candidate is pre-screened for skills, communication, and alignment with US teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="industries-header">
+        <p class="section-label">Industries We Serve</p>
+        <h2 class="section-title">Built for businesses that move fast and&nbsp;hire&nbsp;lean.</h2>
+        <p class="section-subtitle">From restaurants to startups, we place talent across the industries that need it most.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Restaurants &amp; Food&nbsp;Service</h3>
+          <p>Back-office support so you can focus on front of house.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+          </div>
+          <h3>Construction Companies</h3>
+          <p>Admin, scheduling, and coordination to keep projects on track.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Startups &amp; Agencies</h3>
+          <p>Scale fast without the overhead of full-time US hires.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3>E-commerce Brands</h3>
+          <p>Support, content, and ops talent for online businesses.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Professional Services</h3>
+          <p>Admin and operational roles for firms that run on efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roles -->
+  <section class="roles" id="roles">
+    <div class="container">
+      <div class="roles-header">
+        <p class="section-label">Roles We Place</p>
+        <h2 class="section-title">The people who keep your business&nbsp;running.</h2>
+        <p class="section-subtitle">From daily operations to revenue-driving roles, we find talent that fits right in.</p>
+      </div>
+      <div class="roles-grid">
+        <div class="role-column">
+          <div class="role-column-header">
+            <div class="role-column-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h4"/></svg>
+            </div>
+            <h3>Admin &amp; Operations</h3>
+          </div>
+          <ul class="role-list">
+            <li>Executive / Personal Assistant</li>
+            <li>Bookkeeper &amp; Invoicing</li>
+            <li>Scheduling &amp; Appointment Coordinator</li>
+            <li>Payroll &amp; HR Support</li>
+            <li>Inventory &amp; Supply Management</li>
+            <li>Operations &amp; Office Manager</li>
+          </ul>
+        </div>
+        <div class="role-column">
+          <div class="role-column-header">
+            <div class="role-column-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3>Sales &amp; Customer&nbsp;Success</h3>
+          </div>
+          <ul class="role-list">
+            <li>Sales Development Rep</li>
+            <li>Account Manager</li>
+            <li>Customer Support Agent</li>
+            <li>CRM Administrator</li>
+            <li>Lead Generation Specialist</li>
+          </ul>
+        </div>
+        <div class="role-column">
+          <div class="role-column-header">
+            <div class="role-column-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3>Marketing &amp; Content</h3>
+          </div>
+          <ul class="role-list">
+            <li>Social Media Manager</li>
+            <li>Content Writer</li>
+            <li>Graphic Designer</li>
+            <li>Email Marketing Specialist</li>
+            <li>SEO Specialist</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid CTA -->
+  <section class="mid-cta">
+    <div class="container">
+      <div class="mid-cta-inner">
+        <div class="mid-cta-text">
+          <h2>Don't see the role you need?</h2>
+          <p>We place talent across dozens of roles. Tell us what you're looking for and we'll find the right person.</p>
+        </div>
+        <a href="#cta" class="btn-primary">
+          Talk to Us
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process-header">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">From first call to first day — in as little as two&nbsp;weeks.</h2>
+        <p class="section-subtitle">One dedicated point of contact guides you through every step. No handoffs, no runaround.</p>
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Intake Call</h3>
+          <p>We learn about your business, the role, and exactly what kind of person you need on your team.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Sourcing &amp; Vetting</h3>
+          <p>We search across 7+ countries, screen for skills and culture fit, and build a shortlist for you.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>You Interview</h3>
+          <p>Meet your top candidates. We coordinate everything — you just show up and pick your favorite.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Placement + Support</h3>
+          <p>We handle onboarding logistics and stay with you for 90 days to make sure everything's working.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="guarantee">
+    <div class="container">
+      <div class="guarantee-inner">
+        <div class="guarantee-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="guarantee-text">
+          <h2>60-Day Free Replacement Guarantee.</h2>
+          <p>If your new hire doesn't work out within the first 60 days, we'll find you a replacement at no additional cost. No fine print, no hoops to jump through.</p>
+          <p>We stand behind every placement because we only send candidates we'd hire ourselves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">Questions we get asked a&nbsp;lot.</h2>
+        <p class="section-subtitle">Everything you need to know before getting started with Placibly.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item active">
+          <button class="faq-question">
+            How is Placibly different from a freelancer marketplace?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer" style="max-height: 200px;">
+            <div class="faq-answer-inner">We're not a marketplace. We're a full-service hiring partner. We handle everything from sourcing and vetting to interviews and onboarding support. You get a dedicated point of contact, pre-screened candidates, and a 60-day replacement guarantee — none of which you get from a freelancer platform.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What does the pricing look like?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">We charge a simple monthly flat fee — the talent's salary plus a Placibly markup. No placement fees, no hidden costs. It's recurring and predictable, just like having any other team member on payroll.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How fast can I have someone start?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Most placements happen within two to three weeks from the intake call. We move fast because we already have a vetted talent pool across 7+ countries. For urgent roles, we can often present candidates within days.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do the candidates speak English fluently?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. English fluency is a non-negotiable requirement in our vetting process. Every candidate we present has been assessed for written and spoken English proficiency. Many are also fluent in Spanish or Portuguese.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What happens if the hire doesn't work out?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">You're covered by our 60-day free replacement guarantee. If the placement isn't the right fit for any reason, we'll source and place a new candidate at no extra cost. We also provide 90 days of onboarding support to set every hire up for success.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do I need to handle payroll, taxes, or compliance?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. You pay a single monthly fee to Placibly. We take care of everything on the talent side. You don't need to worry about international payroll, taxes, or legal compliance — that's all on us.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="cta">
+    <div class="container">
+      <div class="final-cta-inner">
+        <p class="section-label">Get Started</p>
+        <h2>Ready to build your <span class="highlight">LATAM&nbsp;team?</span></h2>
+        <p>Tell us about the role you're looking to fill. We'll walk you through the process and give you an honest assessment — no pressure, no commitment.</p>
+        <a href="mailto:hello@placibly.com" class="btn-primary">
+          Book a Free Call
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <small>Free 20-minute call. No obligation.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">placibly</a>
+          <p class="footer-tagline">We Place Top Latin American Talent in US Companies.</p>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#why">Why Placibly</a></li>
+              <li><a href="#process">How It Works</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#industries">Industries</a></li>
+              <li><a href="#roles">Roles We Place</a></li>
+              <li><a href="#cta">Book a Call</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:hello@placibly.com">hello@placibly.com</a></li>
+              <li><a href="https://instagram.com/placibly" target="_blank" rel="noopener">Instagram @placibly</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="mailto:hello@placibly.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Count-up animation on scroll
+    const countEls = document.querySelectorAll('.count-up');
+    const counted = new Set();
+
+    function animateCount(el) {
+      if (counted.has(el)) return;
+      counted.add(el);
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      const duration = 1800;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(ease * target);
+        el.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) animateCount(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    countEls.forEach(el => countObserver.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isActive = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(el => {
+          el.classList.remove('active');
+          el.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // Open clicked if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
