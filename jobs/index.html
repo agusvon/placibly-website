@@ -151,10 +151,9 @@
     .company-logo-all { width:28px; height:28px; border-radius:7px; background:var(--gray-50); border:1px solid var(--gray-100); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
     .company-row-label { flex:1; font-size:13px; font-weight:500; color:var(--gray-800); line-height:1.3; }
     .company-row-count { font-size:11px; color:var(--gray-400); font-weight:500; background:var(--gray-50); padding:2px 7px; border-radius:100px; }
-    .company-share-btn { opacity:0; flex-shrink:0; width:24px; height:24px; border:none; background:transparent; color:var(--gray-400); cursor:pointer; display:flex; align-items:center; justify-content:center; border-radius:6px; transition:opacity var(--transition),background var(--transition),color var(--transition); margin-left:4px; }
-    .company-row:hover .company-share-btn { opacity:1; }
-    .company-share-btn:hover { background:var(--pink-50); color:var(--magenta); }
-    .company-share-btn svg { width:13px; height:13px; pointer-events:none; }
+    .company-header-share-btn { display:inline-flex; align-items:center; gap:7px; font-family:inherit; font-size:13px; font-weight:600; color:var(--purple-deep); border:1.5px solid var(--purple-deep); background:var(--white); padding:7px 14px; border-radius:100px; cursor:pointer; transition:background var(--transition),color var(--transition); }
+    .company-header-share-btn:hover { background:var(--purple-deep); color:var(--white); }
+    .company-header-share-btn svg { width:14px; height:14px; pointer-events:none; }
     .company-row input:checked ~ .company-row-label { color:var(--purple-deep); font-weight:700; }
 
     /* Pill filters */
@@ -634,6 +633,10 @@
           <div class="active-chips" id="active-chips"></div>
           <div class="results-header">
             <span class="results-count"><strong id="result-count-num">0</strong> open positions</span>
+            <button class="company-header-share-btn" id="company-header-share-btn" style="display:none;" title="Share this company's jobs">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Share
+            </button>
           </div>
           <div class="jobs-grid" id="jobs-grid"></div>
 
@@ -739,9 +742,9 @@
     <button class="share-box-close" id="share-modal-close" aria-label="Close">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="share-box-icon">📤</div>
-    <h3>Share this position</h3>
-    <p class="share-box-subtitle">Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.</p>
+    <div class="share-box-icon" id="share-modal-icon">📤</div>
+    <h3 id="share-modal-title">Share this position</h3>
+    <p class="share-box-subtitle" id="share-modal-subtitle">Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.</p>
     <div class="share-tags">
       <span class="share-tag">👥 Share with a friend</span>
       <span class="share-tag">🤝 Refer someone</span>
@@ -988,10 +991,6 @@ function buildCompanyList() {
     const logoHtml = isAll
       ? `<div class="company-logo-all">🏢</div>`
       : `<div class="company-logo-thumb"><img src="${companyLogos[name]}" alt="${name}" loading="lazy"></div>`;
-    const shareBtn = isAll ? '' : `
-      <button class="company-share-btn" data-share-company="${encodeURIComponent(name)}" title="Copy link to ${name} jobs" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>`;
     return `
       <label class="company-row">
         <input type="radio" name="filter-company" value="${name}" ${filters.company===name?'checked':''}>
@@ -999,7 +998,6 @@ function buildCompanyList() {
         ${logoHtml}
         <span class="company-row-label">${isAll ? 'All companies' : name}</span>
         <span class="company-row-count">${countByCompany(name)}</span>
-        ${shareBtn}
       </label>`;
   }).join('');
   container.querySelectorAll('input[type="radio"]').forEach(r => {
@@ -1022,6 +1020,21 @@ function renderActiveChips() {
   });
   const badge = document.getElementById('mobile-filter-badge');
   if (badge) { badge.textContent = chips.length; badge.style.display = chips.length ? 'inline' : 'none'; }
+
+  // Show company share button only when a specific company is selected
+  const compShareBtn = document.getElementById('company-header-share-btn');
+  if (compShareBtn) {
+    if (filters.company !== "All") {
+      compShareBtn.style.display = 'inline-flex';
+      compShareBtn.onclick = () => openShareModal(
+        `${location.origin}/jobs?company=${encodeURIComponent(filters.company)}`,
+        'company',
+        filters.company
+      );
+    } else {
+      compShareBtn.style.display = 'none';
+    }
+  }
 }
 
 function updateSidebarState() {
@@ -1191,10 +1204,29 @@ const shareUrlInput = document.getElementById('share-url-input');
 const shareCopyBtn  = document.getElementById('share-copy-btn');
 const shareCopiedMsg = document.getElementById('share-copied-msg');
 
-function openShareModal(url) {
+function openShareModal(url, type = 'job', name = '') {
   shareUrlInput.value = url;
   shareCopyBtn.classList.remove('copied');
   shareCopiedMsg.classList.remove('show');
+
+  const titleEl    = document.getElementById('share-modal-title');
+  const subtitleEl = document.getElementById('share-modal-subtitle');
+  const iconEl     = document.getElementById('share-modal-icon');
+
+  if (type === 'company') {
+    iconEl.textContent    = '🏢';
+    titleEl.textContent   = `Share ${name}`;
+    subtitleEl.textContent = `Copy the link below and send it to anyone who might know a great candidate — a friend, someone in your network, or anyone who could refer the right person.`;
+  } else if (type === 'pool') {
+    iconEl.textContent    = '🎯';
+    titleEl.textContent   = 'Share this talent pool';
+    subtitleEl.textContent = 'Know someone who might be a great fit? Send them this link so they can apply to join our talent pool.';
+  } else {
+    iconEl.textContent    = '📤';
+    titleEl.textContent   = 'Share this position';
+    subtitleEl.textContent = 'Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.';
+  }
+
   shareOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1229,18 +1261,11 @@ document.addEventListener('click', e => {
   if (cardBtn) {
     e.stopPropagation();
     if (cardBtn.dataset.shareJob) {
-      openShareModal(`${location.origin}/jobs?job=${cardBtn.dataset.shareJob}`);
+      openShareModal(`${location.origin}/jobs?job=${cardBtn.dataset.shareJob}`, 'job');
     } else if (cardBtn.dataset.sharePool) {
-      openShareModal(`${location.origin}/jobs?pool=${cardBtn.dataset.sharePool}`);
+      openShareModal(`${location.origin}/jobs?pool=${cardBtn.dataset.sharePool}`, 'pool');
     }
     return;
-  }
-  // Sidebar company share buttons
-  const compBtn = e.target.closest('.company-share-btn');
-  if (compBtn) {
-    e.preventDefault();
-    e.stopPropagation();
-    openShareModal(`${location.origin}/jobs?company=${compBtn.dataset.shareCompany}`);
   }
 });
 
