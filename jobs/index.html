@@ -151,6 +151,10 @@
     .company-logo-all { width:28px; height:28px; border-radius:7px; background:var(--gray-50); border:1px solid var(--gray-100); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
     .company-row-label { flex:1; font-size:13px; font-weight:500; color:var(--gray-800); line-height:1.3; }
     .company-row-count { font-size:11px; color:var(--gray-400); font-weight:500; background:var(--gray-50); padding:2px 7px; border-radius:100px; }
+    .company-share-btn { opacity:0; flex-shrink:0; width:24px; height:24px; border:none; background:transparent; color:var(--gray-400); cursor:pointer; display:flex; align-items:center; justify-content:center; border-radius:6px; transition:opacity var(--transition),background var(--transition),color var(--transition); margin-left:4px; }
+    .company-row:hover .company-share-btn { opacity:1; }
+    .company-share-btn:hover { background:var(--pink-50); color:var(--magenta); }
+    .company-share-btn svg { width:13px; height:13px; pointer-events:none; }
     .company-row input:checked ~ .company-row-label { color:var(--purple-deep); font-weight:700; }
 
     /* Pill filters */
@@ -984,6 +988,10 @@ function buildCompanyList() {
     const logoHtml = isAll
       ? `<div class="company-logo-all">🏢</div>`
       : `<div class="company-logo-thumb"><img src="${companyLogos[name]}" alt="${name}" loading="lazy"></div>`;
+    const shareBtn = isAll ? '' : `
+      <button class="company-share-btn" data-share-company="${encodeURIComponent(name)}" title="Copy link to ${name} jobs" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>`;
     return `
       <label class="company-row">
         <input type="radio" name="filter-company" value="${name}" ${filters.company===name?'checked':''}>
@@ -991,6 +999,7 @@ function buildCompanyList() {
         ${logoHtml}
         <span class="company-row-label">${isAll ? 'All companies' : name}</span>
         <span class="company-row-count">${countByCompany(name)}</span>
+        ${shareBtn}
       </label>`;
   }).join('');
   container.querySelectorAll('input[type="radio"]').forEach(r => {
@@ -1213,23 +1222,35 @@ shareCopyBtn.addEventListener('click', () => {
   }, 2500);
 });
 
-// Delegate share button clicks on cards
+// Delegate share button clicks (cards + sidebar companies)
 document.addEventListener('click', e => {
-  const btn = e.target.closest('.share-btn');
-  if (!btn) return;
-  e.stopPropagation();
-  if (btn.dataset.shareJob) {
-    openShareModal(`${location.origin}/jobs?job=${btn.dataset.shareJob}`);
-  } else if (btn.dataset.sharePool) {
-    openShareModal(`${location.origin}/jobs?pool=${btn.dataset.sharePool}`);
+  // Card / pool share buttons
+  const cardBtn = e.target.closest('.share-btn');
+  if (cardBtn) {
+    e.stopPropagation();
+    if (cardBtn.dataset.shareJob) {
+      openShareModal(`${location.origin}/jobs?job=${cardBtn.dataset.shareJob}`);
+    } else if (cardBtn.dataset.sharePool) {
+      openShareModal(`${location.origin}/jobs?pool=${cardBtn.dataset.sharePool}`);
+    }
+    return;
+  }
+  // Sidebar company share buttons
+  const compBtn = e.target.closest('.company-share-btn');
+  if (compBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    openShareModal(`${location.origin}/jobs?company=${compBtn.dataset.shareCompany}`);
   }
 });
 
-// ── Deep-link: auto-open job or pool from URL params ──
+// ── Deep-link: auto-open job, pool or company filter from URL params ──
 function handleDeepLink() {
-  const params = new URLSearchParams(location.search);
-  const jobId  = params.get('job');
-  const poolId = params.get('pool');
+  const params     = new URLSearchParams(location.search);
+  const jobId      = params.get('job');
+  const poolId     = params.get('pool');
+  const companyParam = params.get('company');
+
   if (jobId) {
     const job = jobListings.find(j => j.id === jobId);
     if (job) openJobModal(jobId);
@@ -1240,6 +1261,14 @@ function handleDeepLink() {
       document.getElementById('pool-cat-label').textContent = cat.name;
       document.getElementById('pool-modal').classList.add('open');
       document.body.style.overflow = 'hidden';
+    }
+  } else if (companyParam) {
+    const name = decodeURIComponent(companyParam);
+    if (allCompanies.includes(name)) {
+      filters.company = name;
+      onFilterChange();
+      // Scroll to jobs section smoothly
+      document.getElementById('jobs-section').scrollIntoView({ behavior: 'smooth' });
     }
   }
 }
