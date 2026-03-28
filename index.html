@@ -131,6 +131,11 @@
       color: var(--purple);
     }
 
+    .nav-links a.nav-active {
+      color: var(--purple);
+      font-weight: 700;
+    }
+
     .nav-link-jobs {
       font-size: 14px !important;
       font-weight: 600 !important;
@@ -2030,6 +2035,38 @@
     }, { threshold: 0.5 });
 
     countEls.forEach(el => countObserver.observe(el));
+
+    // Scroll spy — highlight nav link for visible section
+    const sections = ['why', 'roles', 'process', 'faq'];
+    const navAnchors = {};
+    sections.forEach(id => {
+      navAnchors[id] = document.querySelector(`.nav-links a[href="#${id}"]`);
+    });
+
+    const spyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = navAnchors[id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          // Remove active from all, set on current
+          Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
+          link.classList.add('nav-active');
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '-72px 0px -30% 0px' });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) spyObserver.observe(el);
+    });
+
+    // Remove active when scrolled back to top
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 200) {
+        Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
+      }
+    }, { passive: true });
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
