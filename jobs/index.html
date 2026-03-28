@@ -738,7 +738,6 @@ function renderJobs() {
       </div>
       <div class="job-card-title">${job.title}</div>
       <div class="job-card-badges">${getCategoryBadge(job.category)}<span class="badge badge-seniority">${job.seniority}</span></div>
-      <div class="job-card-salary">💵 ${job.salaryRange}</div>
       <div class="job-card-location"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${job.location}</div>
       <div class="job-card-cta"><button class="btn-primary">View & Apply →</button></div>
     </div>`).join('');
@@ -873,7 +872,7 @@ function openJobModal(id) {
   document.getElementById('modal-logo').src                 = job.companyLogo;
   document.getElementById('modal-company-name').textContent = job.company;
   document.getElementById('modal-job-title').textContent    = job.title;
-  document.getElementById('modal-salary').textContent       = job.salaryRange;
+  // document.getElementById('modal-salary').textContent    = job.salaryRange;
   document.getElementById('modal-location-text').textContent= job.location;
   document.getElementById('modal-badges').innerHTML         = `${getCategoryBadge(job.category)}<span class="badge badge-seniority">${job.seniority}</span>`;
   document.getElementById('modal-about-role').textContent   = job.shortDescription;
@@ -903,7 +902,7 @@ document.getElementById('modal-apply-trigger').addEventListener('click', () => {
   document.body.style.overflow=''; currentJob=null;
   setTimeout(() => {
     document.getElementById('apply-title').textContent    = `Apply — ${job.title}`;
-    document.getElementById('apply-subtitle').textContent = `${job.company} · ${job.salaryRange}`;
+    document.getElementById('apply-subtitle').textContent = `${job.company}`;
     document.getElementById('apply-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }, 200);
