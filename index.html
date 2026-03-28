@@ -2454,7 +2454,11 @@
       }
     }, { passive: true });
 
-    // Roles accordion
+    // Roles accordion — initialize default-open items to correct height
+    document.querySelectorAll('.roles-item.active .roles-item-body').forEach(body => {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    });
+
     document.querySelectorAll('.roles-item-header').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
