@@ -131,6 +131,7 @@
       cursor: pointer; transition: all var(--transition);
       color: var(--gray-600); background: transparent;
       display: flex; align-items: center; gap: 8px; white-space: nowrap;
+      touch-action: manipulation;
     }
     .tab-btn .tab-count {
       font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 100px;
@@ -302,10 +303,10 @@
     .no-results p { color:var(--gray-600); font-size:15px; }
 
     /* ─── Talent Pool Cards ─── */
-    .pool-content { display: none; }
-    .pool-content.active { display: block; }
-    .jobs-content { display: block; }
-    .jobs-content.hidden { display: none; }
+    .pool-content { visibility: hidden; height: 0; overflow: hidden; pointer-events: none; }
+    .pool-content.active { visibility: visible; height: auto; overflow: visible; pointer-events: auto; }
+    .jobs-content { visibility: visible; height: auto; overflow: visible; }
+    .jobs-content.hidden { visibility: hidden; height: 0; overflow: hidden; pointer-events: none; }
 
     .pool-detail { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); overflow: hidden; }
     .pool-detail-header { padding: 32px 36px 24px; border-bottom: 1px solid var(--gray-100); }
