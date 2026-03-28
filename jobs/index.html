@@ -234,11 +234,30 @@
     .job-card-salary { font-size:15px; font-weight:700; color:var(--purple-deep); margin-bottom:5px; }
     .job-card-location { font-size:12px; color:var(--gray-400); display:flex; align-items:center; gap:4px; margin-bottom:18px; }
     .job-card-cta button { width:100%; justify-content:center; font-size:13px; padding:11px 16px; }
-    .share-btn { position:absolute; top:12px; right:12px; width:30px; height:30px; border-radius:8px; border:none; background:transparent; color:var(--gray-300); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--transition),color var(--transition); z-index:2; flex-shrink:0; }
-    .share-btn:hover { background:var(--gray-50); color:var(--purple); }
-    .share-btn svg { width:15px; height:15px; pointer-events:none; }
-    .share-tooltip { position:fixed; background:var(--gray-800); color:var(--white); font-size:12px; font-weight:600; padding:6px 12px; border-radius:8px; pointer-events:none; opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:9999; white-space:nowrap; transform:translateX(-50%) translateY(4px); }
-    .share-tooltip.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .share-btn { position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:10px; border:1.5px solid var(--gray-100); background:var(--white); color:var(--gray-400); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--transition),color var(--transition),border-color var(--transition),box-shadow var(--transition); z-index:2; flex-shrink:0; box-shadow:var(--shadow-sm); }
+    .share-btn:hover { background:var(--pink-50); color:var(--magenta); border-color:rgba(212,47,138,.2); box-shadow:0 2px 8px rgba(212,47,138,.12); }
+    .share-btn svg { width:17px; height:17px; pointer-events:none; }
+
+    /* ─── Share Modal ─── */
+    .share-overlay { position:fixed; inset:0; background:rgba(20,10,40,.55); backdrop-filter:blur(6px); z-index:600; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity var(--transition); }
+    .share-overlay.open { opacity:1; pointer-events:all; }
+    .share-box { background:var(--white); border-radius:var(--radius-xl); padding:36px 32px 32px; max-width:480px; width:100%; box-shadow:var(--shadow-lg); position:relative; transform:translateY(16px); transition:transform var(--transition); }
+    .share-overlay.open .share-box { transform:translateY(0); }
+    .share-box-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border:none; background:var(--gray-50); border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-400); transition:background var(--transition),color var(--transition); }
+    .share-box-close:hover { background:var(--gray-100); color:var(--gray-800); }
+    .share-box-icon { width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--pink-50),var(--pink-light)); display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-size:24px; }
+    .share-box h3 { font-size:20px; font-weight:800; color:var(--purple-deep); margin-bottom:8px; }
+    .share-box-subtitle { font-size:14px; color:var(--gray-600); line-height:1.6; margin-bottom:20px; }
+    .share-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .share-tag { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; padding:7px 14px; border-radius:100px; background:var(--gray-50); color:var(--gray-600); border:1px solid var(--gray-100); }
+    .share-url-row { display:flex; gap:8px; align-items:center; }
+    .share-url-input { flex:1; padding:12px 14px; border:1.5px solid var(--gray-200); border-radius:var(--radius); font-family:inherit; font-size:13px; color:var(--gray-600); background:var(--gray-50); outline:none; cursor:text; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .share-copy-btn { flex-shrink:0; width:44px; height:44px; border:1.5px solid var(--gray-200); border-radius:var(--radius); background:var(--white); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); transition:background var(--transition),color var(--transition),border-color var(--transition); }
+    .share-copy-btn:hover { background:var(--purple-deep); color:var(--white); border-color:var(--purple-deep); }
+    .share-copy-btn.copied { background:var(--purple-deep); color:var(--white); border-color:var(--purple-deep); }
+    .share-copy-btn svg { width:18px; height:18px; pointer-events:none; }
+    .share-copied-msg { font-size:12px; font-weight:600; color:var(--purple); margin-top:10px; opacity:0; transition:opacity .2s; text-align:center; }
+    .share-copied-msg.show { opacity:1; }
     .no-results { grid-column:1/-1; text-align:center; padding:80px 20px; }
     .no-results h3 { font-size:20px; font-weight:700; color:var(--purple-deep); margin-bottom:10px; }
     .no-results p { color:var(--gray-600); font-size:15px; }
@@ -710,6 +729,30 @@
   </div>
 </footer>
 
+<!-- ── Share Modal ── -->
+<div class="share-overlay" id="share-modal" role="dialog" aria-modal="true">
+  <div class="share-box">
+    <button class="share-box-close" id="share-modal-close" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="share-box-icon">📤</div>
+    <h3>Share this position</h3>
+    <p class="share-box-subtitle">Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.</p>
+    <div class="share-tags">
+      <span class="share-tag">👥 Share with a friend</span>
+      <span class="share-tag">🤝 Refer someone</span>
+      <span class="share-tag">💌 Send to your network</span>
+    </div>
+    <div class="share-url-row">
+      <input type="text" class="share-url-input" id="share-url-input" readonly>
+      <button class="share-copy-btn" id="share-copy-btn" title="Copy link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <p class="share-copied-msg" id="share-copied-msg">✓ Link copied to clipboard!</p>
+  </div>
+</div>
+
 <!-- ── Job Detail Modal ── -->
 <div class="modal-overlay" id="job-modal" role="dialog" aria-modal="true">
   <div class="modal-container">
@@ -898,9 +941,11 @@ function renderJobs() {
     </div>`).join('');
 
   grid.querySelectorAll('.job-card').forEach(card => {
-    const open = () => openJobModal(card.dataset.id);
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
+    card.addEventListener('click', e => {
+      if (e.target.closest('.share-btn')) return; // share button handled separately
+      openJobModal(card.dataset.id);
+    });
+    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openJobModal(card.dataset.id);} });
   });
 }
 
@@ -1131,45 +1176,52 @@ async function loadJobs() {
   init();
 }
 
-// ── Share / deep-link ──
-// Tooltip element (injected once)
-const shareTip = document.createElement('div');
-shareTip.id = 'share-tooltip';
-shareTip.className = 'share-tooltip';
-shareTip.textContent = '✓ Link copied!';
-document.body.appendChild(shareTip);
+// ── Share Modal ──
+const shareOverlay  = document.getElementById('share-modal');
+const shareUrlInput = document.getElementById('share-url-input');
+const shareCopyBtn  = document.getElementById('share-copy-btn');
+const shareCopiedMsg = document.getElementById('share-copied-msg');
 
-function showShareTooltip(btn) {
-  const rect = btn.getBoundingClientRect();
-  shareTip.style.left = (rect.left + rect.width / 2) + 'px';
-  shareTip.style.top  = (rect.top - 40 + window.scrollY) + 'px';
-  shareTip.style.position = 'absolute';
-  shareTip.classList.add('show');
-  clearTimeout(shareTip._t);
-  shareTip._t = setTimeout(() => shareTip.classList.remove('show'), 2000);
+function openShareModal(url) {
+  shareUrlInput.value = url;
+  shareCopyBtn.classList.remove('copied');
+  shareCopiedMsg.classList.remove('show');
+  shareOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
-function copyToClipboard(url, btn) {
-  navigator.clipboard.writeText(url).then(() => showShareTooltip(btn)).catch(() => {
-    // Fallback for older browsers
+function closeShareModal() {
+  shareOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('share-modal-close').addEventListener('click', closeShareModal);
+shareOverlay.addEventListener('click', e => { if (e.target === shareOverlay) closeShareModal(); });
+
+shareCopyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(shareUrlInput.value).catch(() => {
     const ta = document.createElement('textarea');
-    ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showShareTooltip(btn);
+    ta.value = shareUrlInput.value; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
   });
-}
+  shareCopyBtn.classList.add('copied');
+  shareCopiedMsg.classList.add('show');
+  clearTimeout(shareCopyBtn._t);
+  shareCopyBtn._t = setTimeout(() => {
+    shareCopyBtn.classList.remove('copied');
+    shareCopiedMsg.classList.remove('show');
+  }, 2500);
+});
 
-// Delegate share button clicks (works for dynamically rendered cards)
+// Delegate share button clicks on cards
 document.addEventListener('click', e => {
   const btn = e.target.closest('.share-btn');
   if (!btn) return;
-  e.stopPropagation(); // don't open the card modal
+  e.stopPropagation();
   if (btn.dataset.shareJob) {
-    copyToClipboard(`${location.origin}/jobs?job=${btn.dataset.shareJob}`, btn);
+    openShareModal(`${location.origin}/jobs?job=${btn.dataset.shareJob}`);
   } else if (btn.dataset.sharePool) {
-    copyToClipboard(`${location.origin}/jobs?pool=${btn.dataset.sharePool}`, btn);
+    openShareModal(`${location.origin}/jobs?pool=${btn.dataset.sharePool}`);
   }
 });
 
