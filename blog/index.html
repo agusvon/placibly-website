@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Remote Hiring & LATAM Talent Insights | Placibly</title>
+  <meta name="description" content="Insights on hiring remote talent from Latin America. Cost breakdowns, hiring guides, and practical advice for US companies building remote teams.">
+  <link rel="canonical" href="https://placibly.com/blog">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog | Remote Hiring & LATAM Talent Insights | Placibly">
+  <meta property="og:description" content="Insights on hiring remote talent from Latin America. Cost breakdowns, hiring guides, and practical advice for US companies.">
+  <meta property="og:url" content="https://placibly.com/blog">
+  <meta property="og:image" content="https://placibly.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog | Remote Hiring & LATAM Talent Insights | Placibly">
+  <meta name="twitter:description" content="Insights on hiring remote talent from Latin America. Cost breakdowns, hiring guides, and practical advice for US companies.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple-deep: #3B1F6E; --purple: #5C2D91; --purple-light: #7B3FA0;
+      --magenta: #D42F8A; --magenta-hover: #BF2A7C;
+      --pink-light: #F5E6F0; --pink-50: #FBF4F9;
+      --off-white: #FAFAFE; --white: #ffffff;
+      --gray-50: #F5F5FA; --gray-100: #EAEAF0; --gray-200: #D5D5DE;
+      --gray-300: #B8B8C4; --gray-400: #8E8E9D; --gray-600: #52525E; --gray-800: #27272F;
+      --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(59,31,110,.06); --shadow-md: 0 4px 20px rgba(59,31,110,.08); --shadow-lg: 0 8px 40px rgba(59,31,110,.12);
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1); --nav-h: 72px;
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--gray-800); background: var(--off-white); line-height: 1.6; font-size: 16px; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,254,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    @media (max-width: 768px) { nav { background: rgba(250,250,254,.98); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+    nav.scrolled { border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { text-decoration: none; border: none; outline: none; display: flex; align-items: center; }
+    .nav-logo-text { font-size: 24px; font-weight: 800; letter-spacing: -.5px; background: linear-gradient(90deg,#3B1F6E 0%,#8B2D8B 45%,#D42F8A 70%,#E8234A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-link-jobs { font-size: 14px !important; font-weight: 600 !important; color: var(--purple-deep) !important; border: 1.5px solid var(--purple-deep); padding: 9px 20px; border-radius: 8px; transition: background var(--transition), color var(--transition) !important; }
+    .nav-link-jobs:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
+    .nav-cta { font-size: 14px !important; font-weight: 600 !important; color: var(--white) !important; background: var(--magenta); padding: 10px 22px; border-radius: 8px; transition: background var(--transition), transform var(--transition) !important; }
+    .nav-cta:hover { background: var(--magenta-hover) !important; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: relative; z-index: 101; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--purple-deep); margin: 5px 0; border-radius: 2px; transform-origin: center; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease, background 0.3s ease; }
+    .menu-toggle.open span { background: var(--purple-deep); }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-overlay { display: none; }
+    @media (max-width: 960px) {
+      .nav-links, .nav-actions { display: none; }
+      .menu-toggle { display: block; }
+      .mobile-overlay { display: flex; position: fixed; inset: 0; z-index: 99; flex-direction: column; padding: 104px 36px 48px; background: linear-gradient(160deg, #140830 0%, #2d1660 40%, #6b1f6e 78%, #a8236a 100%); visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1), visibility 0.4s ease; overflow: hidden; }
+      .mobile-overlay::before { content: ''; position: absolute; top: -60px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(212,47,138,0.35) 0%, transparent 65%); pointer-events: none; }
+      .mobile-overlay::after { content: ''; position: absolute; bottom: 20px; left: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(92,45,145,0.4) 0%, transparent 65%); pointer-events: none; }
+      .mobile-overlay.open { visibility: visible; opacity: 1; pointer-events: auto; }
+      .mobile-overlay-links { list-style: none; display: flex; flex-direction: column; flex: 1; justify-content: center; gap: 4px; }
+      .mobile-overlay-links li { opacity: 0; transform: translateY(18px); transition: opacity 0.35s ease, transform 0.35s ease; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(1) { opacity:1; transform:none; transition-delay:0.08s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.14s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.20s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
+      .mobile-overlay-links a { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; color: rgba(255,255,255,0.88); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s ease; }
+      .mobile-overlay-links a:hover { color: #f5a8d4; }
+      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.32s, transform 0.35s ease 0.32s; }
+      .mobile-overlay.open .mobile-overlay-actions { opacity: 1; transform: none; }
+      .mobile-overlay-btn-outline { display: block; text-align: center; padding: 15px; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.2s ease; }
+      .mobile-overlay-btn-outline:hover { background: rgba(255,255,255,0.1); }
+      .mobile-overlay-btn-solid { display: block; text-align: center; padding: 15px; background: var(--magenta); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 700; transition: background 0.2s ease; }
+      .mobile-overlay-btn-solid:hover { background: var(--magenta-hover); }
+      .mobile-overlay-social { display: flex; gap: 16px; justify-content: center; margin-top: 24px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.42s, transform 0.35s ease 0.42s; }
+      .mobile-overlay.open .mobile-overlay-social { opacity: 1; transform: none; }
+      .mobile-overlay-social a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+      .mobile-overlay-social a:hover { background: rgba(255,255,255,0.2); color: #fff; }
+      .mobile-overlay-social svg { width: 20px; height: 20px; }
+    }
+
+    /* Shared */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--magenta); color: var(--white); font-family: inherit; font-size: 15px; font-weight: 600; padding: 14px 28px; border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .btn-primary:hover { background: var(--magenta-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,47,138,.28); }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--magenta); margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px,4vw,40px); font-weight: 800; color: var(--purple-deep); letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .section-subtitle { font-size: 17px; color: var(--gray-600); line-height: 1.75; max-width: 600px; margin-bottom: 48px; }
+
+    /* Hero */
+    .blog-hero { padding: 140px 0 72px; background: var(--white); position: relative; overflow: hidden; }
+    .blog-hero::before { content:''; position:absolute; top:-200px; right:-150px; width:600px; height:600px; background:radial-gradient(circle,rgba(212,47,138,.06) 0%,transparent 65%); pointer-events:none; }
+    .blog-hero::after { content:''; position:absolute; bottom:-100px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(92,45,145,.05) 0%,transparent 65%); pointer-events:none; }
+    .blog-hero .container { position: relative; z-index: 1; }
+    .blog-hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--pink-50); border:1px solid rgba(212,47,138,.15); border-radius:100px; padding:8px 18px; font-size:13px; font-weight:600; color:var(--magenta); margin-bottom:28px; }
+    .blog-hero h1 { font-size: clamp(34px,5vw,52px); font-weight:800; line-height:1.1; letter-spacing:-1.5px; color:var(--purple-deep); margin-bottom:20px; }
+    .blog-hero-desc { font-size: clamp(16px,1.8vw,18px); color:var(--gray-600); line-height:1.75; max-width:540px; }
+
+    /* Articles Grid */
+    .blog-articles { padding: 72px 0 96px; }
+    .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .article-card { background: var(--white); border-radius: var(--radius-xl); border: 1px solid var(--gray-100); overflow: hidden; text-decoration: none; color: inherit; transition: box-shadow var(--transition), transform var(--transition); display: flex; flex-direction: column; }
+    .article-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .article-card-img { height: 200px; background: linear-gradient(135deg, #3B1F6E 0%, #8B2D8B 50%, #D42F8A 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .article-card-img-icon { font-size: 56px; opacity: 0.9; }
+    .article-card-img-1 { background: linear-gradient(135deg, #3B1F6E 0%, #5C2D91 100%); }
+    .article-card-img-2 { background: linear-gradient(135deg, #5C2D91 0%, #D42F8A 100%); }
+    .article-card-img-3 { background: linear-gradient(135deg, #D42F8A 0%, #E8234A 100%); }
+    .article-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+    .article-card-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--magenta); background: var(--pink-50); border-radius: 100px; padding: 4px 10px; margin-bottom: 14px; }
+    .article-card-title { font-size: 20px; font-weight: 800; color: var(--purple-deep); letter-spacing: -.4px; line-height: 1.3; margin-bottom: 12px; }
+    .article-card-excerpt { font-size: 14px; color: var(--gray-600); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+    .article-card-meta { display: flex; align-items: center; justify-content: space-between; }
+    .article-card-date { font-size: 12px; color: var(--gray-400); font-weight: 500; }
+    .article-card-read { font-size: 12px; color: var(--gray-400); font-weight: 500; }
+    .article-card-arrow { font-size: 14px; color: var(--magenta); font-weight: 700; transition: transform var(--transition); }
+    .article-card:hover .article-card-arrow { transform: translateX(4px); }
+
+    @media (max-width: 900px) { .articles-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } }
+
+    /* CTA */
+    .blog-cta { background: var(--purple-deep); padding: 80px 0; text-align: center; }
+    .blog-cta h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; color: var(--white); letter-spacing: -1px; margin-bottom: 16px; }
+    .blog-cta p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; }
+    .blog-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; background: var(--white); color: var(--purple-deep); font-family: inherit; font-size: 15px; font-weight: 700; padding: 14px 28px; border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--white); font-family: inherit; font-size: 15px; font-weight: 600; padding: 13px 26px; border: 2px solid rgba(255,255,255,0.35); border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: border-color var(--transition), background var(--transition); }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.05); }
+
+    /* Footer */
+    footer { background: var(--purple-deep); color: rgba(255,255,255,0.6); padding: 56px 0 40px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .footer-logo { font-size: 22px; font-weight: 800; text-decoration: none; display: block; margin-bottom: 8px; background: linear-gradient(90deg, #ffffff 0%, #F0A0C8 50%, #E8234A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); max-width: 280px; line-height: 1.5; }
+    .footer-columns { display: flex; gap: 64px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color var(--transition); }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: background var(--transition), color var(--transition); }
+    .footer-social a:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+    .footer-social a svg { width: 18px; height: 18px; }
+
+    @media (max-width: 768px) {
+      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-columns { flex-wrap: wrap; gap: 32px; }
+    }
+
+    /* Scroll to top */
+    .scroll-top { position:fixed; bottom:32px; right:32px; width:48px; height:48px; border-radius:50%; background:var(--white); border:1px solid var(--gray-100); box-shadow:var(--shadow-md); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition), border-color var(--transition); }
+    .scroll-top.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    .scroll-top:hover { background:var(--magenta); border-color:var(--magenta); }
+    .scroll-top svg { width:20px; height:20px; color:var(--purple-deep); transition:color var(--transition); }
+    .scroll-top:hover svg { color:var(--white); }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-text">placibly</span></a>
+    <ul class="nav-links">
+      <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#process">How It Works</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/jobs" class="nav-link-jobs">Find Jobs</a>
+      <a href="/hire" class="nav-cta">Start Hiring</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <ul class="mobile-overlay-links">
+    <li><a href="/#why" id="mo-why">Why Placibly</a></li>
+    <li><a href="/#process" id="mo-process">How It Works</a></li>
+    <li><a href="/blog" id="mo-blog">Blog</a></li>
+    <li><a href="/jobs" id="mo-jobs">Find Jobs</a></li>
+  </ul>
+  <div class="mobile-overlay-actions">
+    <a href="/jobs" class="mobile-overlay-btn-outline">Browse Open Positions</a>
+    <a href="/hire" class="mobile-overlay-btn-solid">Start Hiring</a>
+  </div>
+  <div class="mobile-overlay-social">
+    <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:hello@placibly.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="blog-hero-badge">Placibly Blog</div>
+    <h1>Remote Hiring Insights</h1>
+    <p class="blog-hero-desc">Practical guides and data-backed articles to help US companies build high-performing remote teams with Latin American talent.</p>
+  </div>
+</section>
+
+<!-- Articles -->
+<section class="blog-articles">
+  <div class="container">
+    <div class="articles-grid">
+
+      <a href="/blog/nearshore-vs-offshore" class="article-card">
+        <div class="article-card-img article-card-img-1">
+          <span class="article-card-img-icon">🌎</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Hiring Strategy</span>
+          <h2 class="article-card-title">Nearshore vs. Offshore: Which Remote Hiring Model Is Right for Your Business?</h2>
+          <p class="article-card-excerpt">Time zones, communication quality, and cost savings vary dramatically between nearshore and offshore models. Here's how to choose the right one for your team.</p>
+          <div class="article-card-meta">
+            <span class="article-card-date">March 28, 2026</span>
+            <span class="article-card-arrow">Read more &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/virtual-assistant-latin-america" class="article-card">
+        <div class="article-card-img article-card-img-2">
+          <span class="article-card-img-icon">🤝</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Hiring Guide</span>
+          <h2 class="article-card-title">How to Hire a Virtual Assistant from Latin America (Step-by-Step)</h2>
+          <p class="article-card-excerpt">A complete guide to finding, vetting, and onboarding a LATAM virtual assistant. Covers platforms, pay rates, red flags to avoid, and how to set your VA up for success.</p>
+          <div class="article-card-meta">
+            <span class="article-card-date">March 28, 2026</span>
+            <span class="article-card-arrow">Read more &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/hire-latam-talent-cost-savings" class="article-card">
+        <div class="article-card-img article-card-img-3">
+          <span class="article-card-img-icon">💰</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Cost Savings</span>
+          <h2 class="article-card-title">How Much Can You Really Save Hiring LATAM Talent? (2026 Breakdown)</h2>
+          <p class="article-card-excerpt">Real salary data comparing US rates to Latin American rates across admin, sales, marketing, and ops roles. Plus the hidden costs most companies overlook.</p>
+          <div class="article-card-meta">
+            <span class="article-card-date">March 28, 2026</span>
+            <span class="article-card-arrow">Read more &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="blog-cta">
+  <div class="container">
+    <h2>Ready to Build Your Remote Team?</h2>
+    <p>Skip the research and let Placibly match you with vetted Latin American talent in weeks, not months.</p>
+    <div class="blog-cta-actions">
+      <a href="/hire" class="btn-white">Start Hiring</a>
+      <a href="/jobs" class="btn-outline-white">Browse Open Positions</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">placibly</a>
+        <p class="footer-tagline">We Place Top Latin American Talent in US Companies. Remote jobs in Latin America, paid in USD.</p>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#why">Why Placibly</a></li>
+            <li><a href="/#process">How It Works</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/jobs">Apply for Jobs</a></li>
+            <li><a href="/hire">Start Hiring</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@placibly.com">hello@placibly.com</a></li>
+            <li><a href="https://instagram.com/placibly" target="_blank" rel="noopener">Instagram @placibly</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:hello@placibly.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.classList.toggle('open');
+    mobileOverlay.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  ['mo-why','mo-process','mo-blog','mo-jobs'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => {
+      menuToggle.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Scroll to top
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

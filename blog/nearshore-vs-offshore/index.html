@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nearshore vs. Offshore: Which Remote Hiring Model Is Right for You? | Placibly</title>
+  <meta name="description" content="Compare nearshore and offshore hiring models. Understand time zone differences, communication quality, and cost implications before choosing how to build your remote team.">
+  <link rel="canonical" href="https://placibly.com/blog/nearshore-vs-offshore">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Nearshore vs. Offshore: Which Remote Hiring Model Is Right for You?">
+  <meta property="og:description" content="Compare nearshore and offshore hiring models. Time zones, communication quality, and cost implications explained.">
+  <meta property="og:url" content="https://placibly.com/blog/nearshore-vs-offshore">
+  <meta property="og:image" content="https://placibly.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nearshore vs. Offshore: Which Remote Hiring Model Is Right for You?">
+  <meta name="twitter:description" content="Compare nearshore and offshore hiring models. Time zones, communication quality, and cost implications explained.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Nearshore vs. Offshore: Which Remote Hiring Model Is Right for Your Business?",
+    "description": "Compare nearshore and offshore hiring models. Understand time zone differences, communication quality, and cost implications before choosing how to build your remote team.",
+    "url": "https://placibly.com/blog/nearshore-vs-offshore",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "Placibly" },
+    "publisher": { "@type": "Organization", "name": "Placibly", "url": "https://placibly.com" }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple-deep: #3B1F6E; --purple: #5C2D91; --purple-light: #7B3FA0;
+      --magenta: #D42F8A; --magenta-hover: #BF2A7C;
+      --pink-light: #F5E6F0; --pink-50: #FBF4F9;
+      --off-white: #FAFAFE; --white: #ffffff;
+      --gray-50: #F5F5FA; --gray-100: #EAEAF0; --gray-200: #D5D5DE;
+      --gray-300: #B8B8C4; --gray-400: #8E8E9D; --gray-600: #52525E; --gray-800: #27272F;
+      --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(59,31,110,.06); --shadow-md: 0 4px 20px rgba(59,31,110,.08); --shadow-lg: 0 8px 40px rgba(59,31,110,.12);
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1); --nav-h: 72px;
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--gray-800); background: var(--off-white); line-height: 1.6; font-size: 16px; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,254,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    @media (max-width: 768px) { nav { background: rgba(250,250,254,.98); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+    nav.scrolled { border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { text-decoration: none; border: none; outline: none; display: flex; align-items: center; }
+    .nav-logo-text { font-size: 24px; font-weight: 800; letter-spacing: -.5px; background: linear-gradient(90deg,#3B1F6E 0%,#8B2D8B 45%,#D42F8A 70%,#E8234A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-link-jobs { font-size: 14px !important; font-weight: 600 !important; color: var(--purple-deep) !important; border: 1.5px solid var(--purple-deep); padding: 9px 20px; border-radius: 8px; transition: background var(--transition), color var(--transition) !important; }
+    .nav-link-jobs:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
+    .nav-cta { font-size: 14px !important; font-weight: 600 !important; color: var(--white) !important; background: var(--magenta); padding: 10px 22px; border-radius: 8px; transition: background var(--transition), transform var(--transition) !important; }
+    .nav-cta:hover { background: var(--magenta-hover) !important; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; position: relative; z-index: 101; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--purple-deep); margin: 5px 0; border-radius: 2px; transform-origin: center; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease, background 0.3s ease; }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-overlay { display: none; }
+    @media (max-width: 960px) {
+      .nav-links, .nav-actions { display: none; }
+      .menu-toggle { display: block; }
+      .mobile-overlay { display: flex; position: fixed; inset: 0; z-index: 99; flex-direction: column; padding: 104px 36px 48px; background: linear-gradient(160deg, #140830 0%, #2d1660 40%, #6b1f6e 78%, #a8236a 100%); visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1), visibility 0.4s ease; overflow: hidden; }
+      .mobile-overlay::before { content: ''; position: absolute; top: -60px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(212,47,138,0.35) 0%, transparent 65%); pointer-events: none; }
+      .mobile-overlay::after { content: ''; position: absolute; bottom: 20px; left: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(92,45,145,0.4) 0%, transparent 65%); pointer-events: none; }
+      .mobile-overlay.open { visibility: visible; opacity: 1; pointer-events: auto; }
+      .mobile-overlay-links { list-style: none; display: flex; flex-direction: column; flex: 1; justify-content: center; gap: 4px; }
+      .mobile-overlay-links li { opacity: 0; transform: translateY(18px); transition: opacity 0.35s ease, transform 0.35s ease; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(1) { opacity:1; transform:none; transition-delay:0.08s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.14s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.20s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
+      .mobile-overlay-links a { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; color: rgba(255,255,255,0.88); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s ease; }
+      .mobile-overlay-links a:hover { color: #f5a8d4; }
+      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.32s, transform 0.35s ease 0.32s; }
+      .mobile-overlay.open .mobile-overlay-actions { opacity: 1; transform: none; }
+      .mobile-overlay-btn-outline { display: block; text-align: center; padding: 15px; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.2s ease; }
+      .mobile-overlay-btn-outline:hover { background: rgba(255,255,255,0.1); }
+      .mobile-overlay-btn-solid { display: block; text-align: center; padding: 15px; background: var(--magenta); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 700; transition: background 0.2s ease; }
+      .mobile-overlay-btn-solid:hover { background: var(--magenta-hover); }
+      .mobile-overlay-social { display: flex; gap: 16px; justify-content: center; margin-top: 24px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.42s, transform 0.35s ease 0.42s; }
+      .mobile-overlay.open .mobile-overlay-social { opacity: 1; transform: none; }
+      .mobile-overlay-social a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+      .mobile-overlay-social a:hover { background: rgba(255,255,255,0.2); color: #fff; }
+      .mobile-overlay-social svg { width: 20px; height: 20px; }
+    }
+
+    /* Shared */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--magenta); color: var(--white); font-family: inherit; font-size: 15px; font-weight: 600; padding: 14px 28px; border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .btn-primary:hover { background: var(--magenta-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,47,138,.28); }
+
+    /* Article layout */
+    .article-wrap { padding: calc(var(--nav-h) + 48px) 0 96px; }
+    .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size: 13px; color: var(--gray-400); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--purple); }
+    .breadcrumb-sep { color: var(--gray-300); }
+
+    /* Article header */
+    .article-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--magenta); background: var(--pink-50); border-radius: 100px; padding: 5px 12px; margin-bottom: 16px; }
+    .article-title { font-size: clamp(28px,4vw,44px); font-weight: 800; color: var(--purple-deep); letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--gray-100); }
+    .article-meta-item { font-size: 13px; color: var(--gray-400); font-weight: 500; display: flex; align-items: center; gap: 5px; }
+
+    /* Article body */
+    .article-body { font-size: 17px; line-height: 1.8; color: var(--gray-800); }
+    .article-body h2 { font-size: clamp(20px,2.5vw,26px); font-weight: 800; color: var(--purple-deep); letter-spacing: -.5px; margin: 48px 0 16px; line-height: 1.25; }
+    .article-body h3 { font-size: 19px; font-weight: 700; color: var(--purple-deep); margin: 32px 0 12px; }
+    .article-body p { margin-bottom: 20px; }
+    .article-body ul, .article-body ol { margin: 0 0 20px 0; padding-left: 24px; }
+    .article-body li { margin-bottom: 8px; line-height: 1.75; }
+    .article-body strong { font-weight: 700; color: var(--gray-800); }
+    .article-body a { color: var(--purple); text-decoration: underline; text-underline-offset: 3px; }
+    .article-body a:hover { color: var(--magenta); }
+
+    /* Callout */
+    .callout { background: var(--pink-50); border-left: 3px solid var(--magenta); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px 24px; margin: 28px 0; }
+    .callout p { margin: 0; font-size: 15px; color: var(--gray-800); }
+
+    /* Comparison table */
+    .table-wrap { overflow-x: auto; margin: 28px 0; border-radius: var(--radius-lg); border: 1px solid var(--gray-100); }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--white); }
+    thead { background: var(--purple-deep); }
+    thead th { padding: 14px 18px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.8); white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid var(--gray-100); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 14px 18px; color: var(--gray-700, #3a3a44); vertical-align: top; }
+    tbody tr:nth-child(even) { background: var(--gray-50); }
+    .td-label { font-weight: 700; color: var(--purple-deep); white-space: nowrap; }
+    .td-good { color: #137333; font-weight: 600; }
+    .td-bad { color: #B45309; font-weight: 600; }
+
+    /* Sidebar */
+    .article-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .sidebar-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 20px; }
+    .sidebar-card h3 { font-size: 14px; font-weight: 700; color: var(--purple-deep); margin-bottom: 16px; letter-spacing: -.2px; }
+    .sidebar-toc { list-style: none; }
+    .sidebar-toc li { margin-bottom: 8px; }
+    .sidebar-toc a { font-size: 13px; color: var(--gray-600); text-decoration: none; display: block; padding: 4px 0; border-left: 2px solid transparent; padding-left: 10px; transition: color var(--transition), border-color var(--transition); }
+    .sidebar-toc a:hover { color: var(--purple); border-left-color: var(--magenta); }
+    .sidebar-cta-text { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-bottom: 16px; }
+    .sidebar-cta-btn { display: block; text-align: center; background: var(--magenta); color: var(--white); font-family: inherit; font-size: 14px; font-weight: 600; padding: 12px 20px; border-radius: var(--radius); text-decoration: none; transition: background var(--transition), transform var(--transition); }
+    .sidebar-cta-btn:hover { background: var(--magenta-hover); transform: translateY(-1px); }
+
+    /* Article CTA */
+    .article-cta-box { background: linear-gradient(135deg, #3B1F6E 0%, #8B2D8B 60%, #D42F8A 100%); border-radius: var(--radius-xl); padding: 40px; margin: 48px 0 0; text-align: center; }
+    .article-cta-box h3 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .article-cta-box p { font-size: 15px; color: rgba(255,255,255,0.8); margin-bottom: 24px; line-height: 1.65; }
+    .article-cta-box a { display: inline-flex; background: var(--white); color: var(--purple-deep); font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 28px; border-radius: var(--radius); text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); }
+    .article-cta-box a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+    /* Footer */
+    footer { background: var(--purple-deep); color: rgba(255,255,255,0.6); padding: 56px 0 40px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .footer-logo { font-size: 22px; font-weight: 800; text-decoration: none; display: block; margin-bottom: 8px; background: linear-gradient(90deg, #ffffff 0%, #F0A0C8 50%, #E8234A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-tagline { font-size: 14px; color: rgba(255,255,255,0.4); max-width: 280px; line-height: 1.5; }
+    .footer-columns { display: flex; gap: 64px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color var(--transition); }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
+    .footer-social { display: flex; gap: 16px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; transition: background var(--transition), color var(--transition); }
+    .footer-social a:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+    .footer-social a svg { width: 18px; height: 18px; }
+    @media (max-width: 768px) { .footer-top { flex-direction: column; gap: 32px; } .footer-columns { flex-wrap: wrap; gap: 32px; } }
+
+    /* Scroll to top */
+    .scroll-top { position:fixed; bottom:32px; right:32px; width:48px; height:48px; border-radius:50%; background:var(--white); border:1px solid var(--gray-100); box-shadow:var(--shadow-md); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition), border-color var(--transition); }
+    .scroll-top.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    .scroll-top:hover { background:var(--magenta); border-color:var(--magenta); }
+    .scroll-top svg { width:20px; height:20px; color:var(--purple-deep); transition:color var(--transition); }
+    .scroll-top:hover svg { color:var(--white); }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-text">placibly</span></a>
+    <ul class="nav-links">
+      <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#process">How It Works</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="/jobs" class="nav-link-jobs">Find Jobs</a>
+      <a href="/hire" class="nav-cta">Start Hiring</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <ul class="mobile-overlay-links">
+    <li><a href="/#why" id="mo-why">Why Placibly</a></li>
+    <li><a href="/#process" id="mo-process">How It Works</a></li>
+    <li><a href="/blog" id="mo-blog">Blog</a></li>
+    <li><a href="/jobs" id="mo-jobs">Find Jobs</a></li>
+  </ul>
+  <div class="mobile-overlay-actions">
+    <a href="/jobs" class="mobile-overlay-btn-outline">Browse Open Positions</a>
+    <a href="/hire" class="mobile-overlay-btn-solid">Start Hiring</a>
+  </div>
+  <div class="mobile-overlay-social">
+    <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:hello@placibly.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<main class="article-wrap">
+  <div class="article-layout">
+
+    <!-- Main content -->
+    <article>
+      <div class="breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Nearshore vs. Offshore</span>
+      </div>
+
+      <span class="article-tag">Hiring Strategy</span>
+      <h1 class="article-title">Nearshore vs. Offshore: Which Remote Hiring Model Is Right for Your Business?</h1>
+
+      <div class="article-meta">
+        <span class="article-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          March 28, 2026
+        </span>
+        <span class="article-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min read
+        </span>
+        <span class="article-meta-item">By Placibly</span>
+      </div>
+
+      <div class="article-body">
+
+        <p>When US companies start exploring remote hiring, they usually encounter two terms quickly: <strong>nearshore</strong> and <strong>offshore</strong>. Both models promise cost savings. Both give you access to a global talent pool. But the day-to-day experience of working with a nearshore team versus an offshore team can be dramatically different.</p>
+
+        <p>This article breaks down the key differences so you can make an informed decision for your business.</p>
+
+        <h2 id="what-is-nearshore">What Is Nearshore Hiring?</h2>
+        <p>Nearshore hiring means recruiting talent from countries in a similar or overlapping time zone to your own. For US companies, this typically means Latin America: Mexico, Colombia, Argentina, Brazil, Peru, Chile, and Costa Rica, among others.</p>
+        <p>The defining feature of nearshore is <strong>real-time collaboration</strong>. A team member in Bogota, Colombia works on Eastern or Central time. A professional in Buenos Aires is 1-2 hours ahead of the US East Coast. You can hop on a video call, answer a Slack message, or review a deliverable without waiting overnight.</p>
+
+        <h2 id="what-is-offshore">What Is Offshore Hiring?</h2>
+        <p>Offshore hiring means recruiting from countries with significant time zone gaps: India, the Philippines, Eastern Europe, Southeast Asia. These regions offer large talent pools and, in some cases, very low labor costs.</p>
+        <p>The tradeoff is time zone friction. When it is 9am in New York, it is 7pm in Manila and 11pm in Bangalore. Getting a quick answer, reviewing work in real time, or holding a sync meeting requires either party to work outside normal hours.</p>
+
+        <h2 id="comparison">Head-to-Head Comparison</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>Nearshore (Latin America)</th>
+                <th>Offshore (India, Philippines, etc.)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="td-label">Time Zone Overlap</td><td class="td-good">High (0-3 hrs difference)</td><td class="td-bad">Low (9-13 hrs difference)</td></tr>
+              <tr><td class="td-label">Real-Time Communication</td><td class="td-good">Easy, same-day responses</td><td class="td-bad">Delayed, async by default</td></tr>
+              <tr><td class="td-label">English Proficiency</td><td class="td-good">High (especially Chile, Colombia, Argentina)</td><td class="td-good">High (India, Philippines)</td></tr>
+              <tr><td class="td-label">Cultural Alignment with US</td><td class="td-good">Strong (similar work culture, media exposure)</td><td class="td-bad">Moderate (different work norms)</td></tr>
+              <tr><td class="td-label">Cost vs. US Rates</td><td class="td-good">40-65% savings</td><td class="td-good">50-75% savings</td></tr>
+              <tr><td class="td-label">Travel Feasibility</td><td class="td-good">Short flights, same hemisphere</td><td class="td-bad">Long-haul international flights</td></tr>
+              <tr><td class="td-label">Management Overhead</td><td class="td-good">Low</td><td class="td-bad">Higher (async delays, coordination)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="cost">The Cost Difference Is Real, But Smaller Than You Think</h2>
+        <p>Offshore hiring often appears cheaper on paper. A software developer in India or a customer support rep in the Philippines may cost less per hour than a comparable professional in Colombia or Mexico.</p>
+        <p>But the true cost of offshore hiring includes hidden factors that are easy to underestimate:</p>
+        <ul>
+          <li><strong>Management overhead:</strong> Async communication means more back-and-forth, more written specs, and more revision cycles. This takes time from your US team.</li>
+          <li><strong>Delayed feedback loops:</strong> A question asked at 3pm on a Tuesday won't get answered until the next morning. Over weeks and months, this compounds into significant project delays.</li>
+          <li><strong>Higher turnover:</strong> Offshore talent markets in India and the Philippines are highly competitive. Turnover rates are often higher, which means more recruiting and onboarding costs.</li>
+          <li><strong>Quality costs:</strong> Miscommunication due to cultural or time zone friction can result in rework that erodes the cost savings.</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Placibly's view:</strong> For most US businesses hiring in admin, sales, marketing, and operations, nearshore Latin American talent delivers the best balance of cost savings, communication quality, and cultural fit. The 10-20% difference in hourly rates compared to offshore is routinely offset by reduced management overhead and faster execution.</p>
+        </div>
+
+        <h2 id="who-should-use-what">Who Should Choose Which Model?</h2>
+
+        <h3>Choose nearshore (Latin America) if:</h3>
+        <ul>
+          <li>Your role requires real-time communication or customer-facing interaction</li>
+          <li>Your team operates on US business hours and expects same-day availability</li>
+          <li>You are hiring for admin, ops, sales, marketing, or executive support roles</li>
+          <li>You value a high-trust, integrated team relationship over purely transactional output</li>
+          <li>You want to avoid the overhead of managing across a 10+ hour time zone gap</li>
+        </ul>
+
+        <h3>Choose offshore if:</h3>
+        <ul>
+          <li>The work is highly independent and asynchronous by nature (e.g. certain software development tasks)</li>
+          <li>You have a mature process for written specs, async review cycles, and documentation</li>
+          <li>Maximizing hourly cost savings is the primary objective and communication friction is acceptable</li>
+          <li>You have a dedicated team manager who can absorb the coordination overhead</li>
+        </ul>
+
+        <h2 id="latam-specific">Why Latin America Specifically?</h2>
+        <p>Within the nearshore category, Latin America stands out for US companies for several reasons beyond just time zones.</p>
+        <p>Latin American professionals tend to have strong English skills, especially in countries like Colombia, Argentina, Chile, and Costa Rica. Cultural exposure to US media, business practices, and consumer culture means that concepts like urgency, deadlines, and customer service expectations translate well. Many Latin American professionals have worked directly with US clients before and understand the communication norms US companies expect.</p>
+        <p>Salary ranges in Latin America also vary by country, giving companies flexibility. A mid-level marketing coordinator in Argentina or Colombia typically earns $1,200-$2,500/month in USD, compared to $5,000-$7,000+ for a comparable US-based hire.</p>
+        <p>The hiring pool is also maturing rapidly. Remote work adoption accelerated during 2020-2022, and a growing number of Latin American professionals now have 3-5 years of experience working directly with US companies. The days of needing to "train them on remote work" are largely over. Latin America has become the leading destination for nearshore staffing and nearshore staff augmentation — offering the same time zone advantages as domestic hiring at a fraction of the cost.</p>
+
+        <h2 id="bottom-line">The Bottom Line</h2>
+        <p>For most US small and mid-sized businesses, nearshore Latin American talent is the right model. The time zone alignment alone eliminates the single biggest source of friction in remote team management. Add in strong English skills, cultural compatibility, and 40-65% cost savings versus US rates, and the case is clear.</p>
+        <p>Offshore hiring makes sense in specific contexts, primarily for technical roles where work is fully asynchronous and documentation-heavy. But for the wide range of business operations roles most companies need to fill, nearshore wins.</p>
+
+        <div class="article-cta-box">
+          <h3>Ready to Hire from Latin America?</h3>
+          <p>Placibly sources, vets, and places top Latin American talent in US companies. Same time zone, English-fluent, and ready to integrate with your team.</p>
+          <a href="/hire">Get Started Today</a>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-card">
+        <h3>In This Article</h3>
+        <ul class="sidebar-toc">
+          <li><a href="#what-is-nearshore">What Is Nearshore Hiring?</a></li>
+          <li><a href="#what-is-offshore">What Is Offshore Hiring?</a></li>
+          <li><a href="#comparison">Head-to-Head Comparison</a></li>
+          <li><a href="#cost">The Cost Difference</a></li>
+          <li><a href="#who-should-use-what">Who Should Choose Which?</a></li>
+          <li><a href="#latam-specific">Why Latin America?</a></li>
+          <li><a href="#bottom-line">The Bottom Line</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3>Hire Nearshore Talent</h3>
+        <p class="sidebar-cta-text">Placibly places vetted Latin American professionals in US companies. Admin, sales, marketing, ops and more.</p>
+        <a href="/hire" class="sidebar-cta-btn">Start Hiring &rarr;</a>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">placibly</a>
+        <p class="footer-tagline">We Place Top Latin American Talent in US Companies. Remote jobs in Latin America, paid in USD.</p>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#why">Why Placibly</a></li>
+            <li><a href="/#process">How It Works</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/jobs">Apply for Jobs</a></li>
+            <li><a href="/hire">Start Hiring</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@placibly.com">hello@placibly.com</a></li>
+            <li><a href="https://instagram.com/placibly" target="_blank" rel="noopener">Instagram @placibly</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:hello@placibly.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.classList.toggle('open');
+    mobileOverlay.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  ['mo-why','mo-process','mo-blog','mo-jobs'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => {
+      menuToggle.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
