@@ -125,6 +125,21 @@
       color: var(--purple);
     }
 
+    .nav-link-jobs {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: var(--purple-deep) !important;
+      border: 1.5px solid var(--purple-deep);
+      padding: 9px 20px;
+      border-radius: 8px;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+
+    .nav-link-jobs:hover {
+      background: var(--purple-deep) !important;
+      color: var(--white) !important;
+    }
+
     .nav-cta {
       font-size: 14px !important;
       font-weight: 600 !important;
@@ -138,6 +153,136 @@
     .nav-cta:hover {
       background: var(--magenta-hover) !important;
       transform: translateY(-1px);
+    }
+
+    /* ── Two-sided section ── */
+    .two-sided {
+      padding: 80px 0;
+      background: var(--white);
+    }
+
+    .two-sided-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .two-sided-card {
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .two-sided-card.candidates {
+      background: linear-gradient(135deg, var(--purple-deep) 0%, #7B2D8B 100%);
+      color: var(--white);
+    }
+
+    .two-sided-card.companies {
+      background: var(--off-white);
+      border: 1.5px solid var(--gray-100);
+      color: var(--gray-800);
+    }
+
+    .two-sided-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .two-sided-card.candidates .two-sided-label { color: var(--white); }
+    .two-sided-card.companies .two-sided-label { color: var(--magenta); opacity: 1; }
+
+    .two-sided-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .two-sided-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.85;
+      max-width: 380px;
+    }
+
+    .two-sided-card.companies p { opacity: 1; color: var(--gray-600); }
+
+    .two-sided-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .two-sided-perks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .two-sided-card.candidates .two-sided-perks li { color: rgba(255,255,255,0.9); }
+    .two-sided-card.companies .two-sided-perks li { color: var(--gray-700, #3d3d4a); }
+
+    .perk-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    .two-sided-card.candidates .perk-dot {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .two-sided-card.companies .perk-dot {
+      background: var(--pink-light);
+      color: var(--magenta);
+    }
+
+    .two-sided-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform var(--transition), opacity var(--transition);
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .two-sided-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+
+    .two-sided-card.candidates .two-sided-btn {
+      background: var(--white);
+      color: var(--purple-deep);
+    }
+
+    .two-sided-card.companies .two-sided-btn {
+      background: var(--magenta);
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      .two-sided-grid { grid-template-columns: 1fr; }
+      .two-sided-card { padding: 36px 28px; }
+      .two-sided-card h3 { font-size: 24px; }
     }
 
     .menu-toggle {
@@ -1324,11 +1469,11 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#why">Why Placibly</a></li>
-        <li><a href="#industries">Industries</a></li>
         <li><a href="#roles">Roles</a></li>
         <li><a href="#process">How It Works</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#cta" class="nav-cta">Book a Free Call</a></li>
+        <li><a href="/jobs" class="nav-link-jobs">Apply for Jobs</a></li>
+        <li><a href="/hire" class="nav-cta">Start Hiring</a></li>
       </ul>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -1375,6 +1520,47 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two-sided section -->
+  <section class="two-sided" id="for-everyone">
+    <div class="container">
+      <div class="two-sided-grid">
+
+        <!-- Candidates -->
+        <div class="two-sided-card candidates">
+          <div class="two-sided-label">For Professionals</div>
+          <h3>Find your next role at a US company</h3>
+          <p>Browse open positions across hospitality, operations, marketing, and more — all remote-friendly and fully vetted.</p>
+          <ul class="two-sided-perks">
+            <li><span class="perk-dot">✓</span> Roles across 10+ categories</li>
+            <li><span class="perk-dot">✓</span> Apply once, get matched to future roles too</li>
+            <li><span class="perk-dot">✓</span> Work in US time zones from LATAM</li>
+          </ul>
+          <a href="/jobs" class="two-sided-btn">
+            Apply for Jobs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Companies -->
+        <div class="two-sided-card companies">
+          <div class="two-sided-label">For Companies</div>
+          <h3>Hire top LATAM talent in weeks, not months</h3>
+          <p>We find, vet, and place the right professional for your team — saving you 40–60% on salaries without sacrificing quality.</p>
+          <ul class="two-sided-perks">
+            <li><span class="perk-dot">✓</span> Pre-vetted, English-fluent candidates</li>
+            <li><span class="perk-dot">✓</span> 60-day free replacement guarantee</li>
+            <li><span class="perk-dot">✓</span> We handle compliance & onboarding</li>
+          </ul>
+          <a href="/hire" class="two-sided-btn">
+            Start Hiring
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1746,7 +1932,8 @@
             <ul>
               <li><a href="#industries">Industries</a></li>
               <li><a href="#roles">Roles We Place</a></li>
-              <li><a href="#cta">Book a Call</a></li>
+              <li><a href="/jobs">Apply for Jobs</a></li>
+              <li><a href="/hire">Start Hiring</a></li>
             </ul>
           </div>
           <div class="footer-col">
