@@ -42,7 +42,7 @@ module.exports = async function handler(req, res) {
     // Fetch active jobs and active clients in parallel
     const [jobsData, clientsData] = await Promise.all([
       queryDB(JOBS_DB,    { property: 'Status', select: { equals: 'Active' } }),
-      queryDB(CLIENTS_DB, { property: 'Status', select: { equals: 'Active' } })
+      queryDB(CLIENTS_DB, { property: 'Status', select: { equals: 'Active Client' } })
     ]);
 
     // Build clients lookup map: Notion page ID → structured client object
