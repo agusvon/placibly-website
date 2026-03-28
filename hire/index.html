@@ -322,6 +322,12 @@
     .footer-social a:hover { background: rgba(255,255,255,0.12); color: var(--white); }
     .footer-social a svg { width: 18px; height: 18px; }
     @media (max-width: 768px) { .footer-top { flex-direction: column; } .footer-columns { flex-wrap: wrap; gap: 32px; } .footer-bottom { flex-direction: column; text-align: center; } }
+    /* ─── Scroll To Top ─── */
+    .scroll-top { position:fixed; bottom:32px; right:32px; width:48px; height:48px; border-radius:50%; background:var(--white); border:1px solid var(--gray-100); box-shadow:var(--shadow-md); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:99; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition), border-color var(--transition); }
+    .scroll-top.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    .scroll-top:hover { background:var(--magenta); border-color:var(--magenta); }
+    .scroll-top svg { width:20px; height:20px; color:var(--purple-deep); transition:color var(--transition); }
+    .scroll-top:hover svg { color:var(--white); }
   </style>
   <script type="application/ld+json">
 {
@@ -396,7 +402,7 @@
           60-Day Replacement Guarantee
         </div>
         <h1>Stop Overpaying for Talent.<br><span class="highlight">Hire Remote Staff from Latin America.</span></h1>
-        <p class="hero-desc">Placibly is a remote staffing agency for US companies. We find, vet, and place top Latin American professionals into your team — nearshore hiring in weeks, not months. Save 40–60% on salaries without sacrificing quality or time zones.</p>
+        <p class="hero-desc">Placibly is a remote staffing agency for US companies. We find, vet, and place top Latin American professionals into your team. Nearshore hiring in weeks, not months. Save 40–60% on salaries without sacrificing quality or time zones.</p>
         <div class="hero-buttons">
           <a href="#get-started" class="btn-primary">
             Start Hiring Now
@@ -434,7 +440,7 @@
   <div class="container">
     <p class="section-label">Why Placibly</p>
     <h2 class="section-title">Everything handled. You just choose.</h2>
-    <p class="section-subtitle">We do the heavy lifting so you can focus on running your business — not sifting through resumes. Nearshore staffing that works in your time zone.</p>
+    <p class="section-subtitle">We do the heavy lifting so you can focus on running your business, not sifting through resumes. Nearshore staffing that works in your time zone.</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">
@@ -462,21 +468,21 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
         </div>
         <h4>Full compliance handled</h4>
-        <p>We manage international payroll, contracts, and legal compliance. You pay one flat fee — nothing else.</p>
+        <p>We manage international payroll, contracts, and legal compliance. You pay one flat fee. Nothing else.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <h4>90-day onboarding support</h4>
-        <p>We stay involved after placement — checking in with you and your new hire to make sure the transition goes smoothly.</p>
+        <p>We stay involved after placement, checking in with you and your new hire to make sure the transition goes smoothly.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <h4>Trilingual team</h4>
-        <p>We operate in English, Spanish, and Portuguese — so we can source across all of LATAM and communicate in your language.</p>
+        <p>We operate in English, Spanish, and Portuguese, so we can source across all of LATAM and communicate in your language.</p>
       </div>
     </div>
   </div>
@@ -554,7 +560,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h4>We handle the rest</h4>
-        <p>Contracts, payroll, onboarding — all covered. Your hire starts in days.</p>
+        <p>Contracts, payroll, onboarding. All covered. Your hire starts in days.</p>
       </div>
     </div>
   </div>
@@ -567,7 +573,7 @@
       <div class="form-copy">
         <p class="section-label">Get Started</p>
         <h2>Tell us about your next hire</h2>
-        <p>Fill out the form and we'll get back to you within 1 business day with a tailored plan — no commitment required.</p>
+        <p>Fill out the form and we'll get back to you within 1 business day with a tailored plan. No commitment required.</p>
         <div class="form-guarantees">
           <div class="guarantee-item">
             <div class="guarantee-check">✓</div>
@@ -646,6 +652,11 @@
   </div>
 </footer>
 
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
 <script>
   // Nav scroll
   const nav = document.getElementById('nav');
@@ -662,6 +673,15 @@
     if (isOpen) { closeMenu(); } else { overlay.classList.add('open'); toggle.classList.add('open'); document.body.style.overflow = 'hidden'; }
   });
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Scroll to top
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   // Globe roles animation
   const globeRoles = [
