@@ -234,7 +234,7 @@
 
     /* Talent Pool full-width grid */
     .talent-cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-    .talent-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); padding: 28px 22px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+    .talent-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); padding: 28px 22px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); touch-action: pan-y; }
     .talent-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: transparent; }
     .talent-icon { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: linear-gradient(135deg, var(--pink-50), var(--pink-light)); flex-shrink: 0; }
     .talent-card h3 { font-size: 15px; font-weight: 700; color: var(--purple-deep); margin-bottom: 16px; line-height: 1.35; }
@@ -259,7 +259,7 @@
 
     /* ─── Job Cards ─── */
     .jobs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .job-card { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-lg); padding:22px; cursor:pointer; position:relative; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); display:flex; flex-direction:column; }
+    .job-card { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-lg); padding:22px; cursor:pointer; position:relative; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); display:flex; flex-direction:column; touch-action:pan-y; }
     .job-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#3B1F6E,#D42F8A); opacity:0; transition:opacity var(--transition); }
     .job-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:transparent; }
     .job-card:hover::before { opacity:1; }
@@ -495,6 +495,27 @@
       .why-grid { grid-template-columns: 1fr; }
       .why-item { padding:28px 24px; }
     }
+    /* ─── Mobile Filter Sheet ─── */
+    .mobile-filter-sheet { display: none; }
+    @media (max-width: 768px) {
+      .mobile-filter-sheet { display: block; }
+      .mobile-filter-backdrop { position: fixed; inset: 0; background: rgba(20,8,48,.55); z-index: 400; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+      .mobile-filter-sheet.open .mobile-filter-backdrop { opacity: 1; pointer-events: auto; }
+      .mobile-filter-panel { position: fixed; bottom: 0; left: 0; right: 0; z-index: 401; background: var(--white); border-radius: 20px 20px 0 0; max-height: 85vh; display: flex; flex-direction: column; transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+      .mobile-filter-sheet.open .mobile-filter-panel { transform: translateY(0); }
+      .mobile-filter-handle { width: 36px; height: 4px; background: var(--gray-200); border-radius: 2px; margin: 12px auto 0; flex-shrink: 0; }
+      .mobile-filter-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--gray-100); flex-shrink: 0; }
+      .mobile-filter-header-title { font-size: 16px; font-weight: 700; color: var(--purple-deep); }
+      .mobile-filter-close { background: none; border: none; cursor: pointer; font-size: 18px; color: var(--gray-400); padding: 4px 8px; line-height: 1; }
+      .mobile-filter-body { overflow-y: auto; flex: 1; -webkit-overflow-scrolling: touch; }
+      .mobile-filter-section { padding: 16px 20px 12px; border-bottom: 1px solid var(--gray-100); }
+      .mobile-filter-section:last-child { border-bottom: none; }
+      .mobile-filter-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-400); margin-bottom: 12px; }
+      .mobile-filter-footer { display: flex; gap: 10px; padding: 16px 20px; border-top: 1px solid var(--gray-100); flex-shrink: 0; padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+      .m-filter-clear-btn { flex: 1; font-family: inherit; font-size: 15px; font-weight: 600; padding: 14px; border-radius: var(--radius); cursor: pointer; border: 1.5px solid var(--gray-200); background: var(--white); color: var(--gray-600); }
+      .m-filter-apply-btn { flex: 2; font-family: inherit; font-size: 15px; font-weight: 700; padding: 14px; border-radius: var(--radius); cursor: pointer; border: none; background: var(--magenta); color: var(--white); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display:none; }
       .menu-toggle { display:block; }
@@ -896,6 +917,47 @@
   </div>
 </div>
 
+<!-- ── Mobile Filter Sheet ── -->
+<div class="mobile-filter-sheet" id="mobile-filter-sheet">
+  <div class="mobile-filter-backdrop" id="mobile-filter-backdrop"></div>
+  <div class="mobile-filter-panel">
+    <div class="mobile-filter-handle"></div>
+    <div class="mobile-filter-header">
+      <span class="mobile-filter-header-title">Filters</span>
+      <button class="mobile-filter-close" id="close-filter-sheet">✕</button>
+    </div>
+    <div class="mobile-filter-body">
+      <div class="mobile-filter-section">
+        <div class="mobile-filter-section-title">Company</div>
+        <div class="company-list" id="m-company-list"></div>
+      </div>
+      <div class="mobile-filter-section">
+        <div class="mobile-filter-section-title">Category</div>
+        <div class="pill-group" id="m-pill-category">
+          <button class="filter-pill active" data-value="All">All</button>
+          <button class="filter-pill" data-value="Administrative & Operations">Operations</button>
+          <button class="filter-pill" data-value="Sales & Customer Success">Sales</button>
+          <button class="filter-pill" data-value="Marketing & Content">Marketing</button>
+          <button class="filter-pill" data-value="Design & Creative">Design</button>
+        </div>
+      </div>
+      <div class="mobile-filter-section">
+        <div class="mobile-filter-section-title">Seniority</div>
+        <div class="pill-group" id="m-pill-seniority">
+          <button class="filter-pill active" data-value="All">All</button>
+          <button class="filter-pill" data-value="Entry">Entry</button>
+          <button class="filter-pill" data-value="Mid">Mid</button>
+          <button class="filter-pill" data-value="Senior">Senior</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-filter-footer">
+      <button class="m-filter-clear-btn" id="m-clear-btn">Clear all</button>
+      <button class="m-filter-apply-btn" id="m-apply-btn">Show results</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── Data ──
 let jobListings = [];
@@ -1117,10 +1179,82 @@ function syncPills() {
 function onFilterChange() {
   buildCompanyList();
   syncPills();
+  syncMobilePills();
   renderJobs();
   renderActiveChips();
   updateSidebarState();
 }
+
+function buildMobileCompanyList() {
+  const container = document.getElementById('m-company-list');
+  if (!container) return;
+  const companies = ['All', ...allCompanies];
+  container.innerHTML = companies.map(name => {
+    const isAll = name === 'All';
+    const logoHtml = isAll
+      ? `<div class="company-logo-all">🏢</div>`
+      : `<div class="company-logo-thumb"><img src="${companyLogos[name]}" alt="${name}" loading="lazy"></div>`;
+    return `
+      <label class="company-row">
+        <input type="radio" name="m-filter-company" value="${name}" ${filters.company===name?'checked':''}>
+        <span class="company-radio-dot"></span>
+        ${logoHtml}
+        <span class="company-row-label">${isAll ? 'All companies' : name}</span>
+        <span class="company-row-count">${countByCompany(name)}</span>
+      </label>`;
+  }).join('');
+  container.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { filters.company = r.value; onFilterChange(); });
+  });
+}
+
+function syncMobilePills() {
+  document.querySelectorAll('#m-pill-category .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.value===filters.category));
+  document.querySelectorAll('#m-pill-seniority .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.value===filters.seniority));
+}
+
+// ── Mobile Filter Sheet ──
+(function() {
+  const sheet = document.getElementById('mobile-filter-sheet');
+  const backdrop = document.getElementById('mobile-filter-backdrop');
+
+  function openSheet() {
+    buildMobileCompanyList();
+    syncMobilePills();
+    sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSheet() {
+    sheet.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('mobile-filter-btn').addEventListener('click', openSheet);
+  document.getElementById('close-filter-sheet').addEventListener('click', closeSheet);
+  backdrop.addEventListener('click', closeSheet);
+
+  document.getElementById('m-apply-btn').addEventListener('click', closeSheet);
+
+  document.getElementById('m-clear-btn').addEventListener('click', () => {
+    filters.company = 'All'; filters.category = 'All'; filters.seniority = 'All';
+    onFilterChange();
+    buildMobileCompanyList();
+  });
+
+  document.getElementById('m-pill-category').addEventListener('click', e => {
+    const pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+    filters.category = pill.dataset.value;
+    onFilterChange();
+  });
+
+  document.getElementById('m-pill-seniority').addEventListener('click', e => {
+    const pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+    filters.seniority = pill.dataset.value;
+    onFilterChange();
+  });
+})();
 
 function setupPills(groupId, key) {
   document.getElementById(groupId).addEventListener('click', e => {
@@ -1211,6 +1345,15 @@ document.addEventListener('keydown', e => {
     if (m.classList.contains('open')) { m.classList.remove('open'); document.body.style.overflow=''; if(id==='job-modal') currentJob=null; }
   });
 });
+
+// Failsafe: if no modal/overlay is open, ensure body scroll is never stuck
+document.addEventListener('touchstart', () => {
+  const anyModalOpen = ['job-modal','apply-modal','pool-modal'].some(id => document.getElementById(id).classList.contains('open'));
+  const shareOpen = document.querySelector('.share-overlay') && document.querySelector('.share-overlay').classList.contains('open');
+  const menuOpen = document.getElementById('mobileOverlay').classList.contains('open');
+  const filterSheetOpen = document.getElementById('mobile-filter-sheet').classList.contains('open');
+  if (!anyModalOpen && !shareOpen && !menuOpen && !filterSheetOpen) document.body.style.overflow = '';
+}, { passive: true });
 
 // ── Nudge buttons (sidebar + mobile) ──
 const nudgeTo = () => { switchTab('pool'); document.getElementById('jobs-section').scrollIntoView({behavior:'smooth'}); };
