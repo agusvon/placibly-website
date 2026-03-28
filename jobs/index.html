@@ -477,7 +477,11 @@
             <div class="sidebar-pool-nudge-label">Talent Pool</div>
             <h4>Don't see your role?</h4>
             <p>Apply once and we'll reach out the moment the right position opens.</p>
-            <button id="sidebar-nudge-btn">Apply to Talent Pool →</button>
+            <button id="sidebar-nudge-btn"
+              data-tally-open="xX2EXv"
+              data-tally-layout="modal"
+              data-tally-width="500"
+              data-tally-overlay="1">Apply to Talent Pool →</button>
           </div>
         </aside>
 
@@ -505,7 +509,11 @@
                 <h4>Don't see your role?</h4>
                 <p>Apply once — we'll reach out when the right position opens up.</p>
               </div>
-              <button id="mobile-nudge-btn">Get Matched →</button>
+              <button id="mobile-nudge-btn"
+                data-tally-open="xX2EXv"
+                data-tally-layout="modal"
+                data-tally-width="500"
+                data-tally-overlay="1">Get Matched →</button>
             </div>
           </div>
         </div>
@@ -515,10 +523,8 @@
 
     <!-- ── TALENT POOL VIEW ── -->
     <div class="pool-content" id="pool-content">
-      <div style="max-width:720px; margin:0 auto; padding:40px 0 60px;">
-        <h2 style="font-size:28px;font-weight:800;color:var(--purple-deep);margin-bottom:8px;letter-spacing:-0.5px;">Join the Placibly Talent Network</h2>
-        <p style="font-size:16px;color:var(--gray-600);margin-bottom:32px;">Apply once and we'll reach out the moment the right position opens up.</p>
-        <iframe data-tally-src="https://tally.so/embed/xX2EXv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1656" frameborder="0" marginheight="0" marginwidth="0" title="Join the Placibly Talent Network"></iframe>
+      <div class="talent-cards-grid" id="talent-cards-grid">
+        <!-- populated by JS -->
       </div>
     </div><!-- end pool-content -->
 
@@ -761,18 +767,20 @@ function renderPoolGrid() {
       <ul class="talent-roles">
         ${cat.roles.slice(0, 5).map(r => `<li>${r}</li>`).join('')}
       </ul>
-      <button class="btn-primary" data-pool-cat="${cat.id}">Apply for This Category</button>
+      <button class="btn-primary"
+        data-tally-open="xX2EXv"
+        data-tally-layout="modal"
+        data-tally-width="500"
+        data-tally-overlay="1"
+        data-tally-emoji-text="👋"
+        data-tally-emoji-animation="wave">
+        Apply for This Category
+      </button>
     </div>
   `).join('');
 
-  document.querySelectorAll('[data-pool-cat]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cat = talentCategories.find(c => c.id === btn.dataset.poolCat);
-      document.getElementById('pool-cat-label').textContent = cat.name;
-      document.getElementById('pool-modal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
+  // Let Tally initialize the new buttons
+  if (typeof Tally !== 'undefined') Tally.loadEmbeds();
 }
 
 // ── Company list ──
