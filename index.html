@@ -817,106 +817,118 @@
       margin: 0 auto;
     }
 
-    .roles-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-
-    .role-column {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--gray-100);
-      padding: 28px 22px;
-      transition: box-shadow var(--transition);
-    }
-
-    .roles-view-more {
-      display: none;
-      width: 100%;
-      margin-top: 16px;
-      padding: 14px;
-      background: var(--white);
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--purple-deep);
-      cursor: pointer;
-      transition: border-color var(--transition), color var(--transition);
-    }
-
-    .roles-view-more:hover {
-      border-color: var(--purple);
-      color: var(--purple);
-    }
-
-    .role-column:hover {
-      box-shadow: var(--shadow-md);
-    }
-
-    .role-column-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--gray-100);
-    }
-
-    .role-column-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--pink-50);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .role-column-icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--magenta);
-    }
-
-    .role-column h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--purple-deep);
-    }
-
-    .role-list {
-      list-style: none;
+    .roles-accordion {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .role-list li {
-      font-size: 15px;
-      color: var(--gray-600);
+    .roles-item {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .roles-item.active {
+      border-color: rgba(92, 45, 145, 0.2);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .roles-item-header {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-100);
+      gap: 16px;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: left;
     }
 
-    .role-list li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .role-list li::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      background: var(--magenta);
-      border-radius: 50%;
+    .roles-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--pink-50);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      opacity: 0.7;
+    }
+
+    .roles-item-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--magenta);
+    }
+
+    .roles-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .roles-item-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 3px;
+      transition: color var(--transition);
+    }
+
+    .roles-item-header:hover .roles-item-info h3 {
+      color: var(--purple);
+    }
+
+    .roles-item-info p {
+      font-size: 13px;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+
+    .roles-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--gray-300);
+      flex-shrink: 0;
+      transition: transform var(--transition), color var(--transition);
+    }
+
+    .roles-item.active .roles-chevron {
+      transform: rotate(180deg);
+      color: var(--magenta);
+    }
+
+    .roles-item-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .roles-item-body-inner {
+      padding: 16px 24px 24px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .role-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .role-pill {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-600);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 100px;
+      padding: 6px 14px;
     }
 
     /* ── Process ── */
@@ -1429,22 +1441,6 @@
         gap: 20px;
       }
 
-      .roles-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .role-column.role-extra {
-        display: none;
-      }
-
-      .role-column.role-extra.role-extra-visible {
-        display: block;
-      }
-
-      .roles-view-more {
-        display: block;
-      }
-
       .process-steps {
         grid-template-columns: repeat(2, 1fr);
         gap: 48px 24px;
@@ -1787,87 +1783,141 @@
         <h2 class="section-title">The people who keep your business&nbsp;running.</h2>
         <p class="section-subtitle">From daily operations to revenue-driving roles, we find talent that fits right in.</p>
       </div>
-      <div class="roles-grid">
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
+      <div class="roles-accordion">
+
+        <div class="roles-item active">
+          <button class="roles-item-header">
+            <div class="roles-item-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h4"/></svg>
             </div>
-            <h3>Admin &amp; Operations</h3>
+            <div class="roles-item-info">
+              <h3>Admin &amp; Operations</h3>
+              <p>Virtual assistants, coordinators, and office managers that keep the day-to-day running smoothly.</p>
+            </div>
+            <svg class="roles-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="roles-item-body" style="max-height: 200px;">
+            <div class="roles-item-body-inner">
+              <div class="role-pills">
+                <span class="role-pill">Executive Assistant</span>
+                <span class="role-pill">Virtual Assistant</span>
+                <span class="role-pill">Bookkeeper</span>
+                <span class="role-pill">Scheduling Coordinator</span>
+                <span class="role-pill">Payroll &amp; HR Support</span>
+                <span class="role-pill">Inventory Manager</span>
+                <span class="role-pill">Office Manager</span>
+                <span class="role-pill">Operations Coordinator</span>
+              </div>
+            </div>
           </div>
-          <ul class="role-list">
-            <li>Executive / Personal Assistant</li>
-            <li>Bookkeeper &amp; Invoicing</li>
-            <li>Scheduling &amp; Appointment Coordinator</li>
-            <li>Payroll &amp; HR Support</li>
-            <li>Inventory &amp; Supply Management</li>
-            <li>Operations &amp; Office Manager</li>
-          </ul>
         </div>
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
+
+        <div class="roles-item">
+          <button class="roles-item-header">
+            <div class="roles-item-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
-            <h3>Sales &amp; Customer&nbsp;Success</h3>
+            <div class="roles-item-info">
+              <h3>Sales &amp; Customer Success</h3>
+              <p>Revenue-driving talent that builds relationships, closes deals, and keeps clients happy.</p>
+            </div>
+            <svg class="roles-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="roles-item-body">
+            <div class="roles-item-body-inner">
+              <div class="role-pills">
+                <span class="role-pill">Sales Development Rep</span>
+                <span class="role-pill">Account Executive</span>
+                <span class="role-pill">Account Manager</span>
+                <span class="role-pill">Customer Support Agent</span>
+                <span class="role-pill">Customer Success Manager</span>
+                <span class="role-pill">CRM Administrator</span>
+                <span class="role-pill">Lead Generation Specialist</span>
+              </div>
+            </div>
           </div>
-          <ul class="role-list">
-            <li>Sales Development Rep</li>
-            <li>Account Manager</li>
-            <li>Customer Support Agent</li>
-            <li>CRM Administrator</li>
-            <li>Lead Generation Specialist</li>
-          </ul>
         </div>
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
+
+        <div class="roles-item">
+          <button class="roles-item-header">
+            <div class="roles-item-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
-            <h3>Marketing &amp; Content</h3>
+            <div class="roles-item-info">
+              <h3>Marketing &amp; Content</h3>
+              <p>Full-stack marketers who create, execute, and optimize strategies for US brands.</p>
+            </div>
+            <svg class="roles-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="roles-item-body">
+            <div class="roles-item-body-inner">
+              <div class="role-pills">
+                <span class="role-pill">Social Media Manager</span>
+                <span class="role-pill">Content Writer</span>
+                <span class="role-pill">Copywriter</span>
+                <span class="role-pill">SEO Specialist</span>
+                <span class="role-pill">Email Marketing Specialist</span>
+                <span class="role-pill">Performance Marketer</span>
+                <span class="role-pill">Marketing Coordinator</span>
+                <span class="role-pill">Brand Strategist</span>
+              </div>
+            </div>
           </div>
-          <ul class="role-list">
-            <li>Social Media Manager</li>
-            <li>Content Writer</li>
-            <li>Graphic Designer</li>
-            <li>Email Marketing Specialist</li>
-            <li>SEO Specialist</li>
-          </ul>
         </div>
-        <div class="role-column role-extra">
-          <div class="role-column-header">
-            <div class="role-column-icon">
+
+        <div class="roles-item">
+          <button class="roles-item-header">
+            <div class="roles-item-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
-            <h3>Finance &amp; Accounting</h3>
+            <div class="roles-item-info">
+              <h3>Finance &amp; Accounting</h3>
+              <p>Detail-oriented finance talent to keep the books clean and the numbers accurate.</p>
+            </div>
+            <svg class="roles-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="roles-item-body">
+            <div class="roles-item-body-inner">
+              <div class="role-pills">
+                <span class="role-pill">Bookkeeper</span>
+                <span class="role-pill">AP/AR Coordinator</span>
+                <span class="role-pill">Financial Analyst</span>
+                <span class="role-pill">Payroll Coordinator</span>
+                <span class="role-pill">Staff Accountant</span>
+                <span class="role-pill">Controller</span>
+                <span class="role-pill">Revenue Analyst</span>
+              </div>
+            </div>
           </div>
-          <ul class="role-list">
-            <li>Bookkeeper</li>
-            <li>AP/AR Coordinator</li>
-            <li>Financial Analyst</li>
-            <li>Payroll Coordinator</li>
-            <li>Staff Accountant</li>
-            <li>Controller</li>
-          </ul>
         </div>
-        <div class="role-column role-extra">
-          <div class="role-column-header">
-            <div class="role-column-icon">
+
+        <div class="roles-item">
+          <button class="roles-item-header">
+            <div class="roles-item-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
             </div>
-            <h3>Design &amp; Creative</h3>
+            <div class="roles-item-info">
+              <h3>Design &amp; Creative</h3>
+              <p>World-class creative talent from LATAM to bring your brand vision to life.</p>
+            </div>
+            <svg class="roles-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="roles-item-body">
+            <div class="roles-item-body-inner">
+              <div class="role-pills">
+                <span class="role-pill">Graphic Designer</span>
+                <span class="role-pill">UX/UI Designer</span>
+                <span class="role-pill">Video Editor</span>
+                <span class="role-pill">Motion Designer</span>
+                <span class="role-pill">Brand Designer</span>
+                <span class="role-pill">Web Designer</span>
+                <span class="role-pill">Creative Director</span>
+              </div>
+            </div>
           </div>
-          <ul class="role-list">
-            <li>Graphic Designer</li>
-            <li>UX/UI Designer</li>
-            <li>Video Editor</li>
-            <li>Motion Designer</li>
-            <li>Brand Designer</li>
-            <li>Web Designer</li>
-          </ul>
         </div>
+
       </div>
-      <button class="roles-view-more" id="rolesViewMore">View More Roles ↓</button>
     </div>
   </section>
 
@@ -2173,13 +2223,23 @@
       }
     }, { passive: true });
 
-    // Roles "View More" toggle (mobile only)
-    const rolesViewMore = document.getElementById('rolesViewMore');
-    rolesViewMore.addEventListener('click', () => {
-      const extras = document.querySelectorAll('.role-extra');
-      const isOpen = extras[0].classList.contains('role-extra-visible');
-      extras.forEach(el => el.classList.toggle('role-extra-visible', !isOpen));
-      rolesViewMore.textContent = isOpen ? 'View More Roles ↓' : 'View Less ↑';
+    // Roles accordion
+    document.querySelectorAll('.roles-item-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const body = item.querySelector('.roles-item-body');
+        const isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.roles-item').forEach(el => {
+          el.classList.remove('active');
+          el.querySelector('.roles-item-body').style.maxHeight = '0';
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
     });
 
     // Scroll reveal (why cards + process steps only)
