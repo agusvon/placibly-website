@@ -459,6 +459,45 @@
       .mobile-overlay-btn-solid:hover {
         background: var(--magenta-hover);
       }
+
+      .mobile-overlay-social {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 24px;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.35s ease 0.42s, transform 0.35s ease 0.42s;
+      }
+
+      .mobile-overlay.open .mobile-overlay-social {
+        opacity: 1;
+        transform: none;
+      }
+
+      .mobile-overlay-social a {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .mobile-overlay-social a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+      }
+
+      .mobile-overlay-social svg {
+        width: 20px;
+        height: 20px;
+      }
     }
 
     /* ── Shared ── */
@@ -1696,6 +1735,17 @@
     <div class="mobile-overlay-actions">
       <a href="/jobs" class="mobile-overlay-btn-outline">Apply for Jobs</a>
       <a href="/hire" class="mobile-overlay-btn-solid">Start Hiring</a>
+      <div class="mobile-overlay-social">
+        <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/placibly" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="mailto:hello@placibly.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
