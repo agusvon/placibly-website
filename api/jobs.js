@@ -12,10 +12,12 @@ const headers = () => ({
 });
 
 async function queryDB(dbId, filter) {
+  const body = { page_size: 100 };
+  if (filter) body.filter = filter;
   const res = await fetch(`https://api.notion.com/v1/databases/${dbId}/query`, {
     method: 'POST',
     headers: headers(),
-    body: JSON.stringify({ filter, page_size: 100 })
+    body: JSON.stringify(body)
   });
   if (!res.ok) throw new Error(`Notion API error ${res.status}: ${await res.text()}`);
   return res.json();
@@ -40,7 +42,7 @@ module.exports = async function handler(req, res) {
     // Fetch active jobs and active clients in parallel
     const [jobsData, clientsData] = await Promise.all([
       queryDB(JOBS_DB,    { property: 'Status', select: { equals: 'Active' } }),
-      queryDB(CLIENTS_DB, { property: 'Status', select: { equals: 'Active Client' } })
+      queryDB(CLIENTS_DB, { property: 'Status', select: { equals: 'Active' } })
     ]);
 
     // Build clients lookup map: Notion page ID → structured client object
