@@ -234,6 +234,11 @@
     .job-card-salary { font-size:15px; font-weight:700; color:var(--purple-deep); margin-bottom:5px; }
     .job-card-location { font-size:12px; color:var(--gray-400); display:flex; align-items:center; gap:4px; margin-bottom:18px; }
     .job-card-cta button { width:100%; justify-content:center; font-size:13px; padding:11px 16px; }
+    .share-btn { position:absolute; top:12px; right:12px; width:30px; height:30px; border-radius:8px; border:none; background:transparent; color:var(--gray-300); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--transition),color var(--transition); z-index:2; flex-shrink:0; }
+    .share-btn:hover { background:var(--gray-50); color:var(--purple); }
+    .share-btn svg { width:15px; height:15px; pointer-events:none; }
+    .share-tooltip { position:fixed; background:var(--gray-800); color:var(--white); font-size:12px; font-weight:600; padding:6px 12px; border-radius:8px; pointer-events:none; opacity:0; transition:opacity .2s ease, transform .2s ease; z-index:9999; white-space:nowrap; transform:translateX(-50%) translateY(4px); }
+    .share-tooltip.show { opacity:1; transform:translateX(-50%) translateY(0); }
     .no-results { grid-column:1/-1; text-align:center; padding:80px 20px; }
     .no-results h3 { font-size:20px; font-weight:700; color:var(--purple-deep); margin-bottom:10px; }
     .no-results p { color:var(--gray-600); font-size:15px; }
@@ -879,6 +884,9 @@ function renderJobs() {
   }
   grid.innerHTML = jobs.map(job => `
     <div class="job-card" data-id="${job.id}" role="button" tabindex="0">
+      <button class="share-btn" data-share-job="${job.id}" title="Copy link to share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
       <div class="job-card-company">
         <div class="job-card-logo"><img src="${job.companyLogo}" alt="${job.company}" loading="lazy"></div>
         <div><div class="job-card-company-name">${job.company}</div><div class="job-card-industry">${job.companyIndustry}</div></div>
@@ -899,7 +907,10 @@ function renderJobs() {
 // ── Render talent pool grid ──
 function renderPoolGrid() {
   document.getElementById('talent-cards-grid').innerHTML = talentCategories.map(cat => `
-    <div class="talent-card">
+    <div class="talent-card" style="position:relative;">
+      <button class="share-btn" data-share-pool="${cat.id}" title="Copy link to share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
       <div class="talent-icon">${cat.icon}</div>
       <h3>${cat.name}</h3>
       <ul class="talent-roles">
@@ -1098,6 +1109,7 @@ function init() {
   renderActiveChips();
   updateSidebarState();
   renderPoolGrid();
+  handleDeepLink();
 }
 
 async function loadJobs() {
@@ -1117,6 +1129,67 @@ async function loadJobs() {
     jobListings = fallbackListings;
   }
   init();
+}
+
+// ── Share / deep-link ──
+// Tooltip element (injected once)
+const shareTip = document.createElement('div');
+shareTip.id = 'share-tooltip';
+shareTip.className = 'share-tooltip';
+shareTip.textContent = '✓ Link copied!';
+document.body.appendChild(shareTip);
+
+function showShareTooltip(btn) {
+  const rect = btn.getBoundingClientRect();
+  shareTip.style.left = (rect.left + rect.width / 2) + 'px';
+  shareTip.style.top  = (rect.top - 40 + window.scrollY) + 'px';
+  shareTip.style.position = 'absolute';
+  shareTip.classList.add('show');
+  clearTimeout(shareTip._t);
+  shareTip._t = setTimeout(() => shareTip.classList.remove('show'), 2000);
+}
+
+function copyToClipboard(url, btn) {
+  navigator.clipboard.writeText(url).then(() => showShareTooltip(btn)).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showShareTooltip(btn);
+  });
+}
+
+// Delegate share button clicks (works for dynamically rendered cards)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.share-btn');
+  if (!btn) return;
+  e.stopPropagation(); // don't open the card modal
+  if (btn.dataset.shareJob) {
+    copyToClipboard(`${location.origin}/jobs?job=${btn.dataset.shareJob}`, btn);
+  } else if (btn.dataset.sharePool) {
+    copyToClipboard(`${location.origin}/jobs?pool=${btn.dataset.sharePool}`, btn);
+  }
+});
+
+// ── Deep-link: auto-open job or pool from URL params ──
+function handleDeepLink() {
+  const params = new URLSearchParams(location.search);
+  const jobId  = params.get('job');
+  const poolId = params.get('pool');
+  if (jobId) {
+    const job = jobListings.find(j => j.id === jobId);
+    if (job) openJobModal(jobId);
+  } else if (poolId) {
+    switchTab('pool');
+    const cat = talentCategories.find(c => c.id === poolId);
+    if (cat) {
+      document.getElementById('pool-cat-label').textContent = cat.name;
+      document.getElementById('pool-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
 }
 
 loadJobs();
