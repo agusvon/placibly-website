@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Placibly — Top Latin American Talent for US Companies</title>
+  <title>Placibly: Top Latin American Talent for US Companies</title>
   <meta name="description" content="Placibly places vetted, English-fluent Latin American professionals into US companies. Save 40–60% on salaries. Same time zone. Full-service hiring.">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1334,6 +1334,23 @@
       color: var(--white);
     }
 
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
     @media (max-width: 1024px) {
       .hero-layout {
         flex-direction: column;
@@ -1509,13 +1526,13 @@
             Hiring across 7+ LATAM countries
           </div>
           <h1>We Place Top Latin American Talent in <span class="highlight">US&nbsp;Companies.</span></h1>
-          <p class="hero-desc">Save 40–60% on salaries with vetted, English-fluent professionals who work in your time zone. We handle everything — you just pick your favorite candidate.</p>
+          <p class="hero-desc">Save 40–60% on salaries with vetted, English-fluent professionals who work in your time zone. We handle everything. You just pick your favorite candidate.</p>
           <div class="hero-buttons">
             <a href="/hire" class="btn-primary">
               Meet Your Candidates for Free
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-            <a href="#cta" class="btn-secondary">Let's Talk — No Commitment</a>
+            <a href="#process" class="btn-secondary">See How It Works</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -1645,7 +1662,7 @@
       <div class="why-header">
         <p class="section-label">Why Placibly</p>
         <h2 class="section-title">Hiring in the US is slow, expensive, and&nbsp;overwhelming.</h2>
-        <p class="section-subtitle">You don't need a cheaper hire. You need a smarter way to build your team — with exceptional talent, at a fraction of the cost, without any of the headache.</p>
+        <p class="section-subtitle">You don't need a cheaper hire. You need a smarter way to build your team, with exceptional talent, at a fraction of the cost, without any of the headache.</p>
       </div>
       <div class="why-grid">
         <div class="why-card">
@@ -1785,11 +1802,11 @@
     <div class="container">
       <div class="mid-cta-inner">
         <div class="mid-cta-text">
-          <h2>Don't see the role you need?</h2>
-          <p>We place talent across dozens of roles. Tell us what you're looking for and we'll find the right person.</p>
+          <h2>Your next opportunity is closer than you think.</h2>
+          <p>Whether there's an open position that fits your profile today, or we add you to our talent pool for what's coming next, Placibly matches the right people with the right companies, now or in the near future.</p>
         </div>
-        <a href="#cta" class="btn-primary">
-          Talk to Us
+        <a href="/jobs" class="btn-primary">
+          Apply for Jobs
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
@@ -1801,7 +1818,7 @@
     <div class="container">
       <div class="process-header">
         <p class="section-label">How It Works</p>
-        <h2 class="section-title">From first call to first day — in as little as two&nbsp;weeks.</h2>
+        <h2 class="section-title">From first call to first day, in as little as two&nbsp;weeks.</h2>
         <p class="section-subtitle">One dedicated point of contact guides you through every step. No handoffs, no runaround.</p>
       </div>
       <div class="process-steps">
@@ -1896,7 +1913,16 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <div class="faq-answer">
-            <div class="faq-answer-inner">No. You pay a single monthly fee to Placibly. We take care of everything on the talent side. You don't need to worry about international payroll, taxes, or legal compliance — that's all on us.</div>
+            <div class="faq-answer-inner">No. You pay a single monthly fee to Placibly. We take care of everything on the talent side. You don't need to worry about international payroll, taxes, or legal compliance. That's all on us.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Which countries in Latin America can apply?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Placibly accepts applications from all of Latin America. Whether you're based in Argentina, Colombia, Mexico, Brazil, Venezuela, Ecuador, Peru, Chile, or anywhere else in the region, you're welcome to apply. What matters most is your skills, English proficiency, and ability to work in US time zones.</div>
           </div>
         </div>
       </div>
@@ -2068,6 +2094,33 @@
         Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
       }
     }, { passive: true });
+
+    // Scroll reveal
+    const revealTargets = [
+      { selector: '.why-header, .roles-header, .process-header, .industries-header, .faq-header, .mid-cta-inner, .guarantee-inner, .final-cta-inner', stagger: false },
+      { selector: '.why-card, .role-column, .industry-card, .step, .two-sided-card', stagger: true },
+    ];
+
+    revealTargets.forEach(({ selector, stagger }) => {
+      document.querySelectorAll(selector).forEach((el, i) => {
+        el.classList.add('reveal');
+        if (stagger) {
+          const delay = (i % 4) + 1;
+          el.classList.add(`reveal-delay-${delay}`);
+        }
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
