@@ -227,16 +227,33 @@
 
     @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
 
-    /* ── Roles ── */
+    /* ── Roles (Globe) ── */
     .roles-section { padding: 80px 0; background: var(--off-white); }
-    .roles-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
-    .role-chip {
-      background: var(--white); border: 1.5px solid var(--gray-100);
-      border-radius: 100px; padding: 10px 20px;
-      font-size: 14px; font-weight: 600; color: var(--gray-800);
-      display: flex; align-items: center; gap: 8px;
+    .roles-section .section-label,
+    .roles-section .section-title,
+    .roles-section .section-subtitle { text-align: center; }
+    .roles-section .section-subtitle { margin-left: auto; margin-right: auto; margin-bottom: 0; }
+    .roles-stage { position: relative; width: 720px; max-width: 100%; height: 440px; margin: 0 auto; }
+    .globe-wrap { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 288px; height: 288px; pointer-events: none; }
+    .globe-svg { width: 100%; height: 100%; }
+    .globe-lon { transform-box: fill-box; transform-origin: center; animation: globeSpin 22s linear infinite; }
+    @keyframes globeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .float-slot { position: absolute; }
+    .float-slot[data-slot="0"] { top: 32px; left: 0; }
+    .float-slot[data-slot="1"] { top: 32px; right: 0; }
+    .float-slot[data-slot="2"] { top: 50%; left: 0; transform: translateY(-50%); }
+    .float-slot[data-slot="3"] { top: 50%; right: 0; transform: translateY(-50%); }
+    .float-slot[data-slot="4"] { bottom: 32px; left: 0; }
+    .float-slot[data-slot="5"] { bottom: 32px; right: 0; }
+    .float-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--white); border: 1.5px solid var(--gray-100); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--gray-800); white-space: nowrap; box-shadow: 0 4px 16px rgba(59,31,110,0.09); opacity: 0; transform: translateY(8px) scale(0.94); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .float-chip.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .float-chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--magenta); flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .roles-stage { height: 360px; }
+      .globe-wrap { width: 210px; height: 210px; }
+      .float-slot[data-slot="2"], .float-slot[data-slot="3"] { display: none; }
+      .float-chip { font-size: 12px; padding: 8px 13px; gap: 6px; }
     }
-    .role-chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); }
 
     /* ── Process ── */
     .process-section { padding: 80px 0; background: var(--white); }
@@ -470,23 +487,45 @@
   <div class="container">
     <p class="section-label">What We Place</p>
     <h2 class="section-title">Latin American Remote Staff for Every Role</h2>
-    <p class="section-subtitle">From customer-facing roles to back-office operations — if you need it, we can staff it with remote talent from Latin America.</p>
-    <div class="roles-grid">
-      <div class="role-chip"><span class="role-chip-dot"></span>Operations Manager</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Customer Support</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Executive Assistant</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Marketing Coordinator</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Social Media Manager</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Bookkeeper / Accountant</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>HR Coordinator</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Sales Development Rep</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Graphic Designer</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Data Analyst</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Project Manager</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Content Writer</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Recruiter</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>Supply Chain Coordinator</div>
-      <div class="role-chip"><span class="role-chip-dot"></span>+ many more</div>
+    <p class="section-subtitle">From customer-facing roles to back-office operations. If you need it, we can staff it with remote talent from Latin America.</p>
+    <div class="roles-stage">
+      <!-- Globe -->
+      <div class="globe-wrap">
+        <svg class="globe-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="gGrad" cx="36%" cy="32%" r="70%">
+              <stop offset="0%" stop-color="#7040b8"/>
+              <stop offset="50%" stop-color="#3B1F6E"/>
+              <stop offset="100%" stop-color="#180840"/>
+            </radialGradient>
+            <clipPath id="gClip"><circle cx="150" cy="150" r="143"/></clipPath>
+          </defs>
+          <circle cx="150" cy="150" r="143" fill="url(#gGrad)"/>
+          <!-- Static latitude lines -->
+          <g clip-path="url(#gClip)" stroke="rgba(255,255,255,0.14)" stroke-width="0.8" fill="none">
+            <ellipse cx="150" cy="150" rx="143" ry="50"/>
+            <ellipse cx="150" cy="150" rx="143" ry="100"/>
+            <line x1="7" y1="150" x2="293" y2="150"/>
+          </g>
+          <!-- Rotating longitude lines -->
+          <g class="globe-lon" clip-path="url(#gClip)" stroke="rgba(255,255,255,0.14)" stroke-width="0.8" fill="none">
+            <ellipse cx="150" cy="150" rx="50" ry="143"/>
+            <ellipse cx="150" cy="150" rx="100" ry="143"/>
+            <line x1="150" y1="7" x2="150" y2="293"/>
+          </g>
+          <!-- Highlight -->
+          <ellipse cx="116" cy="110" rx="58" ry="42" fill="rgba(255,255,255,0.07)" clip-path="url(#gClip)"/>
+          <!-- Edge -->
+          <circle cx="150" cy="150" r="143" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <!-- Floating chip slots (6 positions around the globe) -->
+      <div class="float-slot" data-slot="0"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
+      <div class="float-slot" data-slot="1"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
+      <div class="float-slot" data-slot="2"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
+      <div class="float-slot" data-slot="3"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
+      <div class="float-slot" data-slot="4"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
+      <div class="float-slot" data-slot="5"><div class="float-chip"><span class="float-chip-dot"></span><span class="float-chip-label"></span></div></div>
     </div>
   </div>
 </section>
@@ -623,6 +662,47 @@
     if (isOpen) { closeMenu(); } else { overlay.classList.add('open'); toggle.classList.add('open'); document.body.style.overflow = 'hidden'; }
   });
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Globe roles animation
+  const globeRoles = [
+    'Executive Assistant','Social Media Manager','Operations Manager',
+    'Sales Development Rep','Customer Support','Bookkeeper',
+    'Graphic Designer','Data Analyst','Project Manager',
+    'Content Writer','HR Coordinator','Video Editor',
+    'SEO Specialist','Virtual Assistant','Email Marketer',
+    'Account Manager','UX Designer','Copywriter',
+    'Marketing Coordinator','Recruiter','Brand Strategist',
+    'Supply Chain Coord.'
+  ];
+  const SLOT_N = 6;
+  const chips = Array.from(document.querySelectorAll('.float-chip'));
+  const roleIdx = [0, 1, 2, 3, 4, 5];
+
+  chips.forEach((chip, i) => {
+    chip.querySelector('.float-chip-label').textContent = globeRoles[roleIdx[i]];
+  });
+
+  // Staggered reveal on load
+  chips.forEach((chip, i) => {
+    setTimeout(() => chip.classList.add('visible'), 500 + i * 160);
+  });
+
+  // Cycle one slot at a time, every 1800ms
+  let nextSlot = 0;
+  setInterval(() => {
+    const slotEl = chips[nextSlot].parentElement;
+    if (getComputedStyle(slotEl).display !== 'none') {
+      const chip = chips[nextSlot];
+      chip.classList.remove('visible');
+      const s = nextSlot;
+      setTimeout(() => {
+        roleIdx[s] = (roleIdx[s] + SLOT_N) % globeRoles.length;
+        chip.querySelector('.float-chip-label').textContent = globeRoles[roleIdx[s]];
+        chip.classList.add('visible');
+      }, 380);
+    }
+    nextSlot = (nextSlot + 1) % SLOT_N;
+  }, 1800);
 </script>
 
 </body>
