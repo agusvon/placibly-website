@@ -357,6 +357,7 @@
       .tab-btn { font-size:13px; padding:9px 16px; }
       .talent-cards-grid { grid-template-columns: 1fr; }
     }
+  @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -631,7 +632,10 @@
 
 <script>
 // ── Data ──
-const jobListings = [
+let jobListings = [];
+
+// ── Fallback data (shown if API is unavailable) ──
+const fallbackListings = [
   { id:1,  title:"Social Media Manager",           company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia. Born from the same team behind Resto Experience, it delivers custom strategies across social media, SEO, paid advertising, website design, and e-commerce marketplace growth.",     companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes. Fast-growing team, real ownership, multi-industry exposure.",    companyBenefits:"Fully remote, flexible schedule, USD compensation, exposure to diverse industries", companyCultureTags:["Remote-first","Results-driven","Creative","Multi-industry"], category:"Marketing & Content",        seniority:"Mid",    salaryRange:"$700–$1,200/mo",  location:"Remote — Latin America", shortDescription:"Manage and grow VS Digital Group's social media presence across Instagram, LinkedIn, and TikTok. Create content calendars, produce engaging copy, and report on performance.",                                          keyRequirements:["2+ years managing social media for brands or agencies","Strong copywriting skills","Experience with Canva and scheduling tools","Analytical mindset","Advanced English"] },
   { id:2,  title:"Video Editor",                    company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Real ownership, fast-growing team, creative culture across multiple industries.",                                                              companyBenefits:"Fully remote, flexible schedule, USD compensation, exposure to diverse industries", companyCultureTags:["Remote-first","Results-driven","Creative","Multi-industry"], category:"Design & Creative",          seniority:"Mid",    salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Edit short-form and long-form video content for client campaigns, social media, and internal projects. Fast turnaround and strong creative eye required.",                                                             keyRequirements:["2+ years of video editing experience","Proficiency in Premiere Pro or Final Cut","Experience with Reels / TikTok formats","Attention to detail","Ability to work with brand guidelines"] },
   { id:3,  title:"Sales / SDR",                     company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes.",                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Results-driven","Multi-industry"],             category:"Sales & Customer Success",   seniority:"Entry",  salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Prospect and qualify new clients for VS Digital Group's agency services. Run outbound outreach via LinkedIn and email, book discovery calls, and manage pipeline in CRM.",                                           keyRequirements:["1+ years in sales or outbound roles","Strong communication in English","Experience with LinkedIn outreach","CRM familiarity (HubSpot or similar)","Self-driven and resilient"] },
@@ -661,9 +665,14 @@ const talentCategories = [
 const categoryBadgeClass = { "Administrative & Operations":"badge-admin","Sales & Customer Success":"badge-sales","Marketing & Content":"badge-marketing","Finance & Accounting":"badge-finance","Design & Creative":"badge-design" };
 function getCategoryBadge(cat) { return `<span class="badge ${categoryBadgeClass[cat]||'badge-seniority'}">${cat}</span>`; }
 
-const allCompanies = [...new Set(jobListings.map(j => j.company))];
-const companyLogos = {};
-jobListings.forEach(j => { companyLogos[j.company] = j.companyLogo; });
+// allCompanies and companyLogos are computed after jobs load
+let allCompanies = [];
+let companyLogos = {};
+function refreshDerivedData() {
+  allCompanies = [...new Set(jobListings.map(j => j.company))];
+  companyLogos = {};
+  jobListings.forEach(j => { companyLogos[j.company] = j.companyLogo; });
+}
 
 // ── State ──
 const filters = { company:"All", category:"All", seniority:"All" };
@@ -735,7 +744,7 @@ function renderJobs() {
     </div>`).join('');
 
   grid.querySelectorAll('.job-card').forEach(card => {
-    const open = () => openJobModal(parseInt(card.dataset.id));
+    const open = () => openJobModal(card.dataset.id);
     card.addEventListener('click', open);
     card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
   });
@@ -924,15 +933,47 @@ document.getElementById('mobile-nudge-btn').addEventListener('click', nudgeTo);
 window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY>10); }, {passive:true});
 document.getElementById('menu-toggle').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('open'); });
 
-// ── Init ──
-buildCompanyList();
-setupPills('pill-category','category');
-setupPills('pill-seniority','seniority');
-['fs-company','fs-category','fs-seniority'].forEach(setupCollapsible);
-renderJobs();
-renderActiveChips();
-updateSidebarState();
-renderPoolGrid();
+// ── Load jobs from Notion API ──
+function showLoadingState() {
+  document.getElementById('jobs-grid').innerHTML = `
+    <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;gap:16px;color:var(--gray-400)">
+      <div style="width:36px;height:36px;border:3px solid var(--gray-100);border-top-color:var(--magenta);border-radius:50%;animation:spin .7s linear infinite"></div>
+      <span style="font-size:14px">Loading positions from Notion…</span>
+    </div>`;
+}
+
+function init() {
+  refreshDerivedData();
+  buildCompanyList();
+  setupPills('pill-category','category');
+  setupPills('pill-seniority','seniority');
+  ['fs-company','fs-category','fs-seniority'].forEach(setupCollapsible);
+  renderJobs();
+  renderActiveChips();
+  updateSidebarState();
+  renderPoolGrid();
+}
+
+async function loadJobs() {
+  showLoadingState();
+  try {
+    const res  = await fetch('/api/jobs');
+    if (!res.ok) throw new Error(`API responded ${res.status}`);
+    const data = await res.json();
+    if (data.jobs && data.jobs.length > 0) {
+      jobListings = data.jobs;
+    } else {
+      // API returned empty — use fallback
+      jobListings = fallbackListings;
+    }
+  } catch (err) {
+    console.warn('[placibly] Could not load from API, using fallback data:', err.message);
+    jobListings = fallbackListings;
+  }
+  init();
+}
+
+loadJobs();
 </script>
 </body>
 </html>
