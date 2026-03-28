@@ -276,7 +276,7 @@
       text-decoration: none;
       transition: transform var(--transition), opacity var(--transition);
       align-self: flex-start;
-      margin-top: 8px;
+      margin-top: auto;
     }
 
     .two-sided-btn:hover { transform: translateY(-2px); opacity: 0.92; }
@@ -1568,7 +1568,7 @@
         <div class="two-sided-card candidates">
           <div class="two-sided-label">For Professionals</div>
           <h3>Find your next role at a US company</h3>
-          <p>Browse open positions across hospitality, operations, marketing, and more — all remote-friendly and fully vetted.</p>
+          <p>Browse open positions across hospitality, operations, marketing, and more, all remote-friendly and fully vetted.</p>
           <ul class="two-sided-perks">
             <li><span class="perk-dot">✓</span> Roles across 10+ categories</li>
             <li><span class="perk-dot">✓</span> Apply once, get matched to future roles too</li>
@@ -1584,7 +1584,7 @@
         <div class="two-sided-card companies">
           <div class="two-sided-label">For Companies</div>
           <h3>Hire top LATAM talent in weeks, not months</h3>
-          <p>We find, vet, and place the right professional for your team — saving you 40–60% on salaries without sacrificing quality.</p>
+          <p>We find, vet, and place the right professional for your team, saving you 40–60% on salaries without sacrificing quality.</p>
           <ul class="two-sided-perks">
             <li><span class="perk-dot">✓</span> Pre-vetted, English-fluent candidates</li>
             <li><span class="perk-dot">✓</span> 60-day free replacement guarantee</li>
@@ -1670,7 +1670,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <h3>Save 40–60% on Salaries</h3>
-          <p>Equivalent skill, equivalent output — at a fraction of the cost. Redirect the savings into growth, not overhead.</p>
+          <p>Equivalent skill, equivalent output, at a fraction of the cost. Redirect the savings into growth, not overhead.</p>
         </div>
         <div class="why-card">
           <div class="why-card-icon">
@@ -1835,7 +1835,7 @@
         <div class="step">
           <div class="step-number">3</div>
           <h3>You Interview</h3>
-          <p>Meet your top candidates. We coordinate everything — you just show up and pick your favorite.</p>
+          <p>Meet your top candidates. We coordinate everything. You just show up and pick your favorite.</p>
         </div>
         <div class="step">
           <div class="step-number">4</div>
@@ -1877,7 +1877,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <div class="faq-answer" style="max-height: 200px;">
-            <div class="faq-answer-inner">We're not a marketplace. We're a full-service hiring partner. We handle everything from sourcing and vetting to interviews and onboarding support. You get a dedicated point of contact, pre-screened candidates, and a 60-day replacement guarantee — none of which you get from a freelancer platform.</div>
+            <div class="faq-answer-inner">We're not a marketplace. We're a full-service hiring partner. We handle everything from sourcing and vetting to interviews and onboarding support. You get a dedicated point of contact, pre-screened candidates, and a 60-day replacement guarantee. None of that comes with a freelancer platform.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1935,7 +1935,7 @@
       <div class="final-cta-inner">
         <p class="section-label">Get Started</p>
         <h2>Ready to build your <span class="highlight">LATAM&nbsp;team?</span></h2>
-        <p>Tell us about the role you're looking to fill. We'll walk you through the process and give you an honest assessment — no pressure, no commitment.</p>
+        <p>Tell us about the role you're looking to fill. We'll walk you through the process and give you an honest assessment. No pressure, no commitment.</p>
         <a href="/hire" class="btn-primary">
           Meet Your Candidates for Free
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -2000,6 +2000,10 @@
   </button>
 
   <script>
+    // Prevent browser scroll restoration on refresh
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // Scroll to top button
     const scrollTopBtn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
@@ -2095,20 +2099,11 @@
       }
     }, { passive: true });
 
-    // Scroll reveal
-    const revealTargets = [
-      { selector: '.why-header, .roles-header, .process-header, .industries-header, .faq-header, .mid-cta-inner, .guarantee-inner, .final-cta-inner', stagger: false },
-      { selector: '.why-card, .role-column, .industry-card, .step, .two-sided-card', stagger: true },
-    ];
-
-    revealTargets.forEach(({ selector, stagger }) => {
-      document.querySelectorAll(selector).forEach((el, i) => {
-        el.classList.add('reveal');
-        if (stagger) {
-          const delay = (i % 4) + 1;
-          el.classList.add(`reveal-delay-${delay}`);
-        }
-      });
+    // Scroll reveal (why cards + process steps only)
+    document.querySelectorAll('.why-card, .step').forEach((el, i) => {
+      el.classList.add('reveal');
+      const delay = (i % 4) + 1;
+      el.classList.add(`reveal-delay-${delay}`);
     });
 
     const revealObserver = new IntersectionObserver((entries) => {
