@@ -33,11 +33,13 @@
       --shadow-sm: 0 1px 3px rgba(59,31,110,.06); --shadow-md: 0 4px 20px rgba(59,31,110,.08); --shadow-lg: 0 8px 40px rgba(59,31,110,.12);
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1); --nav-h: 72px;
     }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    html { -webkit-font-smoothing: antialiased; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--gray-800); background: var(--off-white); line-height: 1.6; font-size: 16px; }
 
     /* ─── Nav ─── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,254,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,254,.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    @media (max-width: 768px) { nav { background: rgba(250,250,254,.98); backdrop-filter: none; -webkit-backdrop-filter: none; } }
     nav.scrolled { border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
     .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { text-decoration: none; border: none; outline: none; display: flex; align-items: center; }
