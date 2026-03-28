@@ -3,1181 +3,296 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Placibly — Top Latin American Talent for US Companies</title>
-  <meta name="description" content="Placibly places vetted, English-fluent Latin American professionals into US companies. Save 40–60% on salaries. Same time zone. Full-service hiring.">
+  <title>Jobs — Placibly | Remote Roles for LATAM Professionals</title>
+  <meta name="description" content="Browse open remote positions at US companies placed by Placibly. USD compensation, same time zone, full-service hiring process.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --purple-deep: #3B1F6E;
-      --purple: #5C2D91;
-      --purple-light: #7B3FA0;
-      --magenta: #D42F8A;
-      --magenta-hover: #BF2A7C;
-      --pink-light: #F5E6F0;
-      --pink-50: #FBF4F9;
-      --off-white: #FAFAFE;
-      --white: #ffffff;
-      --gray-50: #F5F5FA;
-      --gray-100: #EAEAF0;
-      --gray-200: #D5D5DE;
-      --gray-300: #B8B8C4;
-      --gray-400: #8E8E9D;
-      --gray-600: #52525E;
-      --gray-800: #27272F;
-      --radius: 10px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --shadow-sm: 0 1px 3px rgba(59, 31, 110, 0.06);
-      --shadow-md: 0 4px 20px rgba(59, 31, 110, 0.08);
-      --shadow-lg: 0 8px 40px rgba(59, 31, 110, 0.12);
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --purple-deep: #3B1F6E; --purple: #5C2D91; --purple-light: #7B3FA0;
+      --magenta: #D42F8A; --magenta-hover: #BF2A7C;
+      --pink-light: #F5E6F0; --pink-50: #FBF4F9;
+      --off-white: #FAFAFE; --white: #ffffff;
+      --gray-50: #F5F5FA; --gray-100: #EAEAF0; --gray-200: #D5D5DE;
+      --gray-300: #B8B8C4; --gray-400: #8E8E9D; --gray-600: #52525E; --gray-800: #27272F;
+      --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(59,31,110,.06); --shadow-md: 0 4px 20px rgba(59,31,110,.08); --shadow-lg: 0 8px 40px rgba(59,31,110,.12);
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1); --nav-h: 72px;
     }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; color: var(--gray-800); background: var(--off-white); line-height: 1.6; font-size: 16px; }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    /* ─── Nav ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,254,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--transition), box-shadow var(--transition); }
+    nav.scrolled { border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { text-decoration: none; border: none; outline: none; display: flex; align-items: center; }
+    .nav-logo-text { font-size: 24px; font-weight: 800; letter-spacing: -.5px; background: linear-gradient(90deg,#3B1F6E 0%,#8B2D8B 45%,#D42F8A 70%,#E8234A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-link-jobs { font-size: 14px !important; font-weight: 600 !important; color: var(--purple-deep) !important; border: 1.5px solid var(--purple-deep); padding: 9px 20px; border-radius: 8px; transition: background var(--transition), color var(--transition) !important; }
+    .nav-link-jobs:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
+    .nav-cta { font-size: 14px !important; font-weight: 600 !important; color: var(--white) !important; background: var(--magenta); padding: 10px 22px; border-radius: 8px; transition: background var(--transition), transform var(--transition) !important; }
+    .nav-cta:hover { background: var(--magenta-hover) !important; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--purple-deep); margin: 5px 0; border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--white); border-top: 1px solid var(--gray-100); padding: 16px 20px 24px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; margin-bottom: 16px; }
+    .mobile-menu ul a { display: block; padding: 11px 0; font-size: 16px; font-weight: 500; color: var(--gray-800); text-decoration: none; border-bottom: 1px solid var(--gray-100); }
+    .mobile-menu .btn-primary { width: 100%; justify-content: center; }
+
+    /* ─── Shared ─── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--magenta); color: var(--white); font-family: inherit; font-size: 15px; font-weight: 600; padding: 14px 28px; border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .btn-primary:hover { background: var(--magenta-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,47,138,.28); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--purple-deep); font-family: inherit; font-size: 15px; font-weight: 600; padding: 13px 26px; border: 2px solid var(--gray-200); border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: border-color var(--transition), color var(--transition), transform var(--transition); }
+    .btn-secondary:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-1px); }
+    .btn-outline-purple { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--purple); font-family: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border: 1.5px solid var(--purple-light); border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: background var(--transition); }
+    .btn-outline-purple:hover { background: var(--pink-50); }
+    .badge { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+    .badge-admin     { background: #E8F0FE; color: #1B4FD8; }
+    .badge-sales     { background: #E6F4EA; color: #137333; }
+    .badge-marketing { background: #FEF3E2; color: #B45309; }
+    .badge-finance   { background: #FEF9C3; color: #854D0E; }
+    .badge-design    { background: #FCE7F3; color: #9D174D; }
+    .badge-seniority { background: var(--gray-100); color: var(--gray-600); }
+    .badge-industry  { background: var(--gray-50); color: var(--gray-600); font-weight: 500; }
+
+    /* ─── Hero ─── */
+    .hero { padding: 140px 0 64px; background: var(--white); position: relative; overflow: hidden; }
+    .hero::before { content:''; position:absolute; top:-200px; right:-150px; width:600px; height:600px; background:radial-gradient(circle,rgba(212,47,138,.06) 0%,transparent 65%); pointer-events:none; }
+    .hero::after  { content:''; position:absolute; bottom:-100px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(92,45,145,.05) 0%,transparent 65%); pointer-events:none; }
+    .hero .container { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--pink-50); border:1px solid rgba(212,47,138,.15); border-radius:100px; padding:8px 18px; font-size:13px; font-weight:600; color:var(--magenta); margin-bottom:28px; }
+    .hero h1 { font-size: clamp(34px,5vw,54px); font-weight:800; line-height:1.1; letter-spacing:-1.5px; color:var(--purple-deep); margin-bottom:22px; }
+    .hero h1 .highlight { color: var(--magenta); }
+    .hero-desc { font-size: clamp(16px,1.8vw,18px); color:var(--gray-600); line-height:1.75; max-width:560px; margin-bottom:40px; }
+    .hero-buttons { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+
+    /* ─── Main Section ─── */
+    #jobs-section { padding: 48px 0 96px; }
+
+    /* ─── Tab Toggle ─── */
+    .tab-toggle-wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
     }
-
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--gray-800);
-      background: var(--off-white);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(250, 250, 254, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-
-    nav.scrolled {
-      border-bottom-color: var(--gray-100);
+    .tab-toggle {
+      display: inline-flex; align-items: center;
+      background: var(--white); border: 1.5px solid var(--gray-100);
+      border-radius: 100px; padding: 5px; gap: 4px;
       box-shadow: var(--shadow-sm);
     }
+    .tab-btn {
+      font-family: inherit; font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 100px; border: none;
+      cursor: pointer; transition: all var(--transition);
+      color: var(--gray-600); background: transparent;
+      display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    }
+    .tab-btn .tab-count {
+      font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 100px;
+      background: var(--gray-100); color: var(--gray-600); transition: all var(--transition);
+    }
+    .tab-btn.active {
+      background: var(--purple-deep); color: var(--white);
+      box-shadow: 0 4px 12px rgba(59,31,110,.25);
+    }
+    .tab-btn.active .tab-count { background: rgba(255,255,255,.2); color: var(--white); }
 
-    .nav-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .tab-description {
+      font-size: 14px; color: var(--gray-400); max-width: 480px;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    /* ─── Layout ─── */
+    .jobs-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: flex-start; }
 
-    .nav-logo img {
-      height: 38px;
-      width: auto;
-    }
+    /* ─── Sidebar ─── */
+    .sidebar { position: sticky; top: calc(var(--nav-h) + 20px); max-height: calc(100vh - var(--nav-h) - 40px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gray-200) transparent; }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
 
-    .nav-logo-text {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg, #3B1F6E 0%, #8B2D8B 45%, #D42F8A 70%, #E8234A 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .sidebar-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); overflow: hidden; }
+    .sidebar-header { padding: 16px 20px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
+    .sidebar-header-title { font-size: 13px; font-weight: 700; color: var(--purple-deep); text-transform: uppercase; letter-spacing: .8px; }
+    .sidebar-clear { font-size: 12px; font-weight: 600; color: var(--magenta); background: none; border: none; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: background var(--transition); display: none; }
+    .sidebar-clear.visible { display: block; }
+    .sidebar-clear:hover { background: var(--pink-50); }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
+    .filter-section { border-bottom: 1px solid var(--gray-100); }
+    .filter-section:last-child { border-bottom: none; }
+    .filter-section-header { display:flex; align-items:center; justify-content:space-between; padding:13px 20px; cursor:pointer; user-select:none; transition:background var(--transition); }
+    .filter-section-header:hover { background: var(--gray-50); }
+    .filter-section-title { font-size:13px; font-weight:700; color:var(--gray-800); display:flex; align-items:center; gap:8px; }
+    .filter-active-dot { width:7px; height:7px; border-radius:50%; background:var(--magenta); display:none; }
+    .filter-active-dot.visible { display:block; }
+    .filter-section-chevron { color:var(--gray-300); transition:transform var(--transition); flex-shrink:0; }
+    .filter-section-header.collapsed .filter-section-chevron { transform:rotate(-90deg); }
+    .filter-section-body { overflow:hidden; transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .25s ease; }
+    .filter-section-body.collapsed { max-height:0 !important; opacity:0; }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    /* Company rows */
+    .company-list { padding: 6px 0 10px; }
+    .company-row { display:flex; align-items:center; gap:10px; padding:8px 20px; cursor:pointer; transition:background var(--transition); position:relative; }
+    .company-row:hover { background: var(--gray-50); }
+    .company-row input[type="radio"] { position:absolute; opacity:0; width:0; height:0; }
+    .company-radio-dot { width:16px; height:16px; border-radius:50%; border:2px solid var(--gray-300); flex-shrink:0; transition:border-color var(--transition), background var(--transition); display:flex; align-items:center; justify-content:center; }
+    .company-radio-dot::after { content:''; width:7px; height:7px; border-radius:50%; background:var(--white); opacity:0; transition:opacity var(--transition); }
+    .company-row input:checked ~ .company-radio-dot { border-color:var(--magenta); background:var(--magenta); }
+    .company-row input:checked ~ .company-radio-dot::after { opacity:1; }
+    .company-logo-thumb { width:28px; height:28px; border-radius:7px; border:1px solid var(--gray-100); background:var(--white); display:flex; align-items:center; justify-content:center; overflow:hidden; padding:3px; flex-shrink:0; }
+    .company-logo-thumb img { width:100%; height:100%; object-fit:contain; }
+    .company-logo-all { width:28px; height:28px; border-radius:7px; background:var(--gray-50); border:1px solid var(--gray-100); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+    .company-row-label { flex:1; font-size:13px; font-weight:500; color:var(--gray-800); line-height:1.3; }
+    .company-row-count { font-size:11px; color:var(--gray-400); font-weight:500; background:var(--gray-50); padding:2px 7px; border-radius:100px; }
+    .company-header-share-btn { display:inline-flex; align-items:center; gap:7px; font-family:inherit; font-size:13px; font-weight:600; color:var(--purple-deep); border:1.5px solid var(--purple-deep); background:var(--white); padding:7px 14px; border-radius:100px; cursor:pointer; transition:background var(--transition),color var(--transition); }
+    .company-header-share-btn:hover { background:var(--purple-deep); color:var(--white); }
+    .company-header-share-btn svg { width:14px; height:14px; pointer-events:none; }
+    .company-row input:checked ~ .company-row-label { color:var(--purple-deep); font-weight:700; }
 
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--gray-600);
-      text-decoration: none;
-      transition: color var(--transition);
-    }
+    /* Pill filters */
+    .pill-group { padding: 10px 14px 14px; display:flex; flex-wrap:wrap; gap:6px; }
+    .filter-pill { font-family:inherit; font-size:12px; font-weight:600; padding:6px 12px; border-radius:100px; border:1.5px solid var(--gray-200); background:var(--white); color:var(--gray-600); cursor:pointer; transition:all var(--transition); white-space:nowrap; }
+    .filter-pill:hover { border-color:var(--purple-light); color:var(--purple); }
+    .filter-pill.active { background:var(--purple-deep); border-color:var(--purple-deep); color:var(--white); }
 
-    .nav-links a:hover {
-      color: var(--purple);
-    }
+    /* Sidebar pool nudge card */
+    .sidebar-pool-nudge { margin-top: 12px; background: linear-gradient(135deg, var(--purple-deep) 0%, #7B2D8B 100%); border-radius: var(--radius-xl); padding: 20px 18px; }
+    .sidebar-pool-nudge-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); margin-bottom: 8px; }
+    .sidebar-pool-nudge h4 { font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; margin-bottom: 8px; }
+    .sidebar-pool-nudge p { font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 14px; }
+    .sidebar-pool-nudge button { width: 100%; font-family: inherit; font-size: 12px; font-weight: 700; padding: 10px; border: none; border-radius: 8px; background: var(--magenta); color: var(--white); cursor: pointer; transition: background var(--transition); }
+    .sidebar-pool-nudge button:hover { background: var(--magenta-hover); }
 
-    .nav-links a.nav-active {
-      color: var(--purple);
-      font-weight: 700;
-    }
-
-    .nav-link-jobs {
-      font-size: 14px !important;
-      font-weight: 600 !important;
-      color: var(--purple-deep) !important;
-      border: 1.5px solid var(--purple-deep);
-      padding: 9px 20px;
-      border-radius: 8px;
-      transition: background var(--transition), color var(--transition) !important;
-    }
-
-    .nav-link-jobs:hover {
-      background: var(--purple-deep) !important;
-      color: var(--white) !important;
-    }
-
-    .nav-cta {
-      font-size: 14px !important;
-      font-weight: 600 !important;
-      color: var(--white) !important;
-      background: var(--magenta);
-      padding: 10px 24px;
-      border-radius: 8px;
-      transition: background var(--transition), transform var(--transition) !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--magenta-hover) !important;
-      transform: translateY(-1px);
-    }
-
-    /* ── Two-sided section ── */
-    .two-sided {
-      padding: 80px 0;
-      background: var(--white);
-    }
-
-    .two-sided-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .two-sided-card {
-      border-radius: var(--radius-xl);
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .two-sided-card.candidates {
+    /* Mobile pool nudge (only shown on mobile, replaces sidebar nudge) */
+    .mobile-pool-nudge { display: none; margin-top: 24px; }
+    .mobile-pool-nudge-inner {
       background: linear-gradient(135deg, var(--purple-deep) 0%, #7B2D8B 100%);
-      color: var(--white);
-    }
-
-    .two-sided-card.companies {
-      background: var(--off-white);
-      border: 1.5px solid var(--gray-100);
-      color: var(--gray-800);
-    }
-
-    .two-sided-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    .two-sided-card.candidates .two-sided-label { color: var(--white); }
-    .two-sided-card.companies .two-sided-label { color: var(--magenta); opacity: 1; }
-
-    .two-sided-card h3 {
-      font-size: 28px;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-    }
-
-    .two-sided-card p {
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: 0.85;
-      max-width: 380px;
-    }
-
-    .two-sided-card.companies p { opacity: 1; color: var(--gray-600); }
-
-    .two-sided-perks {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 8px 0;
-    }
-
-    .two-sided-perks li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .two-sided-card.candidates .two-sided-perks li { color: rgba(255,255,255,0.9); }
-    .two-sided-card.companies .two-sided-perks li { color: var(--gray-700, #3d3d4a); }
-
-    .perk-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 11px;
-    }
-
-    .two-sided-card.candidates .perk-dot {
-      background: rgba(255,255,255,0.2);
-      color: white;
-    }
-
-    .two-sided-card.companies .perk-dot {
-      background: var(--pink-light);
-      color: var(--magenta);
-    }
-
-    .two-sided-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: transform var(--transition), opacity var(--transition);
-      align-self: flex-start;
-      margin-top: 8px;
-    }
-
-    .two-sided-btn:hover { transform: translateY(-2px); opacity: 0.92; }
-
-    .two-sided-card.candidates .two-sided-btn {
-      background: var(--white);
-      color: var(--purple-deep);
-    }
-
-    .two-sided-card.companies .two-sided-btn {
-      background: var(--magenta);
-      color: var(--white);
-    }
-
-    @media (max-width: 768px) {
-      .two-sided-grid { grid-template-columns: 1fr; }
-      .two-sided-card { padding: 36px 28px; }
-      .two-sided-card h3 { font-size: 24px; }
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--purple-deep);
-      margin: 5px 0;
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* ── Shared ── */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-label {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--magenta);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 4vw, 44px);
-      font-weight: 800;
-      color: var(--purple-deep);
-      line-height: 1.15;
-      letter-spacing: -0.8px;
-      margin-bottom: 18px;
-    }
-
-    .section-subtitle {
-      font-size: 17px;
-      color: var(--gray-600);
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--magenta);
-      color: var(--white);
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 16px 32px;
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-
-    .btn-primary:hover {
-      background: var(--magenta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(212, 47, 138, 0.3);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--purple-deep);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border: 2px solid var(--gray-200);
-      border-radius: var(--radius);
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color var(--transition), color var(--transition), transform var(--transition);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--purple);
-      color: var(--purple);
-      transform: translateY(-1px);
-    }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 150px 0 80px;
-      position: relative;
-      overflow: hidden;
-      background: var(--white);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -300px;
-      right: -200px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(212, 47, 138, 0.05) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -150px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(92, 45, 145, 0.04) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-layout {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero-content {
-      flex: 1;
-      max-width: 640px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--pink-50);
-      border: 1px solid rgba(212, 47, 138, 0.15);
-      border-radius: 100px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--magenta);
-      margin-bottom: 28px;
-    }
-
-    .hero-badge svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 5.5vw, 58px);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
-      color: var(--purple-deep);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 .highlight {
-      color: var(--magenta);
-    }
-
-    .hero-desc {
-      font-size: clamp(17px, 1.8vw, 19px);
-      color: var(--gray-600);
-      line-height: 1.7;
-      max-width: 500px;
-      margin-bottom: 40px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 48px;
-    }
-
-    .hero-visual {
-      flex: 0 0 440px;
-      position: relative;
-    }
-
-    .hero-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 20px;
-      position: relative;
-    }
-
-    .hero-stat-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius-lg);
-      padding: 32px 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-      animation: float 6s ease-in-out infinite;
-      transition: transform var(--transition);
-    }
-
-    .hero-stat-card:hover {
-      transform: translateY(calc(var(--float-base, 0px) - 4px)) scale(1.03);
-    }
-
-    .hero-stat-card .stat-number {
-      font-size: 40px;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #3B1F6E 0%, #8B2D8B 50%, #D42F8A 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-stat-card .stat-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-400);
-      line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .hero-stat-main {
-      padding: 32px 24px;
-    }
-
-    .hero-stat-card:nth-child(1) { animation: float-a 5.5s ease-in-out infinite; }
-    .hero-stat-card:nth-child(2) { animation: float-b 6.5s ease-in-out 1s infinite; }
-    .hero-stat-card:nth-child(3) { animation: float-c 6s ease-in-out 2s infinite; }
-    .hero-stat-card:nth-child(4) { animation: float-d 7s ease-in-out 0.5s infinite; }
-
-    @keyframes float-a {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes float-b {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes float-c {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-
-    @keyframes float-d {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    /* Gradient glow cloud behind the stats grid */
-    .hero-stats-grid::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 110%;
-      height: 120%;
-      background: radial-gradient(ellipse at 30% 40%, rgba(59, 31, 110, 0.25) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 30%, rgba(139, 45, 139, 0.2) 0%, transparent 45%),
-                  radial-gradient(ellipse at 50% 70%, rgba(212, 47, 138, 0.2) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 70%, rgba(232, 35, 74, 0.15) 0%, transparent 45%);
-      filter: blur(40px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ── Social Proof / Trust Bar ── */
-    .trust-bar {
-      padding: 48px 0;
-      background: var(--white);
-      border-top: 1px solid var(--gray-100);
-    }
-
-    .trust-bar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .trust-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--pink-50);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .trust-icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--purple);
-    }
-
-    .trust-text {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--purple-deep);
-      line-height: 1.3;
-    }
-
-    .trust-text small {
-      display: block;
-      font-weight: 400;
-      font-size: 13px;
-      color: var(--gray-400);
-      margin-top: 2px;
-    }
-
-    /* ── Stats Section ── */
-    .stats {
-      padding: 80px 0;
-      background: var(--purple-deep);
-      color: var(--white);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      text-align: center;
-    }
-
-    .stat-block .stat-num {
-      font-size: clamp(36px, 5vw, 52px);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 8px;
-      letter-spacing: -1px;
-    }
-
-    .stat-block .stat-desc {
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 500;
-    }
-
-    /* ── Why Placibly ── */
-    .why {
-      background: var(--off-white);
-    }
-
-    .why-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .why-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .why-card {
-      padding: 40px 32px;
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--gray-100);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .why-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(212, 47, 138, 0.2);
-    }
-
-    .why-card-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--pink-50);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 22px;
-    }
-
-    .why-card-icon svg {
-      width: 28px;
-      height: 28px;
-      color: var(--magenta);
-    }
-
-    .why-card h3 {
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--purple-deep);
-      margin-bottom: 10px;
-    }
-
-    .why-card p {
-      font-size: 15px;
-      color: var(--gray-600);
-      line-height: 1.65;
-    }
-
-    /* ── Industries ── */
-    .industries {
-      background: var(--white);
-    }
-
-    .industries-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .industries-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .industries-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-    }
-
-    .industry-card {
-      background: var(--off-white);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius-lg);
-      padding: 36px 20px;
-      text-align: center;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .industry-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(92, 45, 145, 0.2);
-    }
-
-    .industry-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--white);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-      border: 1px solid var(--gray-100);
-    }
-
-    .industry-icon svg {
-      width: 28px;
-      height: 28px;
-      color: var(--purple);
-    }
-
-    .industry-card h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--purple-deep);
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-
-    .industry-card p {
-      font-size: 13px;
-      color: var(--gray-400);
-      line-height: 1.5;
-    }
-
-    /* ── Roles ── */
-    .roles {
-      background: var(--off-white);
-    }
-
-    .roles-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .roles-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .roles-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .role-column {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--gray-100);
-      padding: 36px 32px;
-      transition: box-shadow var(--transition);
-    }
-
-    .role-column:hover {
-      box-shadow: var(--shadow-md);
-    }
-
-    .role-column-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--gray-100);
-    }
-
-    .role-column-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--pink-50);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .role-column-icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--magenta);
-    }
-
-    .role-column h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--purple-deep);
-    }
-
-    .role-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .role-list li {
-      font-size: 15px;
-      color: var(--gray-600);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-100);
-    }
-
-    .role-list li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .role-list li::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      background: var(--magenta);
-      border-radius: 50%;
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-
-    /* ── Process ── */
-    .process {
-      background: var(--white);
-    }
-
-    .process-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .process-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      position: relative;
-    }
-
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: calc(12.5% + 16px);
-      right: calc(12.5% + 16px);
-      height: 2px;
-      background: var(--gray-200);
-    }
-
-    .step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step-number {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--off-white);
-      border: 2px solid var(--gray-200);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--purple-deep);
-      margin: 0 auto 22px;
-      position: relative;
-      z-index: 1;
-      transition: all var(--transition);
-    }
-
-    .step:hover .step-number {
-      border-color: var(--magenta);
-      background: var(--magenta);
-      color: var(--white);
-      transform: scale(1.08);
-    }
-
-    .step h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--purple-deep);
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      font-size: 14px;
-      color: var(--gray-600);
-      line-height: 1.6;
-      max-width: 230px;
-      margin: 0 auto;
-    }
-
-    /* ── Mid CTA ── */
-    .mid-cta {
-      padding: 80px 0;
-      background: var(--pink-50);
-    }
-
-    .mid-cta-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-
-    .mid-cta-text h2 {
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 800;
-      color: var(--purple-deep);
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
-    }
-
-    .mid-cta-text p {
-      font-size: 16px;
-      color: var(--gray-600);
-      max-width: 460px;
-    }
-
-    /* ── Guarantee ── */
-    .guarantee {
-      background: var(--purple-deep);
-      color: var(--white);
-    }
-
-    .guarantee-inner {
-      display: flex;
-      align-items: center;
-      gap: 56px;
-    }
-
-    .guarantee-badge {
-      flex-shrink: 0;
-      width: 120px;
-      height: 120px;
-      background: rgba(212, 47, 138, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .guarantee-badge svg {
-      width: 56px;
-      height: 56px;
-      color: var(--magenta);
-    }
-
-    .guarantee-text h2 {
-      font-size: clamp(28px, 3.5vw, 38px);
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    .guarantee-text p {
-      font-size: 17px;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-
-    .guarantee-text p + p {
-      margin-top: 12px;
-    }
-
-    /* ── FAQ ── */
-    .faq {
-      background: var(--off-white);
-    }
-
-    .faq-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .faq-header .section-subtitle {
-      margin: 0 auto;
-    }
-
-    .faq-list {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius);
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .faq-item:hover {
-      border-color: var(--gray-200);
-    }
-
-    .faq-item.active {
-      border-color: rgba(92, 45, 145, 0.2);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--purple-deep);
-      text-align: left;
-      transition: color var(--transition);
-    }
-
-    .faq-question:hover {
-      color: var(--purple);
-    }
-
-    .faq-question svg {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      color: var(--gray-400);
-      transition: transform var(--transition), color var(--transition);
-    }
-
-    .faq-item.active .faq-question svg {
-      transform: rotate(45deg);
-      color: var(--magenta);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .faq-answer-inner {
-      padding: 0 28px 22px;
-      font-size: 15px;
-      color: var(--gray-600);
-      line-height: 1.7;
-    }
-
-    /* ── Final CTA ── */
-    .final-cta {
-      background: var(--white);
-      text-align: center;
-      padding: 110px 0;
-    }
-
-    .final-cta-inner {
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    .final-cta h2 {
-      font-size: clamp(32px, 4.5vw, 48px);
-      font-weight: 800;
-      color: var(--purple-deep);
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 18px;
-    }
-
-    .final-cta h2 .highlight {
-      color: var(--magenta);
-    }
-
-    .final-cta p {
-      font-size: 17px;
-      color: var(--gray-600);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-
-    .final-cta .btn-primary {
-      padding: 18px 44px;
-      font-size: 17px;
-    }
-
-    .final-cta small {
-      display: block;
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--gray-400);
-    }
-
-    /* ── Footer ── */
+      border-radius: var(--radius-xl); padding: 24px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .mobile-pool-nudge-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+    .mobile-pool-nudge-text h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .mobile-pool-nudge-text p { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.5; }
+    .mobile-pool-nudge button { font-family: inherit; font-size: 13px; font-weight: 700; padding: 12px 18px; border: none; border-radius: var(--radius); background: var(--magenta); color: var(--white); cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: background var(--transition); }
+    .mobile-pool-nudge button:hover { background: var(--magenta-hover); }
+
+    /* Grid pitch card */
+    .pitch-card { grid-column: 1 / -1; background: linear-gradient(135deg, #3B1F6E 0%, #6B2D91 45%, #D42F8A 100%); border-radius: var(--radius-xl); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; position: relative; overflow: hidden; }
+    .pitch-card::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); pointer-events:none; }
+    .pitch-card::after  { content:''; position:absolute; bottom:-40px; left:30%; width:180px; height:180px; background:radial-gradient(circle, rgba(212,47,138,.2) 0%, transparent 70%); pointer-events:none; }
+    .pitch-card-content { position: relative; z-index: 1; }
+    .pitch-card-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.55); margin-bottom: 10px; }
+    .pitch-card h3 { font-size: clamp(18px, 2vw, 22px); font-weight: 800; color: var(--white); line-height: 1.3; letter-spacing: -.3px; margin-bottom: 10px; }
+    .pitch-card p { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.65; max-width: 480px; }
+    .pitch-card-action { position: relative; z-index: 1; flex-shrink: 0; text-align: center; }
+    .pitch-card-action button { font-family: inherit; font-size: 14px; font-weight: 700; padding: 14px 28px; border: none; border-radius: var(--radius); background: var(--white); color: var(--purple-deep); cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); white-space: nowrap; }
+    .pitch-card-action button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .pitch-card-action .pitch-note { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 8px; }
+
+    /* Talent Pool full-width grid */
+    .talent-cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .talent-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); padding: 28px 22px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+    .talent-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .talent-icon { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; background: linear-gradient(135deg, var(--pink-50), var(--pink-light)); flex-shrink: 0; }
+    .talent-card h3 { font-size: 15px; font-weight: 700; color: var(--purple-deep); margin-bottom: 16px; line-height: 1.35; }
+    .talent-roles { list-style: none; margin-bottom: 22px; text-align: left; width: 100%; flex: 1; }
+    .talent-roles li { font-size: 13px; color: var(--gray-600); padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .talent-roles li::before { content: '·'; color: var(--magenta); font-weight: 800; font-size: 16px; flex-shrink: 0; line-height: 1.2; }
+    .talent-card .btn-primary { width: 100%; justify-content: center; font-size: 13px; padding: 12px 16px; margin-top: auto; border-radius: 100px; }
+
+    /* Results bar */
+    .results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+    .results-count { font-size:14px; color:var(--gray-600); }
+    .results-count strong { color:var(--purple-deep); font-weight:700; }
+    .active-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .active-chip { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--purple); background:var(--pink-50); border:1px solid rgba(212,47,138,.15); padding:5px 10px 5px 12px; border-radius:100px; }
+    .active-chip button { background:none; border:none; cursor:pointer; color:var(--purple-light); font-size:14px; line-height:1; padding:0; display:flex; align-items:center; transition:color var(--transition); }
+    .active-chip button:hover { color:var(--magenta); }
+
+    /* Mobile filter */
+    .mobile-filter-bar { display:none; align-items:center; justify-content:space-between; margin-bottom:20px; }
+    .mobile-filter-btn { display:flex; align-items:center; gap:8px; font-family:inherit; font-size:14px; font-weight:600; color:var(--purple-deep); background:var(--white); border:1.5px solid var(--gray-200); border-radius:var(--radius); padding:10px 16px; cursor:pointer; }
+    .mobile-filter-badge { background:var(--magenta); color:var(--white); font-size:11px; font-weight:700; padding:2px 7px; border-radius:100px; }
+
+    /* ─── Job Cards ─── */
+    .jobs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .job-card { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-lg); padding:22px; cursor:pointer; position:relative; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); display:flex; flex-direction:column; }
+    .job-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#3B1F6E,#D42F8A); opacity:0; transition:opacity var(--transition); }
+    .job-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:transparent; }
+    .job-card:hover::before { opacity:1; }
+    .job-card-company { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .job-card-logo { width:40px; height:40px; border-radius:9px; border:1px solid var(--gray-100); background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; padding:5px; }
+    .job-card-logo img { width:100%; height:100%; object-fit:contain; }
+    .job-card-company-name { font-size:12px; font-weight:600; color:var(--gray-600); }
+    .job-card-industry { font-size:11px; color:var(--gray-400); }
+    .job-card-title { font-size:17px; font-weight:700; color:var(--purple-deep); margin-bottom:12px; line-height:1.3; flex:1; }
+    .job-card-badges { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+    .job-card-salary { font-size:15px; font-weight:700; color:var(--purple-deep); margin-bottom:5px; }
+    .job-card-location { font-size:12px; color:var(--gray-400); display:flex; align-items:center; gap:4px; margin-bottom:18px; }
+    .job-card-cta button { width:100%; justify-content:center; font-size:13px; padding:11px 16px; }
+    .share-btn { position:absolute; top:12px; right:12px; width:36px; height:36px; border-radius:10px; border:1.5px solid var(--gray-100); background:var(--white); color:var(--gray-400); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--transition),color var(--transition),border-color var(--transition),box-shadow var(--transition); z-index:2; flex-shrink:0; box-shadow:var(--shadow-sm); }
+    .share-btn:hover { background:var(--pink-50); color:var(--magenta); border-color:rgba(212,47,138,.2); box-shadow:0 2px 8px rgba(212,47,138,.12); }
+    .share-btn svg { width:17px; height:17px; pointer-events:none; }
+
+    /* ─── Share Modal ─── */
+    .share-overlay { position:fixed; inset:0; background:rgba(20,10,40,.55); backdrop-filter:blur(6px); z-index:600; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity var(--transition); }
+    .share-overlay.open { opacity:1; pointer-events:all; }
+    .share-box { background:var(--white); border-radius:var(--radius-xl); padding:36px 32px 32px; max-width:480px; width:100%; box-shadow:var(--shadow-lg); position:relative; transform:translateY(16px); transition:transform var(--transition); }
+    .share-overlay.open .share-box { transform:translateY(0); }
+    .share-box-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border:none; background:var(--gray-50); border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-400); transition:background var(--transition),color var(--transition); }
+    .share-box-close:hover { background:var(--gray-100); color:var(--gray-800); }
+    .share-box-icon { width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--pink-50),var(--pink-light)); display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-size:24px; }
+    .share-box h3 { font-size:20px; font-weight:800; color:var(--purple-deep); margin-bottom:8px; }
+    .share-box-subtitle { font-size:14px; color:var(--gray-600); line-height:1.6; margin-bottom:20px; }
+    .share-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .share-tag { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; padding:7px 14px; border-radius:100px; background:var(--gray-50); color:var(--gray-600); border:1px solid var(--gray-100); }
+    .share-url-row { display:flex; gap:8px; align-items:center; }
+    .share-url-input { flex:1; padding:12px 14px; border:1.5px solid var(--gray-200); border-radius:var(--radius); font-family:inherit; font-size:13px; color:var(--gray-600); background:var(--gray-50); outline:none; cursor:text; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .share-copy-btn { flex-shrink:0; width:44px; height:44px; border:1.5px solid var(--gray-200); border-radius:var(--radius); background:var(--white); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); transition:background var(--transition),color var(--transition),border-color var(--transition); }
+    .share-copy-btn:hover { background:var(--purple-deep); color:var(--white); border-color:var(--purple-deep); }
+    .share-copy-btn.copied { background:var(--purple-deep); color:var(--white); border-color:var(--purple-deep); }
+    .share-copy-btn svg { width:18px; height:18px; pointer-events:none; }
+    .share-copied-msg { font-size:12px; font-weight:600; color:var(--purple); margin-top:10px; opacity:0; transition:opacity .2s; text-align:center; }
+    .share-copied-msg.show { opacity:1; }
+    .no-results { grid-column:1/-1; text-align:center; padding:80px 20px; }
+    .no-results h3 { font-size:20px; font-weight:700; color:var(--purple-deep); margin-bottom:10px; }
+    .no-results p { color:var(--gray-600); font-size:15px; }
+
+    /* ─── Talent Pool Cards ─── */
+    .pool-content { display: none; }
+    .pool-content.active { display: block; }
+    .jobs-content { display: block; }
+    .jobs-content.hidden { display: none; }
+
+    .pool-detail { background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-xl); overflow: hidden; }
+    .pool-detail-header { padding: 32px 36px 24px; border-bottom: 1px solid var(--gray-100); }
+    .pool-detail-icon { font-size: 36px; margin-bottom: 12px; }
+    .pool-detail-title { font-size: 24px; font-weight: 800; color: var(--purple-deep); margin-bottom: 8px; letter-spacing: -.4px; }
+    .pool-detail-desc { font-size: 15px; color: var(--gray-600); line-height: 1.7; max-width: 520px; }
+    .pool-detail-body { padding: 28px 36px 36px; }
+    .pool-roles-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-400); margin-bottom: 14px; }
+    .pool-roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 32px; }
+    .pool-role-pill { font-size: 13px; font-weight: 500; color: var(--gray-800); background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: var(--radius); padding: 8px 14px; }
+    .pool-apply-wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .pool-apply-note { font-size: 13px; color: var(--gray-400); }
+
+    /* ─── Why Placibly ─── */
+    #why-placibly { background: var(--gray-50); padding: 64px 0; border-top: 1px solid var(--gray-100); }
+    .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .why-item { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-lg); padding:36px 32px; box-shadow:var(--shadow-sm); transition:box-shadow var(--transition), transform var(--transition); }
+    .why-item:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+    .why-icon { width:44px; height:44px; border-radius:12px; margin-bottom:20px; background:var(--pink-50); border:1px solid rgba(212,47,138,.15); display:flex; align-items:center; justify-content:center; font-size:20px; }
+    .why-item h3 { font-size:18px; font-weight:700; color:var(--purple-deep); margin-bottom:10px; }
+    .why-item p { font-size:15px; color:var(--gray-600); line-height:1.7; }
+
+    /* ─── Footer ─── */
     footer {
       background: var(--purple-deep);
       color: rgba(255, 255, 255, 0.6);
@@ -1288,807 +403,902 @@
       height: 18px;
     }
 
-    /* ── Responsive ── */
-    /* ── Scroll to Top ── */
-    .scroll-top {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      box-shadow: var(--shadow-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 99;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(12px);
-      transition: opacity var(--transition), visibility var(--transition), transform var(--transition), background var(--transition), border-color var(--transition);
-    }
+    /* ─── Modals ─── */
+    .modal-overlay { position:fixed; inset:0; z-index:1000; background:rgba(27,10,60,.72); backdrop-filter:blur(4px); display:flex; align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto; opacity:0; pointer-events:none; transition:opacity .25s ease; }
+    .modal-overlay.open { opacity:1; pointer-events:all; }
+    .modal-container { background:var(--white); border-radius:var(--radius-xl); width:100%; max-width:960px; position:relative; box-shadow:0 24px 80px rgba(27,10,60,.25); transform:translateY(20px); transition:transform .3s cubic-bezier(.4,0,.2,1); }
+    .modal-overlay.open .modal-container { transform:translateY(0); }
+    .modal-close { position:absolute; top:18px; right:18px; z-index:10; width:34px; height:34px; border-radius:50%; border:none; background:var(--gray-100); color:var(--gray-600); font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background var(--transition); }
+    .modal-close:hover { background:var(--gray-200); }
+    .modal-job-header { padding:32px 40px 24px; border-bottom:1px solid var(--gray-100); display:flex; align-items:flex-start; gap:18px; }
+    .modal-job-logo { width:60px; height:60px; border-radius:14px; border:1px solid var(--gray-100); background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; padding:8px; }
+    .modal-job-logo img { width:100%; height:100%; object-fit:contain; }
+    .modal-job-company { font-size:13px; font-weight:600; color:var(--gray-600); margin-bottom:4px; }
+    .modal-job-title-el { font-size:clamp(20px,3vw,26px); font-weight:800; color:var(--purple-deep); letter-spacing:-.4px; }
+    .modal-job-body { display:grid; grid-template-columns:1fr 340px; }
+    .modal-job-left { padding:28px 36px; }
+    .modal-job-right { padding:28px; background:var(--off-white); border-radius:0 0 var(--radius-xl) 0; }
+    .modal-meta-row { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px; }
+    .modal-salary { font-size:19px; font-weight:800; margin-bottom:6px; background:linear-gradient(90deg,#3B1F6E,#D42F8A); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .modal-location { font-size:13px; color:var(--gray-400); margin-bottom:22px; display:flex; align-items:center; gap:5px; }
+    .modal-apply-btn { width:100%; justify-content:center; margin-bottom:28px; font-size:15px; padding:15px; }
+    .modal-section { margin-bottom:28px; }
+    .modal-section h3 { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--gray-400); margin-bottom:10px; }
+    .modal-section p { font-size:15px; color:var(--gray-600); line-height:1.75; }
+    .modal-section ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .modal-section ul li { font-size:15px; color:var(--gray-600); display:flex; align-items:flex-start; gap:10px; line-height:1.6; }
+    .modal-section ul li::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--magenta); flex-shrink:0; margin-top:8px; }
+    .sc { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-lg); padding:20px; margin-bottom:14px; }
+    .sc:last-child { margin-bottom:0; }
+    .sc-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--gray-400); margin-bottom:14px; }
+    .sc-logo { height:40px; display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+    .sc-logo img { max-height:36px; max-width:100%; object-fit:contain; }
+    .sc-company { font-size:15px; font-weight:700; color:var(--purple-deep); text-align:center; margin-bottom:6px; }
+    .sc-meta { display:flex; justify-content:center; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
+    .sc-hq { font-size:12px; color:var(--gray-400); text-align:center; margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:4px; }
+    .sc-desc { font-size:13px; color:var(--gray-600); line-height:1.65; margin-bottom:14px; }
+    .sc-links { display:flex; gap:8px; align-items:center; justify-content:center; flex-wrap:wrap; }
+    .icon-link { width:30px; height:30px; border-radius:8px; border:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; color:var(--gray-600); text-decoration:none; transition:border-color var(--transition), color var(--transition); }
+    .icon-link:hover { border-color:var(--purple-light); color:var(--purple); }
+    .sc p { font-size:13px; color:var(--gray-600); line-height:1.65; }
+    .culture-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+    .culture-tag { font-size:11px; font-weight:500; padding:3px 9px; border-radius:100px; background:var(--pink-50); color:var(--purple); border:1px solid rgba(212,47,138,.1); }
+    .modal-form-container { max-width:580px; }
+    .modal-form-header { padding:32px 36px 22px; border-bottom:1px solid var(--gray-100); }
+    .modal-form-header h2 { font-size:22px; font-weight:800; color:var(--purple-deep); }
+    .modal-form-header p { font-size:14px; color:var(--gray-600); margin-top:6px; }
+    .modal-form-body { padding:28px 36px 36px; }
+    .pool-cat-label-modal { font-size:12px; font-weight:700; color:var(--magenta); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
 
-    .scroll-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .scroll-top:hover {
-      background: var(--magenta);
-      border-color: var(--magenta);
-    }
-
-    .scroll-top svg {
-      width: 20px;
-      height: 20px;
-      color: var(--purple-deep);
-      transition: color var(--transition);
-    }
-
-    .scroll-top:hover svg {
-      color: var(--white);
-    }
-
+    /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-      .hero-layout {
-        flex-direction: column;
-        gap: 40px;
-      }
-
-      .hero-visual {
-        flex: none;
-        width: 100%;
-      }
-
-      .hero-content { max-width: 100%; }
-
-      .industries-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px 24px;
-      }
-
-      .guarantee-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 32px;
-      }
-
-      .guarantee-text p {
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .jobs-layout { grid-template-columns: 220px 1fr; gap: 24px; }
+      .talent-cards-grid { grid-template-columns: repeat(3, 1fr); }
+      .modal-job-body { grid-template-columns: 1fr; }
+      .modal-job-right { border-radius:0 0 var(--radius-xl) var(--radius-xl); border-top:1px solid var(--gray-100); }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-item { padding:28px 24px; }
     }
-
-    @media (max-width: 960px) {
-      .nav-links { display: none; }
-      .menu-toggle { display: block; }
-
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        padding: 24px 32px;
-        gap: 20px;
-        border-bottom: 1px solid var(--gray-100);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .roles-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .process-steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 48px 24px;
-      }
-
-      .process-steps::before {
-        display: none;
-      }
-
-      .mid-cta-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-columns {
-        gap: 40px;
-      }
+    @media (max-width: 768px) {
+      .nav-links { display:none; }
+      .menu-toggle { display:block; }
+      .container, .nav-inner { padding:0 20px; }
+      .hero { padding:110px 0 52px; }
+      .tab-toggle-wrap { flex-direction:column; align-items:flex-start; }
+      .jobs-layout { grid-template-columns: 1fr; }
+      .sidebar { display:none; }
+      .mobile-filter-bar { display:flex; }
+      .jobs-grid { grid-template-columns:1fr; }
+      .talent-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .mobile-pool-nudge { display: block; }
+      .mobile-pool-nudge-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .mobile-pool-nudge button { width: 100%; text-align: center; }
+      .footer-top { flex-direction:column; }
+      .footer-columns { flex-wrap:wrap; gap:32px; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+      .modal-job-header { padding:24px 20px 18px; }
+      .modal-job-left { padding:20px; }
+      .modal-job-right { padding:20px; }
+      .modal-form-header, .modal-form-body { padding-left:20px; padding-right:20px; }
+      .pool-detail-header { padding:24px 20px 18px; }
+      .pool-detail-body { padding:20px; }
     }
-
-    @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-      section { padding: 72px 0; }
-
-      .hero { padding: 130px 0 64px; }
-
-      .industries-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px 16px;
-      }
-
-      .process-steps {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-buttons .btn-primary,
-      .hero-buttons .btn-secondary {
-        justify-content: center;
-      }
-
-      .footer-top {
-        flex-direction: column;
-      }
-
-      .footer-columns {
-        flex-direction: column;
-        gap: 32px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-social {
-        justify-content: center;
-      }
-
-      .guarantee-badge {
-        width: 88px;
-        height: 88px;
-      }
-
-      .guarantee-badge svg {
-        width: 42px;
-        height: 42px;
-      }
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction:column; align-items:flex-start; }
+      .hero-buttons a { width:100%; justify-content:center; }
+      .tab-btn { font-size:13px; padding:9px 16px; }
+      .talent-cards-grid { grid-template-columns: 1fr; }
     }
+  @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-text">placibly</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#why">Why Placibly</a></li>
-        <li><a href="#roles">Roles</a></li>
-        <li><a href="#process">How It Works</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li class="nav-actions">
-          <a href="/jobs" class="nav-link-jobs">Apply for Jobs</a>
-          <a href="/hire" class="nav-cta">Start Hiring</a>
-        </li>
-      </ul>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- ── Nav ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="nav-logo-text">placibly</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#roles">Roles</a></li>
+      <li><a href="/#process">How It Works</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li class="nav-actions">
+        <a href="/jobs" class="nav-link-jobs">Apply for Jobs</a>
+        <a href="/hire" class="nav-cta">Start Hiring</a>
+      </li>
+    </ul>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#roles">Roles</a></li>
+      <li><a href="/#process">How It Works</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/jobs">Apply for Jobs</a></li>
+    </ul>
+    <a href="/hire" class="btn-primary">Start Hiring →</a>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-layout">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Hiring across 7+ LATAM countries
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Remote Talent · Latin America
+    </div>
+    <h1>Find Your Next <span class="highlight">Remote Role</span><br>with a US Company</h1>
+    <p class="hero-desc">Placibly connects top Latin American professionals with growing US businesses. Remote-first. USD compensation. Same time zone.</p>
+    <div class="hero-buttons">
+      <a href="#jobs-section" class="btn-primary" id="hero-cta-positions">See Open Positions →</a>
+      <a href="#jobs-section" class="btn-secondary" id="hero-cta-pool">Get Matched to Future Roles</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Main Section ── -->
+<section id="jobs-section">
+  <div class="container">
+
+    <!-- Tab Toggle -->
+    <div class="tab-toggle-wrap">
+      <div>
+        <div class="tab-toggle" role="tablist">
+          <button class="tab-btn active" id="tab-positions" role="tab" aria-selected="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Open Positions
+            <span class="tab-count" id="tab-count-positions">16</span>
+          </button>
+          <button class="tab-btn" id="tab-pool" role="tab" aria-selected="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Talent Pool
+          </button>
+        </div>
+      </div>
+      <p class="tab-description" id="tab-description">Active roles from our US clients. Placibly handles the full hiring process.</p>
+    </div>
+
+    <!-- ── OPEN POSITIONS VIEW ── -->
+    <div class="jobs-content" id="jobs-content">
+      <div class="jobs-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-card">
+            <div class="sidebar-header">
+              <span class="sidebar-header-title">Filters</span>
+              <button class="sidebar-clear" id="sidebar-clear-btn">Clear all</button>
+            </div>
+            <div class="filter-section" id="fs-company">
+              <div class="filter-section-header" role="button" tabindex="0" aria-expanded="true">
+                <span class="filter-section-title"><span class="filter-active-dot" id="dot-company"></span>Company</span>
+                <svg class="filter-section-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="filter-section-body" id="body-company">
+                <div class="company-list" id="company-list"></div>
+              </div>
+            </div>
+            <div class="filter-section" id="fs-category">
+              <div class="filter-section-header" role="button" tabindex="0" aria-expanded="true">
+                <span class="filter-section-title"><span class="filter-active-dot" id="dot-category"></span>Category</span>
+                <svg class="filter-section-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="filter-section-body" id="body-category">
+                <div class="pill-group" id="pill-category">
+                  <button class="filter-pill active" data-value="All">All</button>
+                  <button class="filter-pill" data-value="Administrative & Operations">Operations</button>
+                  <button class="filter-pill" data-value="Sales & Customer Success">Sales</button>
+                  <button class="filter-pill" data-value="Marketing & Content">Marketing</button>
+                  <button class="filter-pill" data-value="Design & Creative">Design</button>
+                </div>
+              </div>
+            </div>
+            <div class="filter-section" id="fs-seniority">
+              <div class="filter-section-header" role="button" tabindex="0" aria-expanded="true">
+                <span class="filter-section-title"><span class="filter-active-dot" id="dot-seniority"></span>Seniority</span>
+                <svg class="filter-section-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="filter-section-body" id="body-seniority">
+                <div class="pill-group" id="pill-seniority">
+                  <button class="filter-pill active" data-value="All">All</button>
+                  <button class="filter-pill" data-value="Entry">Entry</button>
+                  <button class="filter-pill" data-value="Mid">Mid</button>
+                  <button class="filter-pill" data-value="Senior">Senior</button>
+                </div>
+              </div>
+            </div>
+          </div><!-- end sidebar-card -->
+
+          <!-- Pool nudge -->
+          <div class="sidebar-pool-nudge" id="sidebar-pool-nudge">
+            <div class="sidebar-pool-nudge-label">Talent Pool</div>
+            <h4>Don't see your role?</h4>
+            <p>Apply once and we'll reach out the moment the right position opens.</p>
+            <button id="sidebar-nudge-btn">Apply to Talent Pool →</button>
           </div>
-          <h1>We Place Top Latin American Talent in <span class="highlight">US&nbsp;Companies.</span></h1>
-          <p class="hero-desc">Save 40–60% on salaries with vetted, English-fluent professionals who work in your time zone. We handle everything — you just pick your favorite candidate.</p>
-          <div class="hero-buttons">
-            <a href="/hire" class="btn-primary">
-              Meet Your Candidates for Free
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="#cta" class="btn-secondary">Let's Talk — No Commitment</a>
+        </aside>
+
+        <!-- Main jobs -->
+        <div>
+          <div class="mobile-filter-bar">
+            <button class="mobile-filter-btn" id="mobile-filter-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+              Filters
+              <span class="mobile-filter-badge" id="mobile-filter-badge" style="display:none"></span>
+            </button>
+            <span class="results-count"><strong id="result-count-mobile">0</strong> positions</span>
+          </div>
+          <div class="active-chips" id="active-chips"></div>
+          <div class="results-header">
+            <span class="results-count"><strong id="result-count-num">0</strong> open positions</span>
+            <button class="company-header-share-btn" id="company-header-share-btn" style="display:none;" title="Share this company's jobs">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Share
+            </button>
+          </div>
+          <div class="jobs-grid" id="jobs-grid"></div>
+
+          <!-- Mobile-only pool nudge (sidebar is hidden on mobile) -->
+          <div class="mobile-pool-nudge" id="mobile-pool-nudge">
+            <div class="mobile-pool-nudge-inner">
+              <div class="mobile-pool-nudge-text">
+                <div class="mobile-pool-nudge-label">Talent Pool</div>
+                <h4>Don't see your role?</h4>
+                <p>Apply once — we'll reach out when the right position opens up.</p>
+              </div>
+              <button id="mobile-nudge-btn">Get Matched →</button>
+            </div>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-stats-grid">
-            <div class="hero-stat-card hero-stat-main">
-              <div class="stat-number">60%</div>
-              <div class="stat-label">Salary Savings</div>
-            </div>
-            <div class="hero-stat-card">
-              <div class="stat-number">Same TZ</div>
-              <div class="stat-label">US Time Zones</div>
-            </div>
-            <div class="hero-stat-card">
-              <div class="stat-number">2 Month</div>
-              <div class="stat-label">Free Replacement</div>
-            </div>
-            <div class="hero-stat-card">
-              <div class="stat-number">90d</div>
-              <div class="stat-label">Ongoing Support</div>
-            </div>
-          </div>
+
+      </div>
+    </div><!-- end jobs-content -->
+
+    <!-- ── TALENT POOL VIEW ── -->
+    <div class="pool-content" id="pool-content">
+      <div class="talent-cards-grid" id="talent-cards-grid">
+        <!-- populated by JS -->
+      </div>
+    </div><!-- end pool-content -->
+
+  </div>
+</section>
+
+<!-- ── Why Placibly ── -->
+<section id="why-placibly">
+  <div class="container">
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">💵</div>
+      <h3>USD Compensation</h3>
+      <p>Get paid in US dollars, directly to your account — no conversions, no delays.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🌎</div>
+      <h3>Remote & Flexible</h3>
+      <p>Work from anywhere in Latin America on US schedules. No relocation, no commute.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">📈</div>
+      <h3>Long-term Roles</h3>
+      <p>We place for permanent positions, not short gigs. Build your career with stability.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">placibly</a>
+        <p class="footer-tagline">We Place Top Latin American Talent in US Companies.</p>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/#why">Why Placibly</a></li>
+            <li><a href="/#process">How It Works</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/jobs">Apply for Jobs</a></li>
+            <li><a href="/hire">Start Hiring</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@placibly.com">hello@placibly.com</a></li>
+            <li><a href="https://instagram.com/placibly" target="_blank" rel="noopener">Instagram @placibly</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Two-sided section -->
-  <section class="two-sided" id="for-everyone">
-    <div class="container">
-      <div class="two-sided-grid">
-
-        <!-- Candidates -->
-        <div class="two-sided-card candidates">
-          <div class="two-sided-label">For Professionals</div>
-          <h3>Find your next role at a US company</h3>
-          <p>Browse open positions across hospitality, operations, marketing, and more — all remote-friendly and fully vetted.</p>
-          <ul class="two-sided-perks">
-            <li><span class="perk-dot">✓</span> Roles across 10+ categories</li>
-            <li><span class="perk-dot">✓</span> Apply once, get matched to future roles too</li>
-            <li><span class="perk-dot">✓</span> Work in US time zones from LATAM</li>
-          </ul>
-          <a href="/jobs" class="two-sided-btn">
-            Apply for Jobs
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Companies -->
-        <div class="two-sided-card companies">
-          <div class="two-sided-label">For Companies</div>
-          <h3>Hire top LATAM talent in weeks, not months</h3>
-          <p>We find, vet, and place the right professional for your team — saving you 40–60% on salaries without sacrificing quality.</p>
-          <ul class="two-sided-perks">
-            <li><span class="perk-dot">✓</span> Pre-vetted, English-fluent candidates</li>
-            <li><span class="perk-dot">✓</span> 60-day free replacement guarantee</li>
-            <li><span class="perk-dot">✓</span> We handle compliance & onboarding</li>
-          </ul>
-          <a href="/hire" class="two-sided-btn">
-            Start Hiring
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Trust Bar -->
-  <div class="trust-bar">
-    <div class="container">
-      <div class="trust-bar-inner">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="trust-text">7+ LATAM Countries<small>AR, CO, MX, BR, VE, EC, PE & more</small></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="trust-text">60-Day Guarantee<small>Free replacement included</small></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div class="trust-text">Trilingual Team<small>English, Spanish, Portuguese</small></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <div class="trust-text">90-Day Support<small>Onboarding help included</small></div>
-        </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:hello@placibly.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
       </div>
     </div>
   </div>
+</footer>
 
-  <!-- Stats -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-block">
-          <div class="stat-num"><span class="count-up" data-target="7" data-suffix="+">0+</span></div>
-          <div class="stat-desc">LATAM countries covered</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">3</div>
-          <div class="stat-desc">Languages spoken</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">60%</div>
-          <div class="stat-desc">Average salary savings</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">60d</div>
-          <div class="stat-desc">Free replacement guarantee</div>
-        </div>
+<!-- ── Share Modal ── -->
+<div class="share-overlay" id="share-modal" role="dialog" aria-modal="true">
+  <div class="share-box">
+    <button class="share-box-close" id="share-modal-close" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="share-box-icon" id="share-modal-icon">📤</div>
+    <h3 id="share-modal-title">Share this position</h3>
+    <p class="share-box-subtitle" id="share-modal-subtitle">Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.</p>
+    <div class="share-tags">
+      <span class="share-tag">👥 Share with a friend</span>
+      <span class="share-tag">🤝 Refer someone</span>
+      <span class="share-tag">💌 Send to your network</span>
+    </div>
+    <div class="share-url-row">
+      <input type="text" class="share-url-input" id="share-url-input" readonly>
+      <button class="share-copy-btn" id="share-copy-btn" title="Copy link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <p class="share-copied-msg" id="share-copied-msg">✓ Link copied to clipboard!</p>
+  </div>
+</div>
+
+<!-- ── Job Detail Modal ── -->
+<div class="modal-overlay" id="job-modal" role="dialog" aria-modal="true">
+  <div class="modal-container">
+    <button class="modal-close" id="close-job-modal" aria-label="Close">✕</button>
+    <div class="modal-job-header">
+      <div class="modal-job-logo"><img id="modal-logo" src="" alt=""></div>
+      <div>
+        <div class="modal-job-company" id="modal-company-name"></div>
+        <h2 class="modal-job-title-el" id="modal-job-title"></h2>
       </div>
     </div>
-  </section>
-
-  <!-- Why Placibly -->
-  <section class="why" id="why">
-    <div class="container">
-      <div class="why-header">
-        <p class="section-label">Why Placibly</p>
-        <h2 class="section-title">Hiring in the US is slow, expensive, and&nbsp;overwhelming.</h2>
-        <p class="section-subtitle">You don't need a cheaper hire. You need a smarter way to build your team — with exceptional talent, at a fraction of the cost, without any of the headache.</p>
+    <div class="modal-job-body">
+      <div class="modal-job-left">
+        <div class="modal-meta-row" id="modal-badges"></div>
+        <div class="modal-salary" id="modal-salary"></div>
+        <div class="modal-location"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span id="modal-location-text"></span></div>
+        <button class="btn-primary modal-apply-btn" id="modal-apply-trigger">Apply Now →</button>
+        <div class="modal-section"><h3>About the Role</h3><p id="modal-about-role"></p></div>
+        <div class="modal-section"><h3>What You'll Need</h3><ul id="modal-requirements"></ul></div>
       </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3>Save 40–60% on Salaries</h3>
-          <p>Equivalent skill, equivalent output — at a fraction of the cost. Redirect the savings into growth, not overhead.</p>
+      <div class="modal-job-right">
+        <div class="sc">
+          <div class="sc-title">About the Client</div>
+          <div class="sc-logo"><img id="sc-logo" src="" alt=""></div>
+          <div class="sc-company" id="sc-company-name"></div>
+          <div class="sc-meta" id="sc-meta"></div>
+          <div class="sc-hq"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span id="sc-hq"></span></div>
+          <p class="sc-desc" id="sc-desc"></p>
+          <div class="sc-links" id="sc-links"></div>
         </div>
-        <div class="why-card">
-          <div class="why-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3>Same Time Zone, Real-Time Work</h3>
-          <p>Your LATAM team works when you work. Real-time collaboration, no 12-hour email delays, no missed standups.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Vetted &amp; Culture-Fit Talent</h3>
-          <p>We don't send resumes and disappear. Every candidate is pre-screened for skills, communication, and alignment with US teams.</p>
-        </div>
+        <div class="sc"><div class="sc-title">Why Work Here</div><p id="sc-why"></p></div>
+        <div class="sc"><div class="sc-title">What We Offer</div><p id="sc-benefits"></p><div class="culture-tags" id="sc-culture"></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Industries -->
-  <section class="industries" id="industries">
-    <div class="container">
-      <div class="industries-header">
-        <p class="section-label">Industries We Serve</p>
-        <h2 class="section-title">Built for businesses that move fast and&nbsp;hire&nbsp;lean.</h2>
-        <p class="section-subtitle">From restaurants to startups, we place talent across the industries that need it most.</p>
-      </div>
-      <div class="industries-grid">
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <h3>Restaurants &amp; Food&nbsp;Service</h3>
-          <p>Back-office support so you can focus on front of house.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
-          </div>
-          <h3>Construction Companies</h3>
-          <p>Admin, scheduling, and coordination to keep projects on track.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-          </div>
-          <h3>Startups &amp; Agencies</h3>
-          <p>Scale fast without the overhead of full-time US hires.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          </div>
-          <h3>E-commerce Brands</h3>
-          <p>Support, content, and ops talent for online businesses.</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Professional Services</h3>
-          <p>Admin and operational roles for firms that run on efficiency.</p>
-        </div>
+<!-- ── Apply Form Modal ── -->
+<div class="modal-overlay" id="apply-modal" role="dialog" aria-modal="true">
+  <div class="modal-container modal-form-container">
+    <button class="modal-close" id="close-apply-modal">✕</button>
+    <div class="modal-form-header">
+      <h2 id="apply-title">Apply for this Position</h2>
+      <p id="apply-subtitle"></p>
+    </div>
+    <div class="modal-form-body">
+      <div style="text-align:center;padding:40px 20px;background:var(--off-white);border-radius:12px;border:1px solid var(--gray-100)">
+        <p style="font-size:16px;color:var(--gray-600);margin-bottom:8px">Application form coming soon.</p>
+        <p style="font-size:14px;color:var(--gray-400)">Send your CV to <a href="mailto:hello@placibly.com" style="color:var(--magenta);font-weight:600">hello@placibly.com</a></p>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Roles -->
-  <section class="roles" id="roles">
-    <div class="container">
-      <div class="roles-header">
-        <p class="section-label">Roles We Place</p>
-        <h2 class="section-title">The people who keep your business&nbsp;running.</h2>
-        <p class="section-subtitle">From daily operations to revenue-driving roles, we find talent that fits right in.</p>
-      </div>
-      <div class="roles-grid">
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h4"/></svg>
-            </div>
-            <h3>Admin &amp; Operations</h3>
-          </div>
-          <ul class="role-list">
-            <li>Executive / Personal Assistant</li>
-            <li>Bookkeeper &amp; Invoicing</li>
-            <li>Scheduling &amp; Appointment Coordinator</li>
-            <li>Payroll &amp; HR Support</li>
-            <li>Inventory &amp; Supply Management</li>
-            <li>Operations &amp; Office Manager</li>
-          </ul>
-        </div>
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <h3>Sales &amp; Customer&nbsp;Success</h3>
-          </div>
-          <ul class="role-list">
-            <li>Sales Development Rep</li>
-            <li>Account Manager</li>
-            <li>Customer Support Agent</li>
-            <li>CRM Administrator</li>
-            <li>Lead Generation Specialist</li>
-          </ul>
-        </div>
-        <div class="role-column">
-          <div class="role-column-header">
-            <div class="role-column-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3>Marketing &amp; Content</h3>
-          </div>
-          <ul class="role-list">
-            <li>Social Media Manager</li>
-            <li>Content Writer</li>
-            <li>Graphic Designer</li>
-            <li>Email Marketing Specialist</li>
-            <li>SEO Specialist</li>
-          </ul>
-        </div>
-      </div>
+<!-- ── Pool Apply Modal ── -->
+<div class="modal-overlay" id="pool-modal" role="dialog" aria-modal="true">
+  <div class="modal-container modal-form-container">
+    <button class="modal-close" id="close-pool-modal">✕</button>
+    <div class="modal-form-header">
+      <div class="pool-cat-label-modal" id="pool-cat-label"></div>
+      <h2>Join Our Talent Pool</h2>
+      <p>Apply once and we'll reach out when the right role comes up.</p>
     </div>
-  </section>
-
-  <!-- Mid CTA -->
-  <section class="mid-cta">
-    <div class="container">
-      <div class="mid-cta-inner">
-        <div class="mid-cta-text">
-          <h2>Don't see the role you need?</h2>
-          <p>We place talent across dozens of roles. Tell us what you're looking for and we'll find the right person.</p>
-        </div>
-        <a href="#cta" class="btn-primary">
-          Talk to Us
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+    <div class="modal-form-body">
+      <div style="overflow:hidden; margin-top:-40px;">
+        <iframe data-tally-src="https://tally.so/embed/xX2EXv?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Talent Pool"></iframe>
       </div>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- How It Works -->
-  <section class="process" id="process">
-    <div class="container">
-      <div class="process-header">
-        <p class="section-label">How It Works</p>
-        <h2 class="section-title">From first call to first day — in as little as two&nbsp;weeks.</h2>
-        <p class="section-subtitle">One dedicated point of contact guides you through every step. No handoffs, no runaround.</p>
-      </div>
-      <div class="process-steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Intake Call</h3>
-          <p>We learn about your business, the role, and exactly what kind of person you need on your team.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Sourcing &amp; Vetting</h3>
-          <p>We search across 7+ countries, screen for skills and culture fit, and build a shortlist for you.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>You Interview</h3>
-          <p>Meet your top candidates. We coordinate everything — you just show up and pick your favorite.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <h3>Placement + Support</h3>
-          <p>We handle onboarding logistics and stay with you for 90 days to make sure everything's working.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+// ── Data ──
+let jobListings = [];
 
-  <!-- Guarantee -->
-  <section class="guarantee">
-    <div class="container">
-      <div class="guarantee-inner">
-        <div class="guarantee-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <div class="guarantee-text">
-          <h2>60-Day Free Replacement Guarantee.</h2>
-          <p>If your new hire doesn't work out within the first 60 days, we'll find you a replacement at no additional cost. No fine print, no hoops to jump through.</p>
-          <p>We stand behind every placement because we only send candidates we'd hire ourselves.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+// ── Fallback data (shown if API is unavailable) ──
+const fallbackListings = [
+  { id:1,  title:"Social Media Manager",           company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia. Born from the same team behind Resto Experience, it delivers custom strategies across social media, SEO, paid advertising, website design, and e-commerce marketplace growth.",     companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes. Fast-growing team, real ownership, multi-industry exposure.",    companyBenefits:"Fully remote, flexible schedule, USD compensation, exposure to diverse industries", companyCultureTags:["Remote-first","Results-driven","Creative","Multi-industry"], category:"Marketing & Content",        seniority:"Mid",    salaryRange:"$700–$1,200/mo",  location:"Remote — Latin America", shortDescription:"Manage and grow VS Digital Group's social media presence across Instagram, LinkedIn, and TikTok. Create content calendars, produce engaging copy, and report on performance.",                                          keyRequirements:["2+ years managing social media for brands or agencies","Strong copywriting skills","Experience with Canva and scheduling tools","Analytical mindset","Advanced English"] },
+  { id:2,  title:"Video Editor",                    company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Real ownership, fast-growing team, creative culture across multiple industries.",                                                              companyBenefits:"Fully remote, flexible schedule, USD compensation, exposure to diverse industries", companyCultureTags:["Remote-first","Results-driven","Creative","Multi-industry"], category:"Design & Creative",          seniority:"Mid",    salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Edit short-form and long-form video content for client campaigns, social media, and internal projects. Fast turnaround and strong creative eye required.",                                                             keyRequirements:["2+ years of video editing experience","Proficiency in Premiere Pro or Final Cut","Experience with Reels / TikTok formats","Attention to detail","Ability to work with brand guidelines"] },
+  { id:3,  title:"Sales / SDR",                     company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes.",                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Results-driven","Multi-industry"],             category:"Sales & Customer Success",   seniority:"Entry",  salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Prospect and qualify new clients for VS Digital Group's agency services. Run outbound outreach via LinkedIn and email, book discovery calls, and manage pipeline in CRM.",                                           keyRequirements:["1+ years in sales or outbound roles","Strong communication in English","Experience with LinkedIn outreach","CRM familiarity (HubSpot or similar)","Self-driven and resilient"] },
+  { id:4,  title:"Customer Success Manager",         company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes.",                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Results-driven","Creative"],                   category:"Sales & Customer Success",   seniority:"Mid",    salaryRange:"$900–$1,500/mo",  location:"Remote — Latin America", shortDescription:"Own the client relationship post-sale. Ensure clients achieve their goals, reduce churn, drive upsells, and serve as the main point of contact.",                                                                     keyRequirements:["2+ years in customer success or account management","Ideally in a marketing or digital agency","Excellent communication","Proactive problem solver","Advanced English"] },
+  { id:5,  title:"Project Manager",                  company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes.",                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Results-driven","Fast-paced"],                 category:"Administrative & Operations",seniority:"Mid",    salaryRange:"$900–$1,500/mo",  location:"Remote — Latin America", shortDescription:"Coordinate campaigns and internal projects. Own timelines, deliverables, and communication between clients and the internal team.",                                                                                 keyRequirements:["2+ years of project management experience","Proficiency in Asana or Monday.com","Strong organizational skills","Agency environment experience preferred","Advanced English"] },
+  { id:6,  title:"Marketing Specialist",             company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Join a results-driven agency where your work directly impacts client outcomes.",                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Data-driven","Creative"],                      category:"Marketing & Content",        seniority:"Mid",    salaryRange:"$800–$1,300/mo",  location:"Remote — Latin America", shortDescription:"Support digital marketing campaigns across paid and organic channels. Coordinate content, analyze performance, and collaborate with the creative team.",                                                           keyRequirements:["2+ years in digital marketing","Familiarity with Meta Ads and Google Ads","Analytical skills","Content coordination experience","Advanced English"] },
+  { id:7,  title:"Senior SEO Specialist",            company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Lead SEO strategy for high-impact client accounts. Real ownership, data-driven culture.",                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Data-driven","Results-driven"],                category:"Marketing & Content",        seniority:"Senior", salaryRange:"$1,200–$2,000/mo", location:"Remote — Latin America", shortDescription:"Lead SEO strategy for VS Digital Group's clients. Audits, keyword strategy, on-page and off-page optimization, measurable organic growth.",                                                                            keyRequirements:["4+ years of SEO experience","Expert-level Ahrefs and SEMrush","Technical SEO knowledge","Client-facing account experience","Advanced English"] },
+  { id:8,  title:"Senior Marketplace Growth Manager",company:"VS Digital Group",  companyLogo:"https://framerusercontent.com/images/bLECEACMN5ZHDRTxoa6Fj8F1Tzc.svg", companyWebsite:"https://vsdigitalgroup.com",  companyLinkedIn:"https://linkedin.com/company/vs-digital-group", companyInstagram:null,                             companyIndustry:"Marketing Agency",        companyHQ:"Atlanta, Georgia, USA", companyAbout:"VS Digital Group is a full-service digital marketing agency based in Atlanta, Georgia.",                                                                                                                                                                                        companyWhyWorkHere:"Own marketplace growth strategy for major e-commerce clients.",                                                                               companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Remote-first","Data-driven","E-commerce focused"],            category:"Marketing & Content",        seniority:"Senior", salaryRange:"$1,200–$2,000/mo", location:"Remote — Latin America", shortDescription:"Drive growth across Amazon, Mercado Libre, and other marketplace platforms. Own listings, ads, and optimization strategy.",                                                                                             keyRequirements:["4+ years managing marketplace accounts","Amazon Seller Central required","Marketplace advertising experience","Data-driven approach","Advanced English"] },
+  { id:9,  title:"Social Media Manager",             company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos. With clients in Atlanta, Miami, Orlando, and New York, they help restaurants grow through tailored digital marketing.",                               companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves. Mission-driven, fast-paced, and growing.",                             companyBenefits:"Fully remote, flexible schedule, USD compensation, hospitality market exposure",    companyCultureTags:["Hospitality-driven","Mission-oriented","Remote-first","High-impact"], category:"Marketing & Content",  seniority:"Mid",    salaryRange:"$700–$1,200/mo",  location:"Remote — Latin America", shortDescription:"Build and manage Resto Experience's social media presence. Create content that speaks to the restaurant industry, engage with the community, and grow brand awareness.",                                               keyRequirements:["2+ years managing social media","Food/hospitality brand experience preferred","Strong visual content skills","Canva proficiency","Advanced English"] },
+  { id:10, title:"Video Editor",                     company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves.",                                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation, hospitality exposure",           companyCultureTags:["Hospitality-driven","Mission-oriented","Remote-first"],         category:"Design & Creative",          seniority:"Mid",    salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Produce and edit video content for Resto Experience's brand — testimonials, promotional videos, and social media clips.",                                                                                             keyRequirements:["2+ years of video editing experience","Strong short-form content skills (Reels / TikTok)","Premiere Pro or Final Cut","Eye for storytelling","Advanced English"] },
+  { id:11, title:"Sales / SDR",                      company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves.",                                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Hospitality-driven","Mission-oriented","Remote-first"],         category:"Sales & Customer Success",   seniority:"Entry",  salaryRange:"$800–$1,400/mo",  location:"Remote — Latin America", shortDescription:"Reach out to restaurant owners to introduce Resto Experience's services. Qualify leads, book demos, and support the sales pipeline.",                                                                                  keyRequirements:["1+ years in sales or outbound roles","Small business owner sales experience preferred","Confident communicator","CRM experience","Advanced English"] },
+  { id:12, title:"Customer Success Manager",          company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves.",                                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation, hospitality exposure",           companyCultureTags:["Hospitality-driven","Mission-oriented","Remote-first"],         category:"Sales & Customer Success",   seniority:"Mid",    salaryRange:"$900–$1,500/mo",  location:"Remote — Latin America", shortDescription:"Manage relationships with Resto Experience's restaurant clients. Successful onboarding, retention, and expansion opportunities.",                                                                                      keyRequirements:["2+ years in customer success","Hospitality background a strong plus","Empathetic communicator","Proactive","Advanced English"] },
+  { id:13, title:"Project Manager",                   company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves.",                                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Hospitality-driven","Mission-oriented","Fast-paced"],          category:"Administrative & Operations",seniority:"Mid",    salaryRange:"$900–$1,500/mo",  location:"Remote — Latin America", shortDescription:"Coordinate internal operations and client-facing projects. Track deliverables, manage timelines, and keep all moving pieces aligned.",                                                                             keyRequirements:["2+ years in project coordination or operations","Strong with project management tools","Highly organized","Fast-paced environments","Advanced English"] },
+  { id:14, title:"Marketing Specialist",              company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Be part of a passionate team changing how restaurants market themselves.",                                                                     companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Hospitality-driven","Results-oriented","Creative"],            category:"Marketing & Content",        seniority:"Mid",    salaryRange:"$800–$1,300/mo",  location:"Remote — Latin America", shortDescription:"Execute Resto Experience's marketing across digital channels. Support campaigns, produce content, and grow brand visibility in the restaurant industry.",                                                              keyRequirements:["2+ years in marketing","Interest in food/hospitality","Content and campaign execution skills","Advanced English"] },
+  { id:15, title:"Senior SEO Specialist",             company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Lead SEO for a growing hospitality brand with real impact.",                                                                                  companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Hospitality-driven","Data-driven","Remote-first"],             category:"Marketing & Content",        seniority:"Senior", salaryRange:"$1,200–$2,000/mo", location:"Remote — Latin America", shortDescription:"Own SEO strategy for Resto Experience. Drive organic traffic through keyword research, content strategy, and technical optimization.",                                                                              keyRequirements:["4+ years of SEO experience","Strong technical SEO background","Ahrefs / SEMrush expertise","Content-led growth strategy","Advanced English"] },
+  { id:16, title:"Senior Marketplace Growth Manager", company:"Resto Experience", companyLogo:"https://restoexp.com/wp-content/uploads/2024/02/Group-202-1024x138.png", companyWebsite:"https://restoexp.com",        companyLinkedIn:"https://linkedin.com/company/restoexperience",  companyInstagram:"https://instagram.com/restoexp", companyIndustry:"Restaurant & Hospitality", companyHQ:"Atlanta, Georgia, USA", companyAbout:"Resto Experience is a full-service restaurant marketing agency founded by the owners of Rreal Tacos.",                                                                                                                                                                                                                   companyWhyWorkHere:"Lead marketplace growth for a mission-driven hospitality company.",                                                                          companyBenefits:"Fully remote, flexible schedule, USD compensation",                                 companyCultureTags:["Hospitality-driven","Results-oriented","Data-driven"],         category:"Marketing & Content",        seniority:"Senior", salaryRange:"$1,200–$2,000/mo", location:"Remote — Latin America", shortDescription:"Lead marketplace growth strategy for Resto Experience. Manage product listings, advertising, and performance across relevant platforms.",                                                                          keyRequirements:["4+ years in marketplace management","Strong analytical skills","Marketplace advertising experience","Results-oriented","Advanced English"] }
+];
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="faq-header">
-        <p class="section-label">FAQ</p>
-        <h2 class="section-title">Questions we get asked a&nbsp;lot.</h2>
-        <p class="section-subtitle">Everything you need to know before getting started with Placibly.</p>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item active">
-          <button class="faq-question">
-            How is Placibly different from a freelancer marketplace?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer" style="max-height: 200px;">
-            <div class="faq-answer-inner">We're not a marketplace. We're a full-service hiring partner. We handle everything from sourcing and vetting to interviews and onboarding support. You get a dedicated point of contact, pre-screened candidates, and a 60-day replacement guarantee — none of which you get from a freelancer platform.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            How fast can I have someone start?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Most placements happen within two to three weeks from the intake call. We move fast because we already have a vetted talent pool across 7+ countries. For urgent roles, we can often present candidates within days.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            Do the candidates speak English fluently?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Yes. English fluency is a non-negotiable requirement in our vetting process. Every candidate we present has been assessed for written and spoken English proficiency. Many are also fluent in Spanish or Portuguese.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            What happens if the hire doesn't work out?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">You're covered by our 60-day free replacement guarantee. If the placement isn't the right fit for any reason, we'll source and place a new candidate at no extra cost. We also provide 90 days of onboarding support to set every hire up for success.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            Do I need to handle payroll, taxes, or compliance?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">No. You pay a single monthly fee to Placibly. We take care of everything on the talent side. You don't need to worry about international payroll, taxes, or legal compliance — that's all on us.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+const talentCategories = [
+  { id:"admin",   name:"Administrative & Operations", icon:"💼", desc:"Support the day-to-day operations of growing US companies. From virtual assistance to project coordination, these roles keep businesses running smoothly.", roles:["Virtual Assistant","Operations Coordinator","Project Coordinator","Dispatcher","Administrative Assistant","Bookkeeper","Office Manager","Executive Assistant"] },
+  { id:"sales",   name:"Sales & Customer Success",    icon:"🤝", desc:"Drive revenue and build lasting client relationships. These roles sit at the intersection of communication, strategy, and results.", roles:["SDR","Account Executive","Customer Success Manager","Customer Support Specialist","Business Development Rep","Sales Operations","Account Manager"] },
+  { id:"mktg",    name:"Marketing & Content",         icon:"📣", desc:"Create, execute, and optimize marketing strategies for US brands. From social content to SEO to paid campaigns — full-stack marketing talent.", roles:["Social Media Manager","Content Writer","SEO Specialist","Email Marketing Specialist","Marketing Coordinator","Performance Marketer","Copywriter","Brand Strategist"] },
+  { id:"finance", name:"Finance & Accounting",        icon:"🧮", desc:"Keep the numbers clean and the books in order for US companies. Reliable, detail-oriented finance talent for growing teams.", roles:["Bookkeeper","AP/AR Coordinator","Financial Analyst","Payroll Coordinator","Revenue Analyst","Controller","Staff Accountant","Tax Coordinator"] },
+  { id:"design",  name:"Design & Creative",           icon:"🎨", desc:"Bring brand visions to life with world-class creative talent from Latin America. From motion graphics to full UX design systems.", roles:["Graphic Designer","Video Editor","Motion Designer","UX/UI Designer","Brand Designer","Illustrator","Web Designer","Creative Director"] }
+];
 
-  <!-- Final CTA -->
-  <section class="final-cta" id="cta">
-    <div class="container">
-      <div class="final-cta-inner">
-        <p class="section-label">Get Started</p>
-        <h2>Ready to build your <span class="highlight">LATAM&nbsp;team?</span></h2>
-        <p>Tell us about the role you're looking to fill. We'll walk you through the process and give you an honest assessment — no pressure, no commitment.</p>
-        <a href="/hire" class="btn-primary">
-          Meet Your Candidates for Free
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <small>No commitment. No placement fee until you hire.</small>
+const categoryBadgeClass = { "Administrative & Operations":"badge-admin","Sales & Customer Success":"badge-sales","Marketing & Content":"badge-marketing","Finance & Accounting":"badge-finance","Design & Creative":"badge-design" };
+function getCategoryBadge(cat) { return `<span class="badge ${categoryBadgeClass[cat]||'badge-seniority'}">${cat}</span>`; }
+
+// allCompanies and companyLogos are computed after jobs load
+let allCompanies = [];
+let companyLogos = {};
+function refreshDerivedData() {
+  allCompanies = [...new Set(jobListings.map(j => j.company))];
+  companyLogos = {};
+  jobListings.forEach(j => { companyLogos[j.company] = j.companyLogo; });
+}
+
+// ── State ──
+const filters = { company:"All", category:"All", seniority:"All" };
+let activeTab = "positions"; // "positions" | "pool"
+let activeCatId = talentCategories[0].id;
+
+function filteredJobs() {
+  return jobListings.filter(j =>
+    (filters.company === "All" || j.company === filters.company) &&
+    (filters.category === "All" || j.category === filters.category) &&
+    (filters.seniority === "All" || j.seniority === filters.seniority)
+  );
+}
+function countByCompany(name) {
+  return jobListings.filter(j =>
+    (name === "All" || j.company === name) &&
+    (filters.category === "All" || j.category === filters.category) &&
+    (filters.seniority === "All" || j.seniority === filters.seniority)
+  ).length;
+}
+
+// ── Tab switch ──
+const tabDescriptions = {
+  positions: "Active roles from our US clients. Placibly handles the full hiring process.",
+  pool: "Apply once across any category. We'll reach out when the right opportunity comes up."
+};
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById('jobs-content').classList.toggle('hidden', tab !== 'positions');
+  document.getElementById('pool-content').classList.toggle('active',  tab === 'pool');
+  document.getElementById('tab-positions').classList.toggle('active',  tab === 'positions');
+  document.getElementById('tab-pool').classList.toggle('active',       tab === 'pool');
+  document.getElementById('tab-positions').setAttribute('aria-selected', tab === 'positions');
+  document.getElementById('tab-pool').setAttribute('aria-selected',      tab === 'pool');
+  document.getElementById('tab-description').textContent = tabDescriptions[tab];
+}
+
+document.getElementById('tab-positions').addEventListener('click', () => switchTab('positions'));
+document.getElementById('tab-pool').addEventListener('click',       () => switchTab('pool'));
+
+document.getElementById('hero-cta-positions').addEventListener('click', () => switchTab('positions'));
+document.getElementById('hero-cta-pool').addEventListener('click',      () => switchTab('pool'));
+
+// ── Render jobs ──
+function renderJobs() {
+  const grid = document.getElementById('jobs-grid');
+  const jobs = filteredJobs();
+  const n = jobs.length;
+  document.getElementById('result-count-num').textContent = n;
+  const m = document.getElementById('result-count-mobile'); if (m) m.textContent = n;
+  document.getElementById('tab-count-positions').textContent = n;
+
+  if (!jobs.length) {
+    grid.innerHTML = `<div class="no-results"><h3>No positions match your filters.</h3><p>Try adjusting the filters or <button onclick="switchTab('pool')" style="background:none;border:none;cursor:pointer;color:var(--magenta);font-weight:600;font-family:inherit;font-size:inherit">join our talent pool</button>.</p></div>`;
+    return;
+  }
+  grid.innerHTML = jobs.map(job => `
+    <div class="job-card" data-id="${job.id}" role="button" tabindex="0">
+      <button class="share-btn" data-share-job="${job.id}" title="Copy link to share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+      <div class="job-card-company">
+        <div class="job-card-logo"><img src="${job.companyLogo}" alt="${job.company}" loading="lazy"></div>
+        <div><div class="job-card-company-name">${job.company}</div><div class="job-card-industry">${job.companyIndustry}</div></div>
       </div>
-    </div>
-  </section>
+      <div class="job-card-title">${job.title}</div>
+      <div class="job-card-badges">${getCategoryBadge(job.category)}<span class="badge badge-seniority">${job.seniority}</span></div>
+      <div class="job-card-location"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${job.location}</div>
+      <div class="job-card-cta"><button class="btn-primary">View & Apply →</button></div>
+    </div>`).join('');
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#" class="footer-logo">placibly</a>
-          <p class="footer-tagline">We Place Top Latin American Talent in US Companies.</p>
-        </div>
-        <div class="footer-columns">
-          <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#why">Why Placibly</a></li>
-              <li><a href="#process">How It Works</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#industries">Industries</a></li>
-              <li><a href="#roles">Roles We Place</a></li>
-              <li><a href="/jobs">Apply for Jobs</a></li>
-              <li><a href="/hire">Start Hiring</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="mailto:hello@placibly.com">hello@placibly.com</a></li>
-              <li><a href="https://instagram.com/placibly" target="_blank" rel="noopener">Instagram @placibly</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
-        <div class="footer-social">
-          <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="mailto:hello@placibly.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll to Top -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-
-  <script>
-    // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-    }, { passive: true });
-
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  grid.querySelectorAll('.job-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('.share-btn')) return; // share button handled separately
+      openJobModal(card.dataset.id);
     });
+    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();openJobModal(card.dataset.id);} });
+  });
+}
 
-    // Navbar scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
+// ── Render talent pool grid ──
+function renderPoolGrid() {
+  document.getElementById('talent-cards-grid').innerHTML = talentCategories.map(cat => `
+    <div class="talent-card" style="position:relative;">
+      <button class="share-btn" data-share-pool="${cat.id}" title="Copy link to share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+      <div class="talent-icon">${cat.icon}</div>
+      <h3>${cat.name}</h3>
+      <ul class="talent-roles">
+        ${cat.roles.slice(0, 5).map(r => `<li>${r}</li>`).join('')}
+      </ul>
+      <button class="btn-primary" data-pool-cat="${cat.id}">Apply for This Category</button>
+    </div>
+  `).join('');
 
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+  document.querySelectorAll('[data-pool-cat]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = talentCategories.find(c => c.id === btn.dataset.poolCat);
+      document.getElementById('pool-cat-label').textContent = cat.name;
+      document.getElementById('pool-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+  });
+}
 
-    // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-      });
-    });
+// ── Company list ──
+function buildCompanyList() {
+  const container = document.getElementById('company-list');
+  const companies = ["All", ...allCompanies];
+  container.innerHTML = companies.map(name => {
+    const isAll = name === "All";
+    const logoHtml = isAll
+      ? `<div class="company-logo-all">🏢</div>`
+      : `<div class="company-logo-thumb"><img src="${companyLogos[name]}" alt="${name}" loading="lazy"></div>`;
+    return `
+      <label class="company-row">
+        <input type="radio" name="filter-company" value="${name}" ${filters.company===name?'checked':''}>
+        <span class="company-radio-dot"></span>
+        ${logoHtml}
+        <span class="company-row-label">${isAll ? 'All companies' : name}</span>
+        <span class="company-row-count">${countByCompany(name)}</span>
+      </label>`;
+  }).join('');
+  container.querySelectorAll('input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { filters.company = r.value; onFilterChange(); });
+  });
+}
 
-    // Count-up animation on scroll
-    const countEls = document.querySelectorAll('.count-up');
-    const counted = new Set();
+function renderActiveChips() {
+  const container = document.getElementById('active-chips');
+  const chips = [];
+  if (filters.company !== "All")   chips.push({key:'company',   label:filters.company});
+  if (filters.category !== "All")  chips.push({key:'category',  label:filters.category});
+  if (filters.seniority !== "All") chips.push({key:'seniority', label:filters.seniority});
+  container.innerHTML = chips.map(c => `
+    <span class="active-chip">${c.label}
+      <button data-key="${c.key}"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </span>`).join('');
+  container.querySelectorAll('button[data-key]').forEach(btn => {
+    btn.addEventListener('click', () => { filters[btn.dataset.key] = "All"; onFilterChange(); });
+  });
+  const badge = document.getElementById('mobile-filter-badge');
+  if (badge) { badge.textContent = chips.length; badge.style.display = chips.length ? 'inline' : 'none'; }
 
-    function animateCount(el) {
-      if (counted.has(el)) return;
-      counted.add(el);
-      const target = parseInt(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const prefix = el.dataset.prefix || '';
-      const duration = 1800;
-      const start = performance.now();
-
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(ease * target);
-        el.textContent = prefix + current + suffix;
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
+  // Show company share button only when a specific company is selected
+  const compShareBtn = document.getElementById('company-header-share-btn');
+  if (compShareBtn) {
+    if (filters.company !== "All") {
+      compShareBtn.style.display = 'inline-flex';
+      compShareBtn.onclick = () => openShareModal(
+        `${location.origin}/jobs?company=${encodeURIComponent(filters.company)}`,
+        'company',
+        filters.company
+      );
+    } else {
+      compShareBtn.style.display = 'none';
     }
+  }
+}
 
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) animateCount(entry.target);
-      });
-    }, { threshold: 0.5 });
+function updateSidebarState() {
+  document.getElementById('dot-company').classList.toggle('visible',   filters.company!=="All");
+  document.getElementById('dot-category').classList.toggle('visible',  filters.category!=="All");
+  document.getElementById('dot-seniority').classList.toggle('visible', filters.seniority!=="All");
+  const any = filters.company!=="All"||filters.category!=="All"||filters.seniority!=="All";
+  document.getElementById('sidebar-clear-btn').classList.toggle('visible', any);
+}
 
-    countEls.forEach(el => countObserver.observe(el));
+function syncPills() {
+  document.querySelectorAll('#pill-category .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.value===filters.category));
+  document.querySelectorAll('#pill-seniority .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.value===filters.seniority));
+}
 
-    // Scroll spy — highlight nav link for visible section
-    const sections = ['why', 'roles', 'process', 'faq'];
-    const navAnchors = {};
-    sections.forEach(id => {
-      navAnchors[id] = document.querySelector(`.nav-links a[href="#${id}"]`);
-    });
+function onFilterChange() {
+  buildCompanyList();
+  syncPills();
+  renderJobs();
+  renderActiveChips();
+  updateSidebarState();
+}
 
-    const spyObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.id;
-        const link = navAnchors[id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          // Remove active from all, set on current
-          Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
-          link.classList.add('nav-active');
-        }
-      });
-    }, { threshold: 0.25, rootMargin: '-72px 0px -30% 0px' });
+function setupPills(groupId, key) {
+  document.getElementById(groupId).addEventListener('click', e => {
+    const pill = e.target.closest('.filter-pill');
+    if (!pill) return;
+    filters[key] = pill.dataset.value;
+    onFilterChange();
+  });
+}
 
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) spyObserver.observe(el);
-    });
+function setupCollapsible(sectionId) {
+  const section = document.getElementById(sectionId);
+  const header = section.querySelector('.filter-section-header');
+  const body = section.querySelector('.filter-section-body');
+  body.style.maxHeight = body.scrollHeight + 'px';
+  header.addEventListener('click', () => {
+    const collapsed = header.classList.contains('collapsed');
+    if (collapsed) {
+      body.classList.remove('collapsed'); body.style.maxHeight = body.scrollHeight+'px';
+      header.classList.remove('collapsed'); header.setAttribute('aria-expanded','true');
+    } else {
+      body.style.maxHeight = body.scrollHeight+'px';
+      requestAnimationFrame(() => { body.classList.add('collapsed'); header.classList.add('collapsed'); header.setAttribute('aria-expanded','false'); });
+    }
+  });
+  header.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();header.click();} });
+}
 
-    // Remove active when scrolled back to top
-    window.addEventListener('scroll', () => {
-      if (window.scrollY < 200) {
-        Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
-      }
-    }, { passive: true });
+document.getElementById('sidebar-clear-btn').addEventListener('click', () => {
+  filters.company="All"; filters.category="All"; filters.seniority="All"; onFilterChange();
+});
 
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const answer = item.querySelector('.faq-answer');
-        const isActive = item.classList.contains('active');
+// ── Job modal ──
+let currentJob = null;
+function openJobModal(id) {
+  const job = jobListings.find(j=>j.id===id); if(!job) return;
+  currentJob = job;
+  document.getElementById('modal-logo').src                 = job.companyLogo;
+  document.getElementById('modal-company-name').textContent = job.company;
+  document.getElementById('modal-job-title').textContent    = job.title;
+  // document.getElementById('modal-salary').textContent    = job.salaryRange;
+  document.getElementById('modal-location-text').textContent= job.location;
+  document.getElementById('modal-badges').innerHTML         = `${getCategoryBadge(job.category)}<span class="badge badge-seniority">${job.seniority}</span>`;
+  document.getElementById('modal-about-role').textContent   = job.shortDescription;
+  document.getElementById('modal-requirements').innerHTML   = job.keyRequirements.map(r=>`<li>${r}</li>`).join('');
+  document.getElementById('sc-logo').src                    = job.companyLogo;
+  document.getElementById('sc-company-name').textContent    = job.company;
+  document.getElementById('sc-meta').innerHTML              = `<span class="badge badge-industry">${job.companyIndustry}</span>`;
+  document.getElementById('sc-hq').textContent              = job.companyHQ;
+  document.getElementById('sc-desc').textContent            = job.companyAbout;
+  document.getElementById('sc-why').textContent             = job.companyWhyWorkHere;
+  document.getElementById('sc-benefits').textContent        = job.companyBenefits;
+  document.getElementById('sc-culture').innerHTML           = job.companyCultureTags.map(t=>`<span class="culture-tag">${t}</span>`).join('');
+  let links = `<a href="${job.companyWebsite}" target="_blank" rel="noopener" class="btn-outline-purple">Visit Website</a>`;
+  links += `<a href="${job.companyLinkedIn}" target="_blank" rel="noopener" class="icon-link" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>`;
+  if (job.companyInstagram) links += `<a href="${job.companyInstagram}" target="_blank" rel="noopener" class="icon-link" title="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>`;
+  document.getElementById('sc-links').innerHTML = links;
+  document.body.style.overflow = 'hidden';
+  const modal = document.getElementById('job-modal');
+  modal.classList.add('open'); modal.scrollTop = 0;
+}
 
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(el => {
-          el.classList.remove('active');
-          el.querySelector('.faq-answer').style.maxHeight = '0';
-        });
+document.getElementById('close-job-modal').addEventListener('click', () => { document.getElementById('job-modal').classList.remove('open'); document.body.style.overflow=''; currentJob=null; });
+document.getElementById('modal-apply-trigger').addEventListener('click', () => {
+  if (!currentJob) return;
+  const job = currentJob;
+  document.getElementById('job-modal').classList.remove('open');
+  document.body.style.overflow=''; currentJob=null;
+  setTimeout(() => {
+    document.getElementById('apply-title').textContent    = `Apply — ${job.title}`;
+    document.getElementById('apply-subtitle').textContent = `${job.company}`;
+    document.getElementById('apply-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }, 200);
+});
+document.getElementById('close-apply-modal').addEventListener('click', () => { document.getElementById('apply-modal').classList.remove('open'); document.body.style.overflow=''; });
+document.getElementById('close-pool-modal').addEventListener('click', () => { document.getElementById('pool-modal').classList.remove('open'); document.body.style.overflow=''; });
 
-        // Open clicked if it wasn't active
-        if (!isActive) {
-          item.classList.add('active');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    });
-  </script>
+['job-modal','apply-modal','pool-modal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', e => {
+    if (e.target===e.currentTarget) { e.currentTarget.classList.remove('open'); document.body.style.overflow=''; if(id==='job-modal') currentJob=null; }
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key!=='Escape') return;
+  ['job-modal','apply-modal','pool-modal'].forEach(id => {
+    const m = document.getElementById(id);
+    if (m.classList.contains('open')) { m.classList.remove('open'); document.body.style.overflow=''; if(id==='job-modal') currentJob=null; }
+  });
+});
 
+// ── Nudge buttons (sidebar + mobile) ──
+const nudgeTo = () => { switchTab('pool'); document.getElementById('jobs-section').scrollIntoView({behavior:'smooth'}); };
+document.getElementById('sidebar-nudge-btn').addEventListener('click', nudgeTo);
+document.getElementById('mobile-nudge-btn').addEventListener('click', nudgeTo);
+
+// ── Nav / mobile ──
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY>10); }, {passive:true});
+document.getElementById('menu-toggle').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('open'); });
+
+// ── Load jobs from Notion API ──
+function showLoadingState() {
+  document.getElementById('jobs-grid').innerHTML = `
+    <div style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 0;gap:16px;color:var(--gray-400)">
+      <div style="width:36px;height:36px;border:3px solid var(--gray-100);border-top-color:var(--magenta);border-radius:50%;animation:spin .7s linear infinite"></div>
+      <span style="font-size:14px">Loading positions from Notion…</span>
+    </div>`;
+}
+
+function init() {
+  refreshDerivedData();
+  buildCompanyList();
+  setupPills('pill-category','category');
+  setupPills('pill-seniority','seniority');
+  ['fs-company','fs-category','fs-seniority'].forEach(setupCollapsible);
+  renderJobs();
+  renderActiveChips();
+  updateSidebarState();
+  renderPoolGrid();
+  handleDeepLink();
+}
+
+async function loadJobs() {
+  showLoadingState();
+  try {
+    const res  = await fetch('/api/jobs');
+    if (!res.ok) throw new Error(`API responded ${res.status}`);
+    const data = await res.json();
+    if (data.jobs && data.jobs.length > 0) {
+      jobListings = data.jobs;
+    } else {
+      // API returned empty — use fallback
+      jobListings = fallbackListings;
+    }
+  } catch (err) {
+    console.warn('[placibly] Could not load from API, using fallback data:', err.message);
+    jobListings = fallbackListings;
+  }
+  init();
+}
+
+// ── Share Modal ──
+const shareOverlay  = document.getElementById('share-modal');
+const shareUrlInput = document.getElementById('share-url-input');
+const shareCopyBtn  = document.getElementById('share-copy-btn');
+const shareCopiedMsg = document.getElementById('share-copied-msg');
+
+function openShareModal(url, type = 'job', name = '') {
+  shareUrlInput.value = url;
+  shareCopyBtn.classList.remove('copied');
+  shareCopiedMsg.classList.remove('show');
+
+  const titleEl    = document.getElementById('share-modal-title');
+  const subtitleEl = document.getElementById('share-modal-subtitle');
+  const iconEl     = document.getElementById('share-modal-icon');
+
+  if (type === 'company') {
+    iconEl.textContent    = '🏢';
+    titleEl.textContent   = `Share ${name}`;
+    subtitleEl.textContent = `Copy the link below and send it to anyone who might know a great candidate — a friend, someone in your network, or anyone who could refer the right person.`;
+  } else if (type === 'pool') {
+    iconEl.textContent    = '🎯';
+    titleEl.textContent   = 'Share this talent pool';
+    subtitleEl.textContent = 'Know someone who might be a great fit? Send them this link so they can apply to join our talent pool.';
+  } else {
+    iconEl.textContent    = '📤';
+    titleEl.textContent   = 'Share this position';
+    subtitleEl.textContent = 'Copy the link below and send it to anyone who might be interested — a friend looking for their next role, someone you want to refer, or a contact in your network.';
+  }
+
+  shareOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeShareModal() {
+  shareOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('share-modal-close').addEventListener('click', closeShareModal);
+shareOverlay.addEventListener('click', e => { if (e.target === shareOverlay) closeShareModal(); });
+
+shareCopyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(shareUrlInput.value).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = shareUrlInput.value; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+  });
+  shareCopyBtn.classList.add('copied');
+  shareCopiedMsg.classList.add('show');
+  clearTimeout(shareCopyBtn._t);
+  shareCopyBtn._t = setTimeout(() => {
+    shareCopyBtn.classList.remove('copied');
+    shareCopiedMsg.classList.remove('show');
+  }, 2500);
+});
+
+// Delegate share button clicks (cards + sidebar companies)
+document.addEventListener('click', e => {
+  // Card / pool share buttons
+  const cardBtn = e.target.closest('.share-btn');
+  if (cardBtn) {
+    e.stopPropagation();
+    if (cardBtn.dataset.shareJob) {
+      openShareModal(`${location.origin}/jobs?job=${cardBtn.dataset.shareJob}`, 'job');
+    } else if (cardBtn.dataset.sharePool) {
+      openShareModal(`${location.origin}/jobs?pool=${cardBtn.dataset.sharePool}`, 'pool');
+    }
+    return;
+  }
+});
+
+// ── Deep-link: auto-open job, pool or company filter from URL params ──
+function handleDeepLink() {
+  const params     = new URLSearchParams(location.search);
+  const jobId      = params.get('job');
+  const poolId     = params.get('pool');
+  const companyParam = params.get('company');
+
+  if (jobId) {
+    const job = jobListings.find(j => j.id === jobId);
+    if (job) openJobModal(jobId);
+  } else if (poolId) {
+    switchTab('pool');
+    const cat = talentCategories.find(c => c.id === poolId);
+    if (cat) {
+      document.getElementById('pool-cat-label').textContent = cat.name;
+      document.getElementById('pool-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  } else if (companyParam) {
+    const name = decodeURIComponent(companyParam);
+    if (allCompanies.includes(name)) {
+      filters.company = name;
+      onFilterChange();
+      // Scroll to jobs section smoothly
+      document.getElementById('jobs-section').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+loadJobs();
+</script>
 </body>
 </html>
