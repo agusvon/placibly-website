@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Hiring LATAM Talent — Placibly</title>
+  <meta name="description" content="Hire vetted, English-fluent Latin American professionals for your US company. Save 40–60% on salaries. Placibly handles everything — you just pick your favorite candidate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple-deep: #3B1F6E;
+      --purple: #5C2D91;
+      --purple-light: #7B3FA0;
+      --magenta: #D42F8A;
+      --magenta-hover: #BF2A7C;
+      --pink-light: #F5E6F0;
+      --pink-50: #FBF4F9;
+      --off-white: #FAFAFE;
+      --white: #ffffff;
+      --gray-50: #F5F5FA;
+      --gray-100: #EAEAF0;
+      --gray-200: #D5D5DE;
+      --gray-300: #B8B8C4;
+      --gray-400: #8E8E9D;
+      --gray-600: #52525E;
+      --gray-800: #27272F;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-sm: 0 1px 3px rgba(59, 31, 110, 0.06);
+      --shadow-md: 0 4px 20px rgba(59, 31, 110, 0.08);
+      --shadow-lg: 0 8px 40px rgba(59, 31, 110, 0.12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      background: var(--off-white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250, 250, 254, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    nav.scrolled { border-bottom-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      height: 72px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo-text {
+      font-size: 24px; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #3B1F6E 0%, #8B2D8B 45%, #D42F8A 70%, #E8234A 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 15px; font-weight: 500; color: var(--gray-600);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-links a.active { color: var(--purple-deep); font-weight: 700; }
+    .nav-cta-outline {
+      font-size: 14px !important; font-weight: 600 !important;
+      color: var(--purple-deep) !important;
+      border: 1.5px solid var(--purple-deep);
+      padding: 9px 20px; border-radius: 8px;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+    .nav-cta-outline:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
+    .nav-cta {
+      font-size: 14px !important; font-weight: 600 !important;
+      color: var(--white) !important; background: var(--magenta);
+      padding: 10px 24px; border-radius: 8px;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--magenta-hover) !important; transform: translateY(-1px); }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--purple-deep); margin: 5px 0; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(160deg, #f8f4ff 0%, var(--off-white) 60%);
+    }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--pink-50); color: var(--magenta);
+      font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 100px;
+      border: 1px solid var(--pink-light); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 48px; font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px; color: var(--gray-800); margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(90deg, #3B1F6E 0%, #D42F8A 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-desc { font-size: 18px; color: var(--gray-600); line-height: 1.65; margin-bottom: 36px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--magenta); color: var(--white);
+      font-size: 16px; font-weight: 700; padding: 16px 32px;
+      border-radius: var(--radius); text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { background: var(--magenta-hover); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--purple-deep);
+      font-size: 16px; font-weight: 600; padding: 16px 28px;
+      border-radius: var(--radius); text-decoration: none;
+      border: 1.5px solid var(--purple-deep);
+      transition: background var(--transition), color var(--transition);
+    }
+    .btn-secondary:hover { background: var(--purple-deep); color: var(--white); }
+
+    .hero-proof { display: flex; flex-direction: column; gap: 16px; }
+    .proof-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 24px 28px; box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-100);
+    }
+    .proof-stat { font-size: 36px; font-weight: 800; color: var(--purple-deep); letter-spacing: -1px; }
+    .proof-stat span { color: var(--magenta); }
+    .proof-label { font-size: 14px; color: var(--gray-600); margin-top: 4px; }
+    .proof-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero h1 { font-size: 36px; }
+      .proof-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Why section ── */
+    .why-section { padding: 80px 0; background: var(--white); }
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--magenta); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 36px; font-weight: 800; letter-spacing: -0.8px;
+      color: var(--gray-800); margin-bottom: 16px;
+    }
+    .section-subtitle { font-size: 17px; color: var(--gray-600); max-width: 520px; margin-bottom: 48px; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .why-card {
+      background: var(--off-white); border-radius: var(--radius-lg);
+      padding: 32px 28px; border: 1px solid var(--gray-100);
+    }
+    .why-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--pink-light); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 16px; color: var(--magenta);
+    }
+    .why-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--gray-800); }
+    .why-card p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
+
+    @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ── Roles ── */
+    .roles-section { padding: 80px 0; background: var(--off-white); }
+    .roles-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+    .role-chip {
+      background: var(--white); border: 1.5px solid var(--gray-100);
+      border-radius: 100px; padding: 10px 20px;
+      font-size: 14px; font-weight: 600; color: var(--gray-800);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .role-chip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); }
+
+    /* ── Process ── */
+    .process-section { padding: 80px 0; background: var(--white); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; position: relative; }
+    .process-steps::before {
+      content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
+      height: 2px; background: var(--gray-100); z-index: 0;
+    }
+    .step { position: relative; z-index: 1; text-align: center; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--magenta) 100%);
+      color: var(--white); font-size: 18px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; box-shadow: var(--shadow-md);
+    }
+    .step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--gray-600); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+
+    /* ── Form section ── */
+    .form-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--purple-deep) 0%, #7B2D8B 60%, var(--magenta) 100%);
+    }
+    .form-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .form-copy { color: var(--white); }
+    .form-copy .section-label { color: rgba(255,255,255,0.7); }
+    .form-copy h2 { font-size: 36px; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 16px; }
+    .form-copy p { font-size: 16px; opacity: 0.85; line-height: 1.65; margin-bottom: 32px; }
+    .form-guarantees { display: flex; flex-direction: column; gap: 12px; }
+    .guarantee-item { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); }
+    .guarantee-check {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); display: flex; align-items: center;
+      justify-content: center; font-size: 12px; flex-shrink: 0;
+    }
+
+    .hire-form {
+      background: var(--white); border-radius: var(--radius-xl);
+      padding: 40px; box-shadow: var(--shadow-lg);
+    }
+    .hire-form h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--gray-800); }
+    .hire-form .form-sub { font-size: 14px; color: var(--gray-600); margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    label { display: block; font-size: 13px; font-weight: 600; color: var(--gray-800); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius);
+      font-family: inherit; font-size: 15px; color: var(--gray-800);
+      background: var(--white); outline: none;
+      transition: border-color var(--transition);
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--purple); }
+    textarea { resize: vertical; min-height: 100px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238E8E9D' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    .form-submit {
+      width: 100%; padding: 16px; background: var(--magenta); color: var(--white);
+      font-family: inherit; font-size: 16px; font-weight: 700; border: none;
+      border-radius: var(--radius); cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: var(--magenta-hover); transform: translateY(-2px); }
+    .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
+
+    @media (max-width: 900px) {
+      .form-inner { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Footer ── */
+    footer { background: var(--gray-800); padding: 48px 0 32px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-logo {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color var(--transition); }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); width: 100%; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo-text">Placibly</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/jobs" class="nav-cta-outline">Apply for Jobs</a></li>
+      <li><a href="/hire" class="nav-cta active">Start Hiring</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          60-Day Replacement Guarantee
+        </div>
+        <h1>Stop Overpaying for Talent.<br><span class="highlight">Hire from LATAM.</span></h1>
+        <p class="hero-desc">We find, vet, and place top Latin American professionals into your team — in weeks, not months. Save 40–60% on salaries without sacrificing quality or time zones.</p>
+        <div class="hero-buttons">
+          <a href="#get-started" class="btn-primary">
+            Start Hiring Now
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-secondary">See how it works</a>
+        </div>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-card">
+          <div class="proof-stat">60<span>%</span></div>
+          <div class="proof-label">Average salary savings vs. US equivalents</div>
+        </div>
+        <div class="proof-row">
+          <div class="proof-card">
+            <div class="proof-stat">2–3<span>wks</span></div>
+            <div class="proof-label">Average time to first hire</div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-stat">7<span>+</span></div>
+            <div class="proof-label">LATAM countries covered</div>
+          </div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-stat">Same <span>TZ</span></div>
+          <div class="proof-label">All candidates work in US time zones</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Placibly -->
+<section class="why-section" id="why">
+  <div class="container">
+    <p class="section-label">Why Placibly</p>
+    <h2 class="section-title">Everything handled. You just choose.</h2>
+    <p class="section-subtitle">We do the heavy lifting so you can focus on running your business — not sifting through resumes.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h4>Pre-vetted candidates only</h4>
+        <p>Every candidate goes through English fluency tests, skills assessments, and background checks before you see their profile.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>Fast placement</h4>
+        <p>Most companies receive their first shortlist within 5–7 business days and make a hire within 2–3 weeks.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>60-day guarantee</h4>
+        <p>If your hire doesn't work out within the first 60 days, we replace them at no additional cost. Zero risk.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h4>Full compliance handled</h4>
+        <p>We manage international payroll, contracts, and legal compliance. You pay one flat fee — nothing else.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>90-day onboarding support</h4>
+        <p>We stay involved after placement — checking in with you and your new hire to make sure the transition goes smoothly.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Trilingual team</h4>
+        <p>We operate in English, Spanish, and Portuguese — so we can source across all of LATAM and communicate in your language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Roles -->
+<section class="roles-section">
+  <div class="container">
+    <p class="section-label">What We Place</p>
+    <h2 class="section-title">Roles across every function</h2>
+    <p class="section-subtitle">From customer-facing roles to back-office operations — if you need it, we can staff it.</p>
+    <div class="roles-grid">
+      <div class="role-chip"><span class="role-chip-dot"></span>Operations Manager</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Customer Support</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Executive Assistant</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Marketing Coordinator</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Social Media Manager</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Bookkeeper / Accountant</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>HR Coordinator</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Sales Development Rep</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Graphic Designer</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Data Analyst</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Project Manager</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Content Writer</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Recruiter</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>Supply Chain Coordinator</div>
+      <div class="role-chip"><span class="role-chip-dot"></span>+ many more</div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="process-section" id="how-it-works">
+  <div class="container">
+    <p class="section-label">The Process</p>
+    <h2 class="section-title">From brief to hired in weeks</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Tell us what you need</h4>
+        <p>Fill out a short form about the role, your team, and what success looks like.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>We source & vet</h4>
+        <p>We search our talent pool and run candidates through skills tests and interviews.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>You pick your favorite</h4>
+        <p>We send you a curated shortlist. You meet them and choose who you want.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>We handle the rest</h4>
+        <p>Contracts, payroll, onboarding — all covered. Your hire starts in days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Form -->
+<section class="form-section" id="get-started">
+  <div class="container">
+    <div class="form-inner">
+      <div class="form-copy">
+        <p class="section-label">Get Started</p>
+        <h2>Tell us about your next hire</h2>
+        <p>Fill out the form and we'll get back to you within 1 business day with a tailored plan — no commitment required.</p>
+        <div class="form-guarantees">
+          <div class="guarantee-item">
+            <div class="guarantee-check">✓</div>
+            Free 20-minute discovery call
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-check">✓</div>
+            Shortlist delivered in 5–7 business days
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-check">✓</div>
+            60-day free replacement guarantee
+          </div>
+          <div class="guarantee-item">
+            <div class="guarantee-check">✓</div>
+            No upfront cost until you hire
+          </div>
+        </div>
+      </div>
+
+      <div class="hire-form">
+        <h3>Start your search</h3>
+        <p class="form-sub">We'll reach out within 1 business day.</p>
+        <form id="hireForm" action="mailto:hello@placibly.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <div>
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Maria" required>
+            </div>
+            <div>
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Johnson" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="maria@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company name</label>
+            <input type="text" id="company" name="company" placeholder="Acme Inc." required>
+          </div>
+          <div class="form-group">
+            <label for="role">What role are you hiring for?</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select a category</option>
+              <option>Operations</option>
+              <option>Customer Support</option>
+              <option>Marketing</option>
+              <option>Sales</option>
+              <option>Finance / Accounting</option>
+              <option>HR / Recruiting</option>
+              <option>Executive Assistant</option>
+              <option>Design / Creative</option>
+              <option>Data / Analytics</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="timeline">When do you need someone?</label>
+            <select id="timeline" name="timeline">
+              <option value="" disabled selected>Select timeline</option>
+              <option>ASAP (within 2 weeks)</option>
+              <option>1–2 months</option>
+              <option>2–3 months</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Anything else we should know? (optional)</label>
+            <textarea id="notes" name="notes" placeholder="Tell us about your team, the role, or any specific requirements..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            Send My Request
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <p class="form-note">Or email us directly at <a href="mailto:hello@placibly.com" style="color:var(--purple-deep)">hello@placibly.com</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">placibly</a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/jobs">Apply for Jobs</a>
+        <a href="/hire">Start Hiring</a>
+        <a href="mailto:hello@placibly.com">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Placibly. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+
+</body>
+</html>
