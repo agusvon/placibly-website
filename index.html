@@ -819,16 +819,37 @@
 
     .roles-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
     }
 
     .role-column {
       background: var(--white);
       border-radius: var(--radius-lg);
       border: 1px solid var(--gray-100);
-      padding: 36px 32px;
+      padding: 28px 22px;
       transition: box-shadow var(--transition);
+    }
+
+    .roles-view-more {
+      display: none;
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--purple-deep);
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .roles-view-more:hover {
+      border-color: var(--purple);
+      color: var(--purple);
     }
 
     .role-column:hover {
@@ -1412,6 +1433,18 @@
         grid-template-columns: 1fr;
       }
 
+      .role-column.role-extra {
+        display: none;
+      }
+
+      .role-column.role-extra.role-extra-visible {
+        display: block;
+      }
+
+      .roles-view-more {
+        display: block;
+      }
+
       .process-steps {
         grid-template-columns: repeat(2, 1fr);
         gap: 48px 24px;
@@ -1801,7 +1834,40 @@
             <li>SEO Specialist</li>
           </ul>
         </div>
+        <div class="role-column role-extra">
+          <div class="role-column-header">
+            <div class="role-column-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Finance &amp; Accounting</h3>
+          </div>
+          <ul class="role-list">
+            <li>Bookkeeper</li>
+            <li>AP/AR Coordinator</li>
+            <li>Financial Analyst</li>
+            <li>Payroll Coordinator</li>
+            <li>Staff Accountant</li>
+            <li>Controller</li>
+          </ul>
+        </div>
+        <div class="role-column role-extra">
+          <div class="role-column-header">
+            <div class="role-column-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+            </div>
+            <h3>Design &amp; Creative</h3>
+          </div>
+          <ul class="role-list">
+            <li>Graphic Designer</li>
+            <li>UX/UI Designer</li>
+            <li>Video Editor</li>
+            <li>Motion Designer</li>
+            <li>Brand Designer</li>
+            <li>Web Designer</li>
+          </ul>
+        </div>
       </div>
+      <button class="roles-view-more" id="rolesViewMore">View More Roles ↓</button>
     </div>
   </section>
 
@@ -2106,6 +2172,15 @@
         Object.values(navAnchors).forEach(a => a && a.classList.remove('nav-active'));
       }
     }, { passive: true });
+
+    // Roles "View More" toggle (mobile only)
+    const rolesViewMore = document.getElementById('rolesViewMore');
+    rolesViewMore.addEventListener('click', () => {
+      const extras = document.querySelectorAll('.role-extra');
+      const isOpen = extras[0].classList.contains('role-extra-visible');
+      extras.forEach(el => el.classList.toggle('role-extra-visible', !isOpen));
+      rolesViewMore.textContent = isOpen ? 'View More Roles ↓' : 'View Less ↑';
+    });
 
     // Scroll reveal (why cards + process steps only)
     document.querySelectorAll('.why-card, .step').forEach((el, i) => {
