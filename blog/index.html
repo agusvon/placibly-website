@@ -46,6 +46,7 @@
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color var(--transition); }
     .nav-links a:hover { color: var(--purple); }
+    .nav-links a.nav-active { color: var(--purple); font-weight: 700; }
     .nav-actions { display: flex; align-items: center; gap: 8px; }
     .nav-link-jobs { font-size: 14px !important; font-weight: 600 !important; color: var(--purple-deep) !important; border: 1.5px solid var(--purple-deep); padding: 9px 20px; border-radius: 8px; transition: background var(--transition), color var(--transition) !important; }
     .nav-link-jobs:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
@@ -71,9 +72,10 @@
       .mobile-overlay.open .mobile-overlay-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.14s; }
       .mobile-overlay.open .mobile-overlay-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.20s; }
       .mobile-overlay.open .mobile-overlay-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(5) { opacity:1; transform:none; transition-delay:0.32s; }
       .mobile-overlay-links a { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; color: rgba(255,255,255,0.88); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s ease; }
       .mobile-overlay-links a:hover { color: #f5a8d4; }
-      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.32s, transform 0.35s ease 0.32s; }
+      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.38s, transform 0.35s ease 0.38s; }
       .mobile-overlay.open .mobile-overlay-actions { opacity: 1; transform: none; }
       .mobile-overlay-btn-outline { display: block; text-align: center; padding: 15px; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.2s ease; }
       .mobile-overlay-btn-outline:hover { background: rgba(255,255,255,0.1); }
@@ -113,6 +115,7 @@
     .article-card-img-1 { background: linear-gradient(135deg, #3B1F6E 0%, #5C2D91 100%); }
     .article-card-img-2 { background: linear-gradient(135deg, #5C2D91 0%, #D42F8A 100%); }
     .article-card-img-3 { background: linear-gradient(135deg, #D42F8A 0%, #E8234A 100%); }
+    .article-card-img-4 { background: linear-gradient(135deg, #1F3C6E 0%, #3B1F6E 100%); }
     .article-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
     .article-card-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--magenta); background: var(--pink-50); border-radius: 100px; padding: 4px 10px; margin-bottom: 14px; }
     .article-card-title { font-size: 20px; font-weight: 800; color: var(--purple-deep); letter-spacing: -.4px; line-height: 1.3; margin-bottom: 12px; }
@@ -127,7 +130,7 @@
     @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } }
 
     /* CTA */
-    .blog-cta { background: var(--purple-deep); padding: 80px 0; text-align: center; }
+    .blog-cta { background: linear-gradient(135deg, #5C2D91 0%, #8B2580 50%, #D42F8A 100%); padding: 80px 0; text-align: center; }
     .blog-cta h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; color: var(--white); letter-spacing: -1px; margin-bottom: 16px; }
     .blog-cta p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 36px; line-height: 1.7; }
     .blog-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
@@ -169,18 +172,20 @@
 </head>
 <body>
 
-<nav id="main-nav">
+<nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-text">placibly</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#roles">Roles</a></li>
       <li><a href="/#process">How It Works</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog" class="nav-active">Blog</a></li>
+      <li class="nav-actions">
+        <a href="/jobs" class="nav-link-jobs">Apply for Jobs</a>
+        <a href="/hire" class="nav-cta">Start Hiring</a>
+      </li>
     </ul>
-    <div class="nav-actions">
-      <a href="/jobs" class="nav-link-jobs">Find Jobs</a>
-      <a href="/hire" class="nav-cta">Start Hiring</a>
-    </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -189,22 +194,26 @@
 
 <div class="mobile-overlay" id="mobileOverlay">
   <ul class="mobile-overlay-links">
-    <li><a href="/#why" id="mo-why">Why Placibly</a></li>
-    <li><a href="/#process" id="mo-process">How It Works</a></li>
-    <li><a href="/blog" id="mo-blog">Blog</a></li>
-    <li><a href="/jobs" id="mo-jobs">Find Jobs</a></li>
+    <li><a href="/#why">Why Placibly</a></li>
+    <li><a href="/#roles">Roles</a></li>
+    <li><a href="/#process">How It Works</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
   </ul>
   <div class="mobile-overlay-actions">
-    <a href="/jobs" class="mobile-overlay-btn-outline">Browse Open Positions</a>
+    <a href="/jobs" class="mobile-overlay-btn-outline">Apply for Jobs</a>
     <a href="/hire" class="mobile-overlay-btn-solid">Start Hiring</a>
-  </div>
-  <div class="mobile-overlay-social">
-    <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a href="mailto:hello@placibly.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-    </a>
+    <div class="mobile-overlay-social">
+      <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://linkedin.com/company/placibly" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:hello@placibly.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -262,6 +271,21 @@
           <p class="article-card-excerpt">Real salary data comparing US rates to Latin American rates across admin, sales, marketing, and ops roles. Plus the hidden costs most companies overlook.</p>
           <div class="article-card-meta">
             <span class="article-card-date">March 28, 2026</span>
+            <span class="article-card-arrow">Read more &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/executive-assistant-latin-america" class="article-card">
+        <div class="article-card-img article-card-img-4">
+          <span class="article-card-img-icon">🗂️</span>
+        </div>
+        <div class="article-card-body">
+          <span class="article-card-tag">Hiring Guide</span>
+          <h2 class="article-card-title">How to Hire a Remote Executive Assistant from Latin America (2026 Guide)</h2>
+          <p class="article-card-excerpt">Everything you need to find, vet, and onboard a senior EA from LATAM. Covers the difference between EAs and VAs, pay rates by country, and a full interview framework.</p>
+          <div class="article-card-meta">
+            <span class="article-card-date">March 29, 2026</span>
             <span class="article-card-arrow">Read more &rarr;</span>
           </div>
         </div>
@@ -335,13 +359,11 @@
 </button>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('main-nav');
+  const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
-  // Mobile menu
   const menuToggle = document.getElementById('menuToggle');
   const mobileOverlay = document.getElementById('mobileOverlay');
   menuToggle.addEventListener('click', () => {
@@ -349,9 +371,8 @@
     mobileOverlay.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
-  ['mo-why','mo-process','mo-blog','mo-jobs'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', () => {
+  document.querySelectorAll('.mobile-overlay-links a').forEach(link => {
+    link.addEventListener('click', () => {
       menuToggle.classList.remove('open');
       mobileOverlay.classList.remove('open');
       document.body.style.overflow = '';

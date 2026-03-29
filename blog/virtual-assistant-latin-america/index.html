@@ -59,6 +59,7 @@
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color var(--transition); }
     .nav-links a:hover { color: var(--purple); }
+    .nav-links a.nav-active { color: var(--purple); font-weight: 700; }
     .nav-actions { display: flex; align-items: center; gap: 8px; }
     .nav-link-jobs { font-size: 14px !important; font-weight: 600 !important; color: var(--purple-deep) !important; border: 1.5px solid var(--purple-deep); padding: 9px 20px; border-radius: 8px; transition: background var(--transition), color var(--transition) !important; }
     .nav-link-jobs:hover { background: var(--purple-deep) !important; color: var(--white) !important; }
@@ -83,9 +84,10 @@
       .mobile-overlay.open .mobile-overlay-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.14s; }
       .mobile-overlay.open .mobile-overlay-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.20s; }
       .mobile-overlay.open .mobile-overlay-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
+      .mobile-overlay.open .mobile-overlay-links li:nth-child(5) { opacity:1; transform:none; transition-delay:0.32s; }
       .mobile-overlay-links a { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; color: rgba(255,255,255,0.88); text-decoration: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s ease; }
       .mobile-overlay-links a:hover { color: #f5a8d4; }
-      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.32s, transform 0.35s ease 0.32s; }
+      .mobile-overlay-actions { display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(16px); transition: opacity 0.35s ease 0.38s, transform 0.35s ease 0.38s; }
       .mobile-overlay.open .mobile-overlay-actions { opacity: 1; transform: none; }
       .mobile-overlay-btn-outline { display: block; text-align: center; padding: 15px; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 10px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; transition: background 0.2s ease; }
       .mobile-overlay-btn-outline:hover { background: rgba(255,255,255,0.1); }
@@ -105,6 +107,8 @@
     .article-wrap { padding: calc(var(--nav-h) + 48px) 0 96px; }
     .article-layout { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
     @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .article-sidebar { display: none; } }
+    .article-layout > article { min-width: 0; }
+    @media (max-width: 600px) { .article-layout { padding: 0 20px; } .article-body { font-size: 16px; } }
 
     .breadcrumb { font-size: 13px; color: var(--gray-400); margin-bottom: 24px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
@@ -152,6 +156,7 @@
     .sidebar-toc li { margin-bottom: 8px; }
     .sidebar-toc a { font-size: 13px; color: var(--gray-600); text-decoration: none; display: block; padding: 4px 0; border-left: 2px solid transparent; padding-left: 10px; transition: color var(--transition), border-color var(--transition); }
     .sidebar-toc a:hover { color: var(--purple); border-left-color: var(--magenta); }
+    .sidebar-toc a.active { color: var(--purple); border-left-color: var(--magenta); font-weight: 600; }
     .sidebar-cta-text { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-bottom: 16px; }
     .sidebar-cta-btn { display: block; text-align: center; background: var(--magenta); color: var(--white); font-family: inherit; font-size: 14px; font-weight: 600; padding: 12px 20px; border-radius: var(--radius); text-decoration: none; transition: background var(--transition), transform var(--transition); }
     .sidebar-cta-btn:hover { background: var(--magenta-hover); transform: translateY(-1px); }
@@ -189,18 +194,20 @@
 </head>
 <body>
 
-<nav id="main-nav">
+<nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-text">placibly</span></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="/#why">Why Placibly</a></li>
+      <li><a href="/#roles">Roles</a></li>
       <li><a href="/#process">How It Works</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog" class="nav-active">Blog</a></li>
+      <li class="nav-actions">
+        <a href="/jobs" class="nav-link-jobs">Apply for Jobs</a>
+        <a href="/hire" class="nav-cta">Start Hiring</a>
+      </li>
     </ul>
-    <div class="nav-actions">
-      <a href="/jobs" class="nav-link-jobs">Find Jobs</a>
-      <a href="/hire" class="nav-cta">Start Hiring</a>
-    </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -209,22 +216,26 @@
 
 <div class="mobile-overlay" id="mobileOverlay">
   <ul class="mobile-overlay-links">
-    <li><a href="/#why" id="mo-why">Why Placibly</a></li>
-    <li><a href="/#process" id="mo-process">How It Works</a></li>
-    <li><a href="/blog" id="mo-blog">Blog</a></li>
-    <li><a href="/jobs" id="mo-jobs">Find Jobs</a></li>
+    <li><a href="/#why">Why Placibly</a></li>
+    <li><a href="/#roles">Roles</a></li>
+    <li><a href="/#process">How It Works</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
   </ul>
   <div class="mobile-overlay-actions">
-    <a href="/jobs" class="mobile-overlay-btn-outline">Browse Open Positions</a>
+    <a href="/jobs" class="mobile-overlay-btn-outline">Apply for Jobs</a>
     <a href="/hire" class="mobile-overlay-btn-solid">Start Hiring</a>
-  </div>
-  <div class="mobile-overlay-social">
-    <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a href="mailto:hello@placibly.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-    </a>
+    <div class="mobile-overlay-social">
+      <a href="https://instagram.com/placibly" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://linkedin.com/company/placibly" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:hello@placibly.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -471,7 +482,7 @@
 </button>
 
 <script>
-  const nav = document.getElementById('main-nav');
+  const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
   const menuToggle = document.getElementById('menuToggle');
   const mobileOverlay = document.getElementById('mobileOverlay');
@@ -480,9 +491,8 @@
     mobileOverlay.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
-  ['mo-why','mo-process','mo-blog','mo-jobs'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', () => {
+  document.querySelectorAll('.mobile-overlay-links a').forEach(link => {
+    link.addEventListener('click', () => {
       menuToggle.classList.remove('open');
       mobileOverlay.classList.remove('open');
       document.body.style.overflow = '';
@@ -491,6 +501,27 @@
   const scrollTopBtn = document.getElementById('scrollTop');
   window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.scrollY > 500); }, { passive: true });
   scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  // Sidebar scroll spy
+  const tocLinks = document.querySelectorAll('.sidebar-toc a');
+  if (tocLinks.length) {
+    const sectionEls = Array.from(tocLinks)
+      .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+      .filter(Boolean);
+    const setActive = id => {
+      tocLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+    };
+    const onTocScroll = () => {
+      const scrollY = window.scrollY + 100;
+      let current = sectionEls[0]?.id;
+      for (const el of sectionEls) {
+        if (el.offsetTop <= scrollY) current = el.id;
+      }
+      if (current) setActive(current);
+    };
+    window.addEventListener('scroll', onTocScroll, { passive: true });
+    onTocScroll();
+  }
 </script>
 </body>
 </html>
